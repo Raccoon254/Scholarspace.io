@@ -32,7 +32,7 @@ class StaticPageController extends Controller
         $testimonials = [
             [
                 'icon' => 'fas fa-user-graduate',
-                'avatar' => 'images/avatar1.png',
+                'avatar' => 'images/avatars/eddy.jpg',
                 'color' => 'text-green-500',
                 'image' => 'images/avatar1.png',
                 'name' => 'John Doe',
@@ -41,7 +41,7 @@ class StaticPageController extends Controller
             ],
             [
                 'icon' => 'fas fa-user-graduate',
-                'avatar' => 'images/avatar2.png',
+                'avatar' => 'images/avatars/toa-heft.jpg',
                 'color' => 'text-green-500',
                 'image' => 'images/avatar2.png',
                 'name' => 'Emily Johnson',
@@ -50,7 +50,7 @@ class StaticPageController extends Controller
             ],
             [
                 'icon' => 'fas fa-user-graduate',
-                'avatar' => 'images/avatar3.png',
+                'avatar' => 'images/avatars/christina.jpg',
                 'color' => 'text-green-500',
                 'image' => 'images/avatar3.png',
                 'name' => 'Michael Williams',
