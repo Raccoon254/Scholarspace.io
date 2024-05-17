@@ -5,3 +5,13 @@
 .center{
     @apply flex items-center justify-center;
 }
+
+/* Components */
+.btn {
+    @apply px-4 py-2 bg-blue-500 text-white rounded;
+}
+
+/* Input */
+.input {
+    @apply px-4 py-2 border border-gray-300 rounded;
+}
