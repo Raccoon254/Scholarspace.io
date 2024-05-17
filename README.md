@@ -1,66 +1,147 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Scholarspace
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Scholarspace is a web application designed to facilitate assignment help services. Built with Laravel, it offers a platform for clients to place orders and for writers to manage and fulfill these orders. The application includes features for real-time chat, payment processing, notifications, FAQs, and terms and conditions management.
 
-## About Laravel
+## Tech Stack
+- **Backend**: PHP (Laravel)
+- **Frontend**: Blade, Tailwind CSS, Alpine.js, Livewire
+- **Database**: MySQL
+- **Real-Time Messaging**: Laravel Echo, Pusher
+- **Payment Gateway**: PayPal, CashApp, Zelle
+- **Deployment**: GitHub Actions, VPS (DigitalOcean)
+- **CI/CD**: GitHub Actions
+- **Version Control**: Git
+- **Documentation**: Markdown
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Writer**
+    - Take orders
+    - Support via chatbot
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Client**
+    - Make orders
+    - View order history
 
-## Learning Laravel
+- **System Features**
+    - Real-time chat
+    - Payments (15 USD per page) with support for discounts and referrals
+    - Payment methods: PayPal, CashApp, Zelle
+    - Notifications and alerts
+    - FAQ management
+    - Terms and conditions
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP >= 8.1
+- Composer
+- MySQL
+- Node.js & npm
+- Laravel CLI
 
-## Laravel Sponsors
+### Setup Instructions
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Clone the Repository**
 
-### Premium Partners
+   ```sh
+   git clone git@github.com:Raccoon254/Scholarspace.io.git scholarspace
+   cd scholarspace
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. **Install Dependencies**
+
+   ```sh
+   composer install
+   npm install
+   npm run start
+   ```
+
+3. **Environment Configuration**
+
+    - Copy the `.env.example` file to `.env`:
+
+      ```sh
+      cp .env.example .env
+      ```
+
+    - Update the `.env` file with your database and other configurations.
+
+4. **Generate Application Key**
+
+   ```sh
+   php artisan key:generate
+   ```
+
+5. **Run Migrations**
+
+    Update the `.env` file with your database credentials, then run the migrations:
+
+   ```sh
+   php artisan migrate
+   ```
+
+6. **Seed the Database (Optional)**
+
+   ```sh
+   php artisan db:seed
+   ```
+
+7. **Serve the Application**
+
+   ```sh
+   php artisan serve
+   ```
+
+   The application will be available at `http://localhost:8000`.
+
+## Usage
+
+### User Roles
+
+- **Client**
+    - Register and log in to place orders.
+    - View order history and details.
+
+- **Writer**
+    - Register and log in to manage orders.
+    - View and take available orders.
+
+### Order Management
+
+- Clients can create new orders specifying the assignment details.
+- Writers can view and accept orders, then mark them as in-progress or completed.
+
+### Real-Time Chat
+
+- Integrated chat system for communication between clients and writers.
+- Use Laravel Echo and Pusher for real-time messaging.
+
+### Payments
+
+- Payments are calculated at 15 USD per page.
+- Clients can make payments using PayPal, CashApp, or Zelle.
+- Support for discounts and referral bonuses.
+
+### Notifications
+
+- Users receive notifications for order updates, payment confirmations, and chat messages.
+
+### FAQ and Terms & Conditions
+
+- Static pages for FAQs and terms and conditions.
+- Admin interface for managing FAQ entries.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Contributions are welcome! Please fork this repository and submit a pull request for any improvements or bug fixes.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries or support, please contact [dev@scholarspace.com](mailto:tomsteve187@gmail.com).
+
