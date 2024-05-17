@@ -10,7 +10,7 @@ class StaticPageController extends Controller
     {
         $process_steps = [
             [
-                'icon' => 'fa-solid avatar fa-pen-nib',
+                'icon' => 'fas avatar fa-pen-nib',
                 'color' => 'text-blue-500',
                 'title' => 'Place Your Order',
                 'text' => 'Submit your assignment details, including the topic, instructions, and due date.'
