@@ -43,7 +43,7 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach($process_steps as $item)
-                <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="bg-white rounded-lg shadow-md shadow-gray-200 p-6">
                     <i class="{{ $item['icon'] }} fa-3x {{ $item['color'] }} mb-4"></i>
                     <h3 class="text-xl font-bold text-black/90 mb-2">{{ $item['title'] }}</h3>
                     <p class="text-black/50">{{ $item['text'] }}</p>
@@ -76,42 +76,22 @@
             <p class="text-lg text-black/50">Hear what our satisfied clients have to say about Scholarspace.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center mb-4">
-                    <i class="fas fa-user-graduate fa-3x text-green-500 mr-4"></i>
-                    <div>
-                        <h4 class="text-lg font-bold text-black/90">John Doe</h4>
-                        <p class="text-black/50">Computer Science</p>
+            @foreach($testimonials as $testimonial)
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="{{ $testimonial['icon'] }} fa-3x {{ $testimonial['color'] }} mr-4"></i>
+                        <img src="{{ asset($testimonial['avatar']) }}" alt="Avatar"
+                             class="w-12 h-12 rounded-full object-cover mr-4"
+                             style="border: 2px solid {{ $testimonial['color'] }}">
+                        <div>
+                            <h4 class="text-lg font-bold text-black/90">{{ $testimonial['name'] }}</h4>
+                            <p class="text-black/50">{{ $testimonial['subject'] }}</p>
+                        </div>
                     </div>
+                    <p class="text-black/50">"{{ $testimonial['testimonial'] }}"</p>
                 </div>
-                <p class="text-black/50">"Scholarspace has been a lifesaver for me. The writers are knowledgeable and
-                    always deliver quality work on time."</p>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center mb-4">
-                    <img src="{{ asset('images/avatar2.png') }}" alt="Avatar" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="text-lg font-bold text-black/90">Emily Johnson</h4>
-                        <p class="text-black/50">Business Administration</p>
-                    </div>
-                </div>
-                <p class="text-black/50">"I highly recommend Scholarspace. Their writers have a deep understanding of
-                    the subject matter and provide well-researched assignments."</p>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center mb-4">
-                    <img src="{{ asset('images/avatar3.png') }}" alt="Avatar" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="text-lg font-bold text-black/90">Michael Williams</h4>
-                        <p class="text-black/50">English Literature</p>
-                    </div>
-                </div>
-                <p class="text-black text-black/50">"I've been using Scholarspace for a while now, and I'm always
-                    impressed by the quality of work and the professionalism of the writers."</p>
-            </div>
+            @endforeach
         </div>
-
     </div>
 </div>
 </body>
