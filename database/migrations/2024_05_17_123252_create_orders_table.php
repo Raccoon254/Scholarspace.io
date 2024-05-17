@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->text('description');
+            $table->enum('status', ['pending', 'in-progress', 'completed'])->default('pending');
+            $table->decimal('total_price', 8, 2);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
