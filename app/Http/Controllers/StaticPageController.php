@@ -29,6 +29,11 @@ class StaticPageController extends Controller
             ]
         ];
 
+        /* Testimonials
+         * TODO: Replace the dummy testimonials with real testimonials from the database
+         * Create a Testimonial model and a TestimonialController to fetch testimonials from the database
+         */
+
         $testimonials = [
             [
                 'icon' => 'fas fa-user-graduate',
