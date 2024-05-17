@@ -79,7 +79,6 @@
             @foreach($testimonials as $testimonial)
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <div class="flex items-center mb-4">
-                        <i class="{{ $testimonial['icon'] }} fa-3x {{ $testimonial['color'] }} mr-4"></i>
                         <img src="{{ asset($testimonial['avatar']) }}" alt="Avatar"
                              class="w-12 h-12 rounded-full object-cover mr-4"
                              style="border: 2px solid {{ $testimonial['color'] }}">

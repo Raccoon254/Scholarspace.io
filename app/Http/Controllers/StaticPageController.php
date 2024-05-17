@@ -35,7 +35,7 @@ class StaticPageController extends Controller
                 'avatar' => 'images/avatars/eddy.jpg',
                 'color' => 'text-green-500',
                 'image' => 'images/avatar1.png',
-                'name' => 'John Doe',
+                'name' => 'Eddy Johnson',
                 'subject' => 'Computer Science',
                 'testimonial' => 'Scholarspace has been a lifesaver for me. The writers are knowledgeable and always deliver quality work on time.'
             ],
@@ -44,7 +44,7 @@ class StaticPageController extends Controller
                 'avatar' => 'images/avatars/toa-heft.jpg',
                 'color' => 'text-green-500',
                 'image' => 'images/avatar2.png',
-                'name' => 'Emily Johnson',
+                'name' => 'Clinton Kelly',
                 'subject' => 'Business Administration',
                 'testimonial' => 'I highly recommend Scholarspace. Their writers have a deep understanding of the subject matter and provide well-researched assignments.'
             ],
@@ -53,7 +53,7 @@ class StaticPageController extends Controller
                 'avatar' => 'images/avatars/christina.jpg',
                 'color' => 'text-green-500',
                 'image' => 'images/avatar3.png',
-                'name' => 'Michael Williams',
+                'name' => 'Claire Williams',
                 'subject' => 'English Literature',
                 'testimonial' => 'I\'ve been using Scholarspace for a while now, and I\'m always impressed by the quality of work and the professionalism of the writers.'
             ]
