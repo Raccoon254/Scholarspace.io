@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://kit.fontawesome.com/af6aba113a.js" crossorigin="anonymous"></script>
 </head>
 <body class="font-sans antialiased">
 <div class="bg-gray-50">
@@ -18,9 +19,15 @@
             <div class="text-center md:text-left">
                 <h1 class="text-4xl font-bold text-black/90 mb-4">Welcome to Scholarspace</h1>
                 <p class="text-lg text-black/50 mb-8">Your trusted platform for assignment help.</p>
-                <div class="flex justify-center md:justify-start">
-                    <a href="#" class="bg-blue-500 hover:bg-blue-600 font-semibold py-2 px-4 rounded-md mr-4">Login</a>
-                    <a href="#" class="bg-green-500 hover:bg-green-600 font-semibold py-2 px-4 rounded-md">Register</a>
+                <div class="flex justify-center text-black/90 md:justify-start">
+                    <a href="{{ route('login') }}"
+                       class="bg-blue-500 hover:bg-blue-600 font-semibold py-2 px-4 rounded-md mr-4">
+                        Login
+                    </a>
+                    <a href="{{ route('register') }}"
+                       class="bg-green-500 hover:bg-green-600 font-semibold py-2 px-4 rounded-md">
+                        Register
+                    </a>
                 </div>
             </div>
             <div class="mt-8 md:mt-0">
@@ -35,24 +42,13 @@
             <p class="text-lg text-black/50">Our simple and efficient process for getting your assignments done.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <i class="fas fa-edit fa-3x text-blue-500 mb-4"></i>
-                <h3 class="text-xl font-bold text-black/90 mb-2">Place Your Order</h3>
-                <p class="text-black/50">Submit your assignment details, including the topic, instructions, and due
-                    date.</p>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <i class="fas fa-user-graduate fa-3x text-green-500 mb-4"></i>
-                <h3 class="text-xl font-bold text-black/90 mb-2">Hire a Writer</h3>
-                <p class="text-black/50">Our expert writers will review your order and start working on it
-                    immediately.</p>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <i class="fas fa-check-circle fa-3x text-yellow-500 mb-4"></i>
-                <h3 class="text-xl font-bold text-black/90 mb-2">Get Your Assignment</h3>
-                <p class="text-black/50">Receive your high-quality assignment before the due date, reviewed and ready
-                    for submission.</p>
-            </div>
+            @foreach($data as $item)
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <i class="{{ $item['icon'] }} fa-3x {{ $item['color'] }} mb-4"></i>
+                    <h3 class="text-xl font-bold text-black/90 mb-2">{{ $item['title'] }}</h3>
+                    <p class="text-black/50">{{ $item['text'] }}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 
