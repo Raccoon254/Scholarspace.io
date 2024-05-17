@@ -42,7 +42,7 @@
             <p class="text-lg text-black/50">Our simple and efficient process for getting your assignments done.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            @foreach($data as $item)
+            @foreach($process_steps as $item)
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <i class="{{ $item['icon'] }} fa-3x {{ $item['color'] }} mb-4"></i>
                     <h3 class="text-xl font-bold text-black/90 mb-2">{{ $item['title'] }}</h3>

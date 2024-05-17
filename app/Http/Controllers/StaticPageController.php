@@ -8,7 +8,7 @@ class StaticPageController extends Controller
 {
     public function welcome(): View
     {
-        $data = [
+        $process_steps = [
             [
                 'icon' => 'fa-solid avatar fa-pen-nib',
                 'color' => 'text-blue-500',
@@ -28,7 +28,7 @@ class StaticPageController extends Controller
                 'text' => 'Receive your high-quality assignment before the due date, reviewed and ready for submission.'
             ]
         ];
-        return view('welcome')->with('data', $data);
+        return view('welcome')->with('process_steps', $process_steps);
     }
 }
 
