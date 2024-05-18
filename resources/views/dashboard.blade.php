@@ -29,19 +29,36 @@
                     </div>
                 </div>
             </div>
-            <div class="md:w-1/3 md:absolute p-4 right-0 -top-8 bg-amber-500">
+            <div class="md:w-1/3 md:absolute p-4 right-0 -top-8 bg-blue-500 md:h-[103vh]">
                 <div class="center mt-20">
-                    <div class="profile-header">
                         <div class="center flex-col">
-                            <div class="avatar">
-                                <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            <div class="avatar relative">
+                                <div class="w-28 rounded-full border border-blue-500 ring-1 ring-offset-blue-500 ring-blue-200 ring-inset ring-offset-[6px]">
+                                    <img src="{{ auth()->user()->profile_photo }}" alt="{{ auth()->user()->name }}" class="w-28 h-28 p-2 rounded-full">
+                                    <div class="absolute top-0 left-0 w-28 h-28 rotate-[270deg] rounded-full overflow-visible">
+                                        <svg class="w-full h-full">
+                                            <circle cx="50%" cy="50%" r="48%" fill="transparent" stroke="white" stroke-width="4" stroke-linecap="round" stroke-dashoffset="61px" stroke-dasharray="288.88px"></circle>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="profile-header-info">
-                                <h4 class="mt-3 text-white">{{ auth()->user()->name }}</h4>
+                            <div class="text-white text-center">
+                                <h4 class="mt-3 text-xl font-semibold">{{ auth()->user()->name }}</h4>
+                                <p class="text-xs text-gray-200">{{ auth()->user()->email }}</p>
+
+                                <div class="mt-12">
+                                    <a href="{{ route('profile.edit') }}" class="text-white border border-white p-2 px-4 rounded-lg hover:text-white">View Profile</a>
+                                </div>
                             </div>
                         </div>
+                </div>
+                <!-- Line Break -->
+                <hr class="mt-10 border-t-2 rounded-lg border-gray-100">
+
+                <div class="mt-6 px-3 w-full text-white">
+                    <div class="text-xl flex justify-between items-center font-semibold">
+                        Previous Orders
+                        <i class="fab btn btn-circle btn-sm btn-ghost ring-blue-200 fa-sistrix"></i>
                     </div>
                 </div>
             </div>

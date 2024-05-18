@@ -41,7 +41,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getAvatarAttribute(): string
     {
-        return 'https://api.dicebear.com/8.x/identicon/svg?seed=' . $this->name;
+        return 'https://mighty.tools/mockmind-api/content/cartoon/' . $this->id. '.jpg';
     }
 
     public function getProfilePhotoAttribute(): string
