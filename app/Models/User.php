@@ -39,6 +39,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Referral::class, 'referrer_id');
     }
 
+    public function getAvatarAttribute(): string
+    {
+        return 'https://api.dicebear.com/8.x/identicon/svg?seed=' . $this->name;
+    }
+
+    public function getProfilePhotoAttribute(): string
+    {
+        return $this->profile_photo ?? $this->avatar;
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

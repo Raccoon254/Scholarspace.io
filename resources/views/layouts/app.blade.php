@@ -21,7 +21,7 @@
             <div class="flex relative gap-2 p-2">
                 @include('layouts.sidebar')
                 <!-- Page Content -->
-                <main class="w-full bg-gray-100 rounded-lg">
+                <main class="w-full bg-gray-100 overflow-clip rounded-[16px]">
                     {{ $slot }}
                 </main>
             </div>

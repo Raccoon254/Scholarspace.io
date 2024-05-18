@@ -45,7 +45,7 @@
         </div>
         <a href="#" class="h-8 w-8 ml-2 avatar rounded-full p-[2px] ring-1">
             <img class="h-8 w-8 ring-1 ring-white rounded-full"
-                 src="https://api.dicebear.com/8.x/identicon/svg?seed=Jane" alt="John Doe">
+                 src="{{ auth()->user()->profile_photo }}" alt="{{ auth()->user()->name }}"/>
         </a>
     </div>
 </div>
