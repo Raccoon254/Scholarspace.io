@@ -32,8 +32,8 @@
 
             <script>
                 function togglePasswordVisibility() {
-                    var passwordInput = document.getElementById('password');
-                    var eyeIcon = document.getElementById('eyeIcon');
+                    let passwordInput = document.getElementById('password');
+                    let eyeIcon = document.getElementById('eyeIcon');
 
                     if (passwordInput.type === "password") {
                         passwordInput.type = "text";
@@ -59,16 +59,17 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-center justify-between mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                    href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
+                    Forgot password?
                 </a>
             @endif
 
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
+                <i class="fas fa-lock ml-2"></i>
             </x-primary-button>
         </div>
     </form>

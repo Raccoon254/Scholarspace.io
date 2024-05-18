@@ -46,6 +46,7 @@
 
             <x-primary-button class="ms-4">
                 {{ __('Register') }}
+                <i class="fas fa-lock ml-2"></i>
             </x-primary-button>
         </div>
     </form>

@@ -6,11 +6,6 @@
     @apply flex items-center justify-center;
 }
 
-/* Components */
-.btn {
-    @apply px-4 py-2 bg-blue-500 text-white rounded;
-}
-
 /* Apply styles when input is autofilled */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
