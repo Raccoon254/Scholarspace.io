@@ -33,5 +33,5 @@ input:-webkit-autofill {
 }
 
 .custom-badge{
-    @apply absolute -top-0 -right-0 h-[12px] w-[12px] bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center;
+    @apply absolute top-1 right-1 h-[6px] w-[6px] bg-blue-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center ring ring-white;
 }

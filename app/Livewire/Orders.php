@@ -2,12 +2,13 @@
 
 namespace App\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
 
 class Orders extends Component
 {
-    public function render()
+    public function render(): View
     {
-        return view('livewire.orders');
+        return view('orders');
     }
 }

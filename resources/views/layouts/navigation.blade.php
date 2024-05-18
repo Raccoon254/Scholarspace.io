@@ -33,13 +33,12 @@
         </div>
     </div>
     <div class="navbar-end text-black/80 items-center">
-        <div class="btn btn-circle btn-sm btn-ghost relative center">
+        <div class="btn btn-circle bg-gray-100 btn-sm btn-ghost relative center">
             <i class="fas fa-envelope"></i>
             <span class="custom-badge">
-                3
             </span>
         </div>
-        <div class="btn btn-circle btn-sm btn-ghost relative ml-2 center">
+        <div class="btn btn-circle bg-gray-100 btn-sm btn-ghost relative ml-2 center">
             <i class="fas fa-bell-slash"></i>
             <!-- <i class="fas fa-bell"></i> -->
             <!-- <span class="custom-badge"> auth->notifications->unread() </span> -->
