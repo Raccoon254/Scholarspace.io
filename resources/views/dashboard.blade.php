@@ -8,7 +8,7 @@
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
             <div class="w-full md:w-2/3 md:pr-2 flex-col">
-                <div class="top rounded-lg relative p-4 w-full bg-white">
+                <div class="rounded-lg relative p-4 w-full bg-white">
                     <div>
                         <span class="text-gray-500 font-semibold">
                         Hi, {{ explode(' ', auth()->user()->name)[0] }}!
@@ -28,6 +28,12 @@
                         <img src="{{ asset('images/svg2.png') }}" alt="Hero" class="w-64 max-w-md mx-auto rounded-lg">
                     </div>
                 </div>
+
+                <div class="records text-black/80 p-2 mt-8">
+                    <span class="text-xl font-semibold">
+                        Recent Records
+                    </span>
+                </div>
             </div>
             <div class="md:w-1/3 md:absolute p-4 right-0 -top-8 bg-blue-500 md:h-[103vh]">
                 <div class="center mt-20">
@@ -39,6 +45,10 @@
                                         <svg class="w-full h-full">
                                             <circle cx="50%" cy="50%" r="48%" fill="transparent" stroke="white" stroke-width="4" stroke-linecap="round" stroke-dashoffset="61px" stroke-dasharray="288.88px"></circle>
                                         </svg>
+                                    </div>
+                                    <!-- Camera Icon -->
+                                    <div class="absolute bottom-0 right-0 text-white rounded-full">
+                                        <i class="btn btn-sm btn-circle btn-warning fas fa-camera"></i>
                                     </div>
                                 </div>
                             </div>
@@ -57,8 +67,64 @@
 
                 <div class="mt-6 px-3 w-full text-white">
                     <div class="text-xl flex justify-between items-center font-semibold">
-                        Previous Orders
-                        <i class="fab btn btn-circle btn-sm btn-ghost ring-blue-200 fa-sistrix"></i>
+                        3 Previous Orders
+                        <i class="fas btn btn-circle btn-sm bg-white text-blue-500 btn-ghost fa-calendar-alt"></i>
+                    </div>
+
+                    <div class="orders">
+                        <div class="item mt-4">
+                            <span class="text-sm text-gray-200">
+                                12th Feb, 2024
+                            </span>
+                            <div class="flex justify-between bg-white bg-opacity-10 p-2 w-full rounded-lg items-center mt-2">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-lg w-14 font-semibold text-blue-50">
+                                        09:00
+                                    </div>
+                                    <!-- Vertical Line -->
+                                    <div class="w-1 h-10 rounded-lg bg-blue-700 mx-2"></div>
+                                    <div class="">
+                                        <h4 class="text-xs text-gray-200 font-normal">Computer Science</h4>
+                                        <p class="text-lg">Java Programming</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between bg-white bg-opacity-10 p-2 w-full rounded-lg items-center mt-2">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-lg w-14 font-semibold text-blue-50">
+                                        12:34
+                                    </div>
+                                    <!-- Vertical Line -->
+                                    <div class="w-1 h-10 rounded-lg bg-green-400 mx-2"></div>
+                                    <div class="">
+                                        <h4 class="text-xs text-gray-200 font-normal">History</h4>
+                                        <p class="text-lg">Ukraine History</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="day mt-4">
+                                <span class="text-sm text-gray-200">
+                                    34th Oct, 2023
+                                </span>
+
+                                <div class="flex justify-between bg-white bg-opacity-10 p-2 w-full rounded-lg items-center mt-2">
+                                    <div class="flex items-center gap-4">
+                                        <div class="text-lg w-14 font-semibold text-blue-50">
+                                            23:00
+                                        </div>
+                                        <!-- Vertical Line -->
+                                        <div class="w-1 h-10 rounded-lg bg-red-500 mx-2"></div>
+                                        <div class="mr-2">
+                                            <h4 class="text-xs text-gray-200 font-normal">Philosophy</h4>
+                                            <p class="text-lg text-ellipsis whitespace-nowrap mr-2">Geo Evolution</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
