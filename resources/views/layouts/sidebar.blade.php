@@ -10,7 +10,19 @@
             <li class="side {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
                     <i class="fas fa-home"></i>
-                    <span>Discover</span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="side {{ request()->routeIs('messages') ? 'active' : '' }}">
+                <a href="{{ route('messages') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
+                    <i class="fas fa-envelope"></i>
+                    <span>Messages</span>
+                </a>
+            </li>
+            <li class="side {{ request()->routeIs('orders') ? 'active' : '' }}">
+                <a href="{{ route('orders') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Orders</span>
                 </a>
             </li>
             <li class="side {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
