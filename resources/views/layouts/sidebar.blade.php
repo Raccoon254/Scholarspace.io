@@ -14,9 +14,10 @@
                 </a>
             </li>
             <li class="side {{ request()->routeIs('messages') ? 'active' : '' }}">
-                <a href="{{ route('messages') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
+                <a href="{{ route('messages') }}" class="flex relative items-center gap-2 p-2 hover:bg-gray-200">
                     <i class="fas fa-envelope"></i>
                     <span>Messages</span>
+                    <span class="custom-badge"></span>
                 </a>
             </li>
             <li class="side {{ request()->routeIs('orders') ? 'active' : '' }}">
