@@ -16,12 +16,12 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-white">
             @include('layouts.navigation')
             <div class="flex relative gap-2 p-2">
                 @include('layouts.sidebar')
                 <!-- Page Content -->
-                <main class="w-full bg-white rounded-lg">
+                <main class="w-full bg-gray-100 rounded-lg">
                     {{ $slot }}
                 </main>
             </div>

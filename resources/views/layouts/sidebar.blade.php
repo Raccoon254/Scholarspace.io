@@ -5,10 +5,20 @@
     </div>
     <div class="drawer-side">
         <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul class="menu bg-gray-100 p-4 w-60 min-h-full text-black/90">
+        <ul class="menu bg-white px-4 pt-0 w-60 min-h-full text-black/90">
             <!-- Sidebar content here -->
-            <li><a>Sidebar Item 1</a></li>
-            <li><a>Sidebar Item 2</a></li>
+            <li class="side {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
+                    <i class="fas fa-home"></i>
+                    <span>Discover</span>
+                </a>
+            </li>
+            <li class="side {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
+                <a href="{{ route('profile.edit') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

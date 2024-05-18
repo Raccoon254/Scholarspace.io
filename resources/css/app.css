@@ -20,3 +20,16 @@ input:-webkit-autofill:active {
 input:-webkit-autofill {
     background-color: transparent !important;
 }
+
+.side{
+    @apply h-12 rounded-lg mb-2;
+}
+
+.side> a{
+    @apply flex gap-3 h-full px-4 items-center;
+}
+
+/*Side active */
+.active{
+    @apply bg-gray-100 text-blue-500;
+}
