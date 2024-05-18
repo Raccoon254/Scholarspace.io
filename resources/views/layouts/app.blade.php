@@ -18,7 +18,7 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
-            <div class="flex relative p-2">
+            <div class="flex relative gap-2 p-2">
                 @include('layouts.sidebar')
                 <!-- Page Content -->
                 <main class="w-full bg-white rounded-lg">

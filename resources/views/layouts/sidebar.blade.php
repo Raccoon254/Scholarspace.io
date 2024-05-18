@@ -5,7 +5,7 @@
     </div>
     <div class="drawer-side">
         <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul class="menu bg-gray-100  p-4 w-60 min-h-full text-black/90">
+        <ul class="menu bg-gray-100 p-4 w-60 min-h-full text-black/90">
             <!-- Sidebar content here -->
             <li><a>Sidebar Item 1</a></li>
             <li><a>Sidebar Item 2</a></li>
