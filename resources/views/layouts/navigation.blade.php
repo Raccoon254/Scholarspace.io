@@ -2,7 +2,6 @@
     <div class="navbar-start">
         <div class="center">
             <div class="w-60">
-
                 <label for="my-drawer-2" class="md:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                          stroke="black">
@@ -33,8 +32,19 @@
             </span>
         </div>
     </div>
-    <div class="navbar-end">
-        <a href="#" class="h-8 w-8 avatar rounded-full p-[2px] ring-1">
+    <div class="navbar-end text-black/80 items-center">
+        <div class="btn btn-circle btn-sm btn-ghost relative center">
+            <i class="fas fa-envelope"></i>
+            <span class="custom-badge">
+                3
+            </span>
+        </div>
+        <div class="btn btn-circle btn-sm btn-ghost relative ml-2 center">
+            <i class="fas fa-bell-slash"></i>
+            <!-- <i class="fas fa-bell"></i> -->
+            <!-- <span class="custom-badge"> auth->notifications->unread() </span> -->
+        </div>
+        <a href="#" class="h-8 w-8 ml-2 avatar rounded-full p-[2px] ring-1">
             <img class="h-8 w-8 ring-1 ring-white rounded-full"
                  src="https://api.dicebear.com/8.x/identicon/svg?seed=Jane" alt="John Doe">
         </a>

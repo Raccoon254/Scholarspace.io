@@ -16,7 +16,6 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: #000;
 }
 
-/* Optional: Remove the default background color of the input field */
 input:-webkit-autofill {
     background-color: transparent !important;
 }
@@ -29,7 +28,10 @@ input:-webkit-autofill {
     @apply flex gap-3 h-full px-4 items-center;
 }
 
-/*Side active */
 .active{
     @apply bg-gray-100 text-blue-500;
+}
+
+.custom-badge{
+    @apply absolute -top-0 -right-0 h-[12px] w-[12px] bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center;
 }
