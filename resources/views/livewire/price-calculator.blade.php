@@ -1,7 +1,7 @@
-<div class="bg-white p-6 relative text-black/80 rounded-lg shadow-lg">
+<div class="bg-white p-4 relative text-black/80 rounded-lg shadow-sm">
     <!-- About icon -->
     <a href="#" class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
-        <i class="fas h-6 w-6 center fa-info-circle"></i>
+        <i class="fas h-4 w-4 center fa-info-circle"></i>
     </a>
     <h3 class="text-lg font-semibold mb-4 text-center">Calculate Order Price</h3>
 
@@ -23,10 +23,12 @@
     </div>
 
     <div class="mb-4 flex items-center">
-        <input type="number" wire:model="wordCount" class="flex-grow p-2 border border-gray-300 rounded-lg" placeholder="No of words">
+        <input type="number" wire:model="wordCount" class="flex-grow p-2 border border-gray-300 w-1/2 rounded-lg" placeholder="No of words">
         <div class="ml-2 flex">
-            <button wire:click="$set('isWords', true)" class="px-4 py-2 border {{ $isWords ? 'bg-green-500 text-white border-green-500' : 'border-gray-300' }} rounded-l-lg">Words</button>
-            <button wire:click="$set('isWords', false)" class="px-4 py-2 border {{ !$isWords ? 'bg-green-500 text-white border-green-500' : 'border-gray-300' }} rounded-r-lg">Pages</button>
+            <button wire:click="$set('isWords', true)" class="px-3 py-2 border {{ $isWords ? 'bg-green-500 text-white border-green-500' : 'border-gray-300' }} rounded-l-lg">Words</button>
+            <button wire:click="$set('isWords', false)" class="px-3 py-2 border {{ !$isWords ? 'bg-green-500 text-white border-green-500' : 'border-gray-300' }} rounded-r-lg">
+                Pages
+            </button>
         </div>
     </div>
 

@@ -2,23 +2,24 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Date;
 use Illuminate\View\View;
 use Livewire\Component;
 
 class PriceCalculator extends Component
 {
-    public $topic;
-    public $subject;
-    public $deadline;
-    public $wordCount;
-    public $isWords = true;
-    public $price = 0;
+    public string $topic;
+    public string $subject;
+    public Date $deadline;
+    public int $wordCount;
+    public bool $isWords = true;
+    public int $price = 0;
 
-    public function calculatePrice()
+    public function calculatePrice(): void
     {
-        // Dummy price calculation logic
-        $ratePerWord = 0.10;
-        $ratePerPage = 5.00;
+        // TODO ! Admin should be able to set the rate per word and rate per page
+        $ratePerWord = 15 / 500;
+        $ratePerPage = 15.00;
         $this->price = $this->isWords
             ? $this->wordCount * $ratePerWord
             : $this->wordCount * $ratePerPage;

@@ -30,8 +30,11 @@
                 </div>
 
                <div class="flex flex-col md:flex-row gap-4 py-2 mt-12">
-                   <livewire:PriceCalculator />
+                   <div class="w-full md:w-1/2">
+                       <livewire:PriceCalculator />
+                   </div>
                    <div class="records text-black/80">
+                        {{-- TODO ! Previous Actions --}}
                    </div>
                </div>
 
