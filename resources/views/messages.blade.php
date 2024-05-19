@@ -9,17 +9,30 @@
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 gap-4 lg:mx-4 h-full flex-row">
             <div class="flex gap-2 bg-white w-full rounded-lg">
-                <div class="w-2/3 h-[87vh] bg-gray-300 m-2 rounded-md">
+                <div class="w-2/3 h-[87vh] bg-gray-100 m-2 rounded-md">
                     @if($selectedUser)
                         <div class="flex flex-col gap-3 p-3 h-full">
-                            <div class="flex gap-3 items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="{{ $selectedUser->profile_photo }}" alt="{{ $selectedUser->name }}"
-                                         class="w-12 h-12 rounded-full">
-                                </div>
-                                <div class="flex-grow">
-                                    <h1 class="text-gray-800 font-semibold">{{ $selectedUser->name }}</h1>
-                                </div>
+                            <div class="flex gap-3 border-b pb-3 items-center">
+                                @if($selectedUser->role == 'client')
+                                    <div class="flex-shrink-0">
+                                        <img src="{{ $selectedUser->profile_photo }}" alt="{{ $selectedUser->name }}"
+                                             class="w-10 h-10 bg-white rounded-full">
+                                    </div>
+                                    <div class="flex-grow">
+                                        <h1 class="text-gray-800 font-semibold">{{ $selectedUser->name }}</h1>
+                                    </div>
+                                @else
+                                    <div class="flex-shrink-0">
+                                        <div class="div w-10 h-10 bg-white center rounded-full">
+                                            <x-application-logo class="w-4 h-4"/>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <h1 class="text-gray-800 font-semibold">
+                                            ScholarSpace Support
+                                        </h1>
+                                    </div>
+                                @endif
                             </div>
                             <div class="h-full flex flex-col overflow-y-auto">
                                 @if ($messages->count() == 0)
@@ -60,7 +73,6 @@
                             </div>
                         </div>
                         <div class="h-[76vh] flex overflow-y-auto flex-col gap-3 rounded-lg">
-
                             <!-- All users -->
                             @foreach($clients as $user)
                                 <div class="flex gap-3 cursor-pointer p-2 bg-gray-100 rounded-lg"

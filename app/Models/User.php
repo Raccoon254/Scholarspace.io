@@ -44,9 +44,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Referral::class, 'referrer_id');
     }
 
-    //https://api.dicebear.com/8.x/pixel-art/svg?seed={{md5($this->email)}}
-    // https://mighty.tools/mockmind-api/content/cartoon/' . $this->id. '.jpg
-
     public function getAvatarAttribute(): string
     {
         return 'https://api.dicebear.com/8.x/avataaars/svg?seed=' . $this->name;

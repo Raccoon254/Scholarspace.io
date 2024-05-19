@@ -1,26 +1,29 @@
-<div class="flex flex-col">
+<div class="flex relative flex-col">
     @if (count($attachments) > 0)
-        <div class="flex w-full p-2 pt-3">
+        <div class="flex w-full mb-2 absolute -top-20">
             @foreach($attachments as $attachment)
-                <div
-                    class="flex relative flex-col items-center justify-center w-16 h-16 bg-blue-200 rounded-md mr-2">
-                    @if (in_array($attachment->getMimeType(), ['image/jpeg', 'image/png']))
-                        <img src="{{ $attachment->temporaryUrl() }}" alt="Attachment"
-                             class="w-16 h-16 object-cover rounded-md">
-                    @elseif ($attachment->getMimeType() == 'image/svg+xml')
-                        <i class="fas fa-file-image text-4xl text-gray-500"></i>
-                    @elseif ($attachment->getMimeType() == 'application/zip')
-                        <i class="fas fa-file-archive text-4xl text-gray-500"></i>
-                    @else
-                        <i class="fas fa-file text-4xl text-gray-500"></i>
-                    @endif
-                    <!-- Displaying the first five characters of the file name -->
-                    <span class="text-xs mt-1">
-                                    {{ substr($attachment->getClientOriginalName(), 0, 5) }}{{ strlen($attachment->getClientOriginalName()) > 5 ? '...' : '' }}
-                                </span>
+                <div class="bg-white relative p-1 mr-2 flex flex-col items-center justify-center w-16 h-16 rounded-md">
+                    <div
+                        class="flex relative overflow-clip flex-col items-center justify-center w-full h-12 bg-blue-200 rounded-[4px]">
+                        @if (in_array($attachment->getMimeType(), ['image/jpeg', 'image/png']))
+                            <img src="{{ $attachment->temporaryUrl() }}" alt="Attachment"
+                                 class="w-full h-12 object-cover rounded-md">
+                        @elseif ($attachment->getMimeType() == 'image/svg+xml')
+                            <i class="fas fa-file-image text-2xl text-gray-500"></i>
+                        @elseif ($attachment->getMimeType() == 'application/zip')
+                            <i class="fas fa-file-archive text-2xl text-gray-500"></i>
+                        @else
+                            <i class="fas fa-file text-2xl text-gray-500"></i>
+                        @endif
+                    </div>
+                    <!-- Displaying the first 6 characters of the file name -->
+                    <span class="text-[10px] mt-1">
+                        {{ substr($attachment->getClientOriginalName(), 0, 6) }}{{ strlen($attachment->getClientOriginalName()) > 5 ? '...' : '' }}
+                    </span>
+
                     <button wire:click="removeAttachment('{{ $attachment->getClientOriginalName() }}')"
-                            class="absolute btn-warning btn btn-xs btn-circle top-0 right-1 text-red-500 hover:text-red-700 -mt-2 -mr-3">
-                        <i class="fas fa-times"></i>
+                            class="absolute top-0 right-1 -mt-2 -mr-3 bg-amber-500 text-white center rounded-full p-2 h-5 w-5">
+                        <i class="fas text-sm fa-times"></i>
                     </button>
                 </div>
             @endforeach
@@ -31,25 +34,26 @@
         @error('attachments.*') <span class="error m-1">{{ $message }}</span> @enderror
         @error('newMessage') <span class="error m-1">{{ $message }}</span> @enderror
     </div>
-    <div class="px-2 relative flex items-center">
+    <div class="relative flex gap-2 items-center">
         <label class="w-full">
             <input id="messageInput" wire:model="newMessage" wire:keydown.enter="sendMessage"
                    class="message-input"
                    type="text" placeholder="Type your message...">
         </label>
         <!-- Hidden file input -->
-        <input wire:model.live="attachments" type="file" id="fileInput" multiple style="display: none;">
+        <input wire:model.live="attachments" type="file" id="fileInput" multiple style="display: none;" accept="image/*, application/pdf, application/zip, application/x-rar-compressed application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
         <!-- Clip icon for opening file dialog -->
         <button
-            class="btn absolute left-3 btn-ghost ring-1 ring-primary text-primary top[50%] transform[-50%] btn-sm btn-circle ml-2"
+            class="btn absolute right-16 btn-sm mr-2 btn-ghost btn-circle bg-gray-100 text-primary bottom-2 transform[-50%] ml-2"
             onclick="document.getElementById('fileInput').click();">
             <i class="fas fa-paperclip"></i>
         </button>
+
         <!-- Send message button -->
         <button wire:click="sendMessage"
                 wire:loading.class.remove="btn-primary"
                 wire:loading.class="btn-ghost"
-                class="btn absolute right-3 btn-primary top[50%] transform[-50%] btn-sm btn-circle mr-2">
+                class="btn right-3 btn-primary ring-1 ring-offset-2 border rounded-md btn-square mr-2">
             <i wire:target="sendMessage" wire:loading.class="hidden" class="fas fa-paper-plane"></i>
             <span wire:loading wire:target="sendMessage"
                   class="loading loading-spinner text-primary loading-sm"></span>

@@ -57,5 +57,5 @@ input:-webkit-autofill {
 }
 
 .message-input{
-    @apply w-full rounded-md px-12 border-2 border-gray-300 p-3 ring-1 ring-gray-300 ring-offset-1 transition-all duration-300 ease-in-out focus:border-blue-300 focus:outline-none bg-gray-200 text-gray-800;
+    @apply w-full rounded-md px-4 border border-gray-300 p-3 transition-all duration-300 ease-in-out text-gray-800;
 }
