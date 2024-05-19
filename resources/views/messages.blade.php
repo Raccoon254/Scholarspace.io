@@ -9,32 +9,31 @@
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 gap-4 lg:mx-4 h-full flex-row">
             <div class="flex gap-2 bg-white w-full rounded-lg">
-                <div class="w-2/3 rounded-lg">
+                <div class="w-2/3 h-[87vh] bg-gray-300 m-2 rounded-md">
                     @if($selectedUser)
                         <div class="flex flex-col gap-3 p-3 h-full">
-                            <div class="flex gap-3">
-                                <div class="">
+                            <div class="flex gap-3 items-center">
+                                <div class="flex-shrink-0">
                                     <img src="{{ $selectedUser->profile_photo }}" alt="{{ $selectedUser->name }}"
                                          class="w-12 h-12 rounded-full">
                                 </div>
-                                <div class="w-2/3">
+                                <div class="flex-grow">
                                     <h1 class="text-gray-800 font-semibold">{{ $selectedUser->name }}</h1>
                                 </div>
                             </div>
-                            <div class="h-full overflow-y-auto">
-                                @foreach($messages as $message)
-                                    <div class="flex gap-3">
-                                        <div class="w-2/3">
-                                            <p class="text-gray-800 font-semibold">{{ $message->user->name }}</p>
-                                            <p class="text-gray-500 text-xs">{{ $message->message }}</p>
-                                        </div>
-                                        <div class="">
-                                            <img src="{{ $message->user->profile_photo }}"
-                                                 alt="{{ $message->user->name }}"
-                                                 class="w-12 h-12 rounded-full">
-                                        </div>
+                            <div class="h-full flex flex-col overflow-y-auto">
+                                @if ($messages->count() == 0)
+                                    <div class="flex items-center flex-col justify-center h-full">
+                                        <i class="fa-regular fa-bell-slash text-4xl text-gray-500"></i>
+                                        <p class="text-gray-500">No messages yet.</p>
                                     </div>
-                                @endforeach
+                                @else
+                                    <div class="p-6 space-y-4">
+                                        @foreach($messages as $message)
+                                            <livewire:DisplayChatMessage :message="$message" :key="$message->id"/>
+                                        @endforeach
+                                    </div>
+                                @endif
                             </div>
                             <div class="flex gap-3">
                                 <input type="text" wire:model="message" placeholder="Type a message ..."
@@ -68,7 +67,8 @@
 
                             <!-- All users -->
                             @foreach($clients as $user)
-                                <div class="flex gap-3 cursor-pointer p-2 bg-gray-100 rounded-lg" wire:click="openChat({{ $user->id }})">
+                                <div class="flex gap-3 cursor-pointer p-2 bg-gray-100 rounded-lg"
+                                     wire:click="openChat({{ $user->id }})">
                                     <div class="">
                                         <img src="{{ $user->profile_photo }}" alt="{{ $user->name }}"
                                              class="w-12 h-12 rounded-full">
