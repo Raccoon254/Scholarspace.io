@@ -20,6 +20,10 @@ input:-webkit-autofill {
     background-color: transparent !important;
 }
 
+::-webkit-calendar-picker-indicator {
+    filter: invert(0.6);
+}
+
 .side{
     @apply h-12 bg-gray-100 rounded-lg mb-2;
 }

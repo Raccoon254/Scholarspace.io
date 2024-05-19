@@ -5,28 +5,63 @@ namespace App\Livewire;
 use Illuminate\Support\Facades\Date;
 use Illuminate\View\View;
 use Livewire\Component;
+use function PHPUnit\Framework\isFalse;
 
 class PriceCalculator extends Component
 {
     public string $topic;
     public string $subject;
-    public Date $deadline;
+    public string $deadline;
     public int $wordCount;
     public bool $isWords = true;
     public int $price = 0;
 
-    public function calculatePrice(): void
+    public array $subjects = [
+        'Mathematics',
+        'Physics',
+        'Chemistry',
+        'Biology',
+        'English',
+        'History',
+        'Geography',
+        'Computer Science'
+    ];
+
+    public function placeOrder(): void
     {
-        // TODO ! Admin should be able to set the rate per word and rate per page
-        $ratePerWord = 15 / 500;
-        $ratePerPage = 15.00;
-        $this->price = $this->isWords
-            ? $this->wordCount * $ratePerWord
-            : $this->wordCount * $ratePerPage;
+        // Place order modal pre-filled with the data
+        // Load the modal
     }
 
     public function render(): View
     {
-        return view('livewire.price-calculator');
+        $rate = $this->calculateRate();
+        $wordCount = $this->wordCount ?? 0;
+        $deadline = $this->getDeadline();
+
+        return view('livewire.price-calculator', [
+            'calculated_price' => $wordCount * $rate
+        ]);
+    }
+
+    private function calculateRate(): float
+    {
+        $baseRate = $this->isWords ? 15 / 500 : 15.00;
+        $deadline = $this->getDeadline();
+
+        if ($deadline == Date::now()->format('Y-m-d')) {
+            return $baseRate + $baseRate * 0.10;
+        } elseif ($deadline == Date::now()->addDay()->format('Y-m-d')) {
+            return $baseRate + $baseRate * 0.05;
+        } elseif ($deadline == Date::now()->addDays(2)->format('Y-m-d')) {
+            return $baseRate;
+        }
+
+        return $baseRate;
+    }
+
+    private function getDeadline(): string
+    {
+        return $this->deadline ?? Date::now()->addDays(4)->format('Y-m-d');
     }
 }
