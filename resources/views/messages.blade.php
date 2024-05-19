@@ -24,11 +24,11 @@
                             <div class="h-full flex flex-col overflow-y-auto">
                                 @if ($messages->count() == 0)
                                     <div class="flex items-center flex-col justify-center h-full">
-                                        <i class="fa-regular fa-bell-slash text-4xl text-gray-500"></i>
+                                        <i class="far fa-bell-slash text-4xl text-gray-500"></i>
                                         <p class="text-gray-500">No messages yet.</p>
                                     </div>
                                 @else
-                                    <div class="p-6 space-y-4">
+                                    <div class="space-y-4">
                                         @foreach($messages as $message)
                                             <livewire:DisplayChatMessage :message="$message" :key="$message->id"/>
                                         @endforeach
@@ -51,7 +51,7 @@
                         <!-- Search -->
                         <div class="flex sticky flex-col rounded-lg">
                             <div class="flex relative gap-3 bg-gray-100 rounded-lg">
-                                <input type="text" wire:model.live="search" placeholder="Type to search ..."
+                                <input name="search" id="searchInput" type="text" wire:model.live="search" placeholder="Type to search ..."
                                        class="w-full p-2 rounded-lg border border-gray-200 focus:outline-none">
                                 <div
                                     class="absolute text-black/80 right-5 top-[50%] transform translate-x-1/2 -translate-y-1/2">
@@ -67,7 +67,7 @@
                                      wire:click="openChat({{ $user->id }})">
                                     <div class="">
                                         <img src="{{ $user->profile_photo }}" alt="{{ $user->name }}"
-                                             class="w-12 h-12 rounded-full">
+                                             class="w-12 h-12 bg-white rounded-full">
                                     </div>
                                     <div class="w-2/3">
                                         <h1 class="text-gray-800 font-semibold">{{ $user->name }}</h1>

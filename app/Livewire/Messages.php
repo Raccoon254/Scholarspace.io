@@ -30,10 +30,10 @@ class Messages extends Component
     }
 
     public function openChat($id): void
-{
-    $this->selectedUser = User::find($id);
-    $this->messages = $this->loggedInUser->messages()->where('receiver_id', $id)->orWhere('sender_id', $id)->orderBy('created_at', 'asc')->get();
-}
+    {
+        $this->selectedUser = User::find($id);
+        $this->messages = $this->loggedInUser->messages()->where('receiver_id', $id)->orWhere('sender_id', $id)->orderBy('created_at', 'asc')->get();
+    }
 
     //sendMessage
     public function sendMessage(): void
@@ -56,8 +56,11 @@ class Messages extends Component
         return view('messages',
             [
                 'clients' => User::where('role', 'client')
-                ->where('name', 'like', '%' . $this->search . '%')->orWhere('email', 'like', '%' . $this->search . '%')
-                ->get()
+                    ->where(function ($query) {
+                        $query->where('name', 'like', '%' . $this->search . '%')
+                            ->orWhere('email', 'like', '%' . $this->search . '%');
+                    })
+                    ->get()
             ]
         );
     }
