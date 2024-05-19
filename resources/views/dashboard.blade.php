@@ -1,4 +1,4 @@
-<div class="py-4">
+<div class="p-2 md:p-0 md:py-4">
     <x-slot name="header">
         <h2 class="text-gray-800 leading-tight">
             <i class="fas text-blue-500 fa-home"></i>
@@ -29,11 +29,13 @@
                     </div>
                 </div>
 
-                <div class="records text-black/80 p-2 mt-8">
-                    <span class="text-xl font-semibold">
-                        Recent Records
-                    </span>
-                </div>
+               <div class="flex flex-col md:flex-row gap-4 py-2 mt-12">
+                   <livewire:PriceCalculator />
+                   <div class="records text-black/80">
+                   </div>
+               </div>
+
+
             </div>
             <div class="md:w-1/3 md:absolute p-4 right-0 -top-8 bg-blue-500 md:h-[103vh]">
                 <div class="center mt-20">

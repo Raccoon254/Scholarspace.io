@@ -47,10 +47,10 @@
             </li>
         </ul>
 
-        <div class="flex bottom-8 md:bottom-20 absolute w-60 items-center justify-center p-2 md:w-full">
+        <div class="flex bottom-8 md:bottom-1 absolute w-60 items-center justify-center p-2 md:w-full">
             <form class="w-full" method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="btn text-red-600 btn-warning w-full">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md w-full">
                     Logout
                     <i class="fas fa-lock"></i>
                 </button>
