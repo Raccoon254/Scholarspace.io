@@ -5,15 +5,19 @@ namespace App\Livewire;
 use App\Models\User;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Messages extends Component
 {
+    use WithFileUploads;
+
     public $loggedInUser;
     public $currentUserRole;
     public $search = '';
     public $selectedUser;
     public $message;
     public $messages;
+    public array $attachments = [];
 
     public function mount(): void
     {

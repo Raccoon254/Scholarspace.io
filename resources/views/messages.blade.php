@@ -35,14 +35,9 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="flex gap-3">
-                                <input type="text" wire:model="message" placeholder="Type a message ..."
-                                       class="w-full p-2 rounded-lg border border-gray-200 focus:outline-none">
-                                <button wire:click="sendMessage"
-                                        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">
-                                    Send
-                                </button>
-                            </div>
+
+                            <!-- Send message input -->
+                            <livewire:SendMessageInput :selectedUser="$selectedUser" :key="$selectedUser->id"/>
                         </div>
                     @else
                         <div class="flex items-center justify-center h-full">
@@ -50,6 +45,7 @@
                         </div>
                     @endif
                 </div>
+
                 @if($currentUserRole == 'writer')
                     <div class="w-1/3 p-3 flex overflow-y-auto flex-col gap-3 rounded-lg">
                         <!-- Search -->
