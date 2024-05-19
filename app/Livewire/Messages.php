@@ -21,7 +21,6 @@ class Messages extends Component
         $this->currentUserRole = $this->loggedInUser->role;
     }
 
-    //openChat
     public function openChat($id): void
     {
         $this->selectedUser = User::find($id);
