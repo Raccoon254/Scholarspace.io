@@ -1,6 +1,9 @@
 # Scholarspace
 [![Tests](https://github.com/Raccoon254/Scholarspace.io/actions/workflows/laravel.yml/badge.svg)](https://github.com/Raccoon254/Scholarspace.io/actions/workflows/laravel.yml)
 
+![image](https://github.com/Raccoon254/Scholarspace.io/assets/108453222/22578d99-cea6-48e7-b571-e6d359d234de)
+
+
 Scholarspace is a web application designed to facilitate assignment help services. Built with Laravel, it offers a platform for clients to place orders and for writers to manage and fulfill these orders. The application includes features for real-time chat, payment processing, notifications, FAQs, and terms and conditions management.
 
 ## Tech Stack
