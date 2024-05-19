@@ -1,7 +1,7 @@
 <div class="navbar bg-white">
     <div class="navbar-start">
         <div class="center">
-            <div class="w-60">
+            <div class="md:w-60">
                 <label for="my-drawer-2" class="md:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                          stroke="black">
@@ -18,7 +18,7 @@
             </div>
             <!-- Page Heading -->
             @if (isset($header))
-                <div class="max-w-7xl text-lg text-black/80 font-bold px-2">
+                <div class="max-w-7xl hidden md:block text-lg text-black/80 font-bold px-2">
                     {{ $header }}
                 </div>
             @endif
@@ -26,7 +26,7 @@
     </div>
     <div class="navbar-center">
         <div class="md:hidden flex gap-2 center">
-            <x-application-logo class="h-5"/>
+{{--            <x-application-logo class="h-5"/>--}}
             <span class="text-lg text-black/80 font-bold">
                 Scholarspace
             </span>

@@ -24,8 +24,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="absolute top-8 right-5">
-                        <img src="{{ asset('images/svg2.png') }}" alt="Hero" class="w-64 max-w-md mx-auto rounded-lg">
+                    <div class="absolute top-28 md:top-8 right-5">
+                        <img src="{{ asset('images/svg2.png') }}" alt="Hero" class="w-44 md:w-64 max-w-md mx-auto rounded-lg">
                     </div>
                 </div>
 
@@ -65,7 +65,7 @@
                 <!-- Line Break -->
                 <hr class="mt-10 border-t-2 rounded-lg border-gray-100">
 
-                <div class="mt-6 px-3 w-full text-white">
+                <div class="mt-6 md:px-2 w-full text-white">
                     <div class="text-xl flex justify-between items-center font-semibold">
                         3 Previous Orders
                         <i class="fas btn btn-circle btn-sm bg-white text-blue-500 btn-ghost fa-calendar-alt"></i>
