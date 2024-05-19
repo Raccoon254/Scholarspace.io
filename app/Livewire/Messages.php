@@ -11,11 +11,21 @@ class Messages extends Component
     public $loggedInUser;
     public $currentUserRole;
     public $search = '';
+    public $selectedUser;
+    public $message;
+    public $messages;
 
     public function mount(): void
     {
         $this->loggedInUser = auth()->user();
         $this->currentUserRole = $this->loggedInUser->role;
+    }
+
+    //openChat
+    public function openChat($id): void
+    {
+        $this->selectedUser = User::find($id);
+        $this->messages = $this->loggedInUser->messages()->where('receiver_id', $id)->orWhere('sender_id', $id)->get();
     }
 
     public function render(): View
