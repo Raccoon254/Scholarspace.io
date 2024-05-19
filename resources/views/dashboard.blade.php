@@ -29,17 +29,18 @@
                     </div>
                 </div>
 
-               <div class="flex flex-col md:flex-row gap-4 py-2 mt-12">
-                   <div class="w-full md:w-1/2">
-                   </div>
-                   <div class="w-full md:w-1/2">
+               <div class="flex flex-col gap-4 py-2 mt-14">
+                   <h1 class="text-2xl font-semibold text-center text-gray-800">
+                       Our Service Features
+                   </h1>
+                   <div class="w-full">
                         <livewire:OurFeatures />
                    </div>
                </div>
 
 
             </div>
-            <div class="md:w-1/3 md:absolute p-4 right-0 -top-8 bg-blue-500 md:h-[103vh]">
+            <div class="md:w-1/3 md:absolute rounded-lg p-4 right-0 -top-8 bg-blue-500 md:h-[103vh]">
                 <div class="center mt-20">
                         <div class="center flex-col">
                             <div class="avatar relative">

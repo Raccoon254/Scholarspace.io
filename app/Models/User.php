@@ -31,7 +31,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function messages(): HasMany
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    public function getLastMessageAttribute(): string
+    {
+        return $this->messages()->latest()->first()->message ?? '';
     }
 
     public function referrals(): HasMany
