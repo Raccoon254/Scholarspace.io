@@ -41,9 +41,9 @@
                                         <p class="text-gray-500">No messages yet.</p>
                                     </div>
                                 @else
-                                    <div class="space-y-4">
+                                    <div id="messageContainer" class="space-y-4 overflow-y-auto">
                                         @foreach($messages as $message)
-                                            <livewire:DisplayChatMessage :message="$message" :key="$message->id"/>
+                                            <livewire:DisplayChatMessage :message="$message" :key="$message->id.$message->updated_at"/>
                                         @endforeach
                                     </div>
                                 @endif
@@ -86,7 +86,7 @@
 
                                         <!-- Last message from user -->
                                         <p class="text-gray-500 text-xs">
-                                            {{ $user->lastMessage ? $user->lastMessage->message : 'No message yet' }}
+                                            {{ $user->lastMessage ? $user->lastMessage->content : 'No message yet' }}
                                         </p>
                                     </div>
                                 </div>
@@ -99,3 +99,16 @@
         </div>
     </div>
 </div>
+@script
+<script>
+    Livewire.on('chatOpened', (event) => {
+        setTimeout(() => {
+            const messageContainer = document.getElementById('messageContainer');
+            messageContainer.scrollTo({
+                top: messageContainer.scrollHeight,
+                behavior: 'smooth',
+            });
+        }, 10);
+    });
+</script>
+@endscript

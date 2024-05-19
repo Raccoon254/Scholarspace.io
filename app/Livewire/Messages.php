@@ -33,6 +33,8 @@ class Messages extends Component
     {
         $this->selectedUser = User::find($id);
         $this->messages = $this->loggedInUser->messages()->where('receiver_id', $id)->orWhere('sender_id', $id)->orderBy('created_at', 'asc')->get();
+
+        $this->dispatch('chatOpened');
     }
 
     //sendMessage

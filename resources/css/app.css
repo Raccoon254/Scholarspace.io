@@ -45,11 +45,11 @@ input:-webkit-autofill {
 }
 
 .received-message{
-    @apply rounded-t-2xl rounded-br-2xl bg-gray-200 text-gray-700 p-1 px-4;
+    @apply rounded-t-2xl rounded-br-2xl bg-green-400 overflow-hidden text-gray-700 p-1 px-4;
 }
 
 .received-message-attachment{
-    @apply rounded-b-2xl overflow-clip rounded-tr-2xl bg-gray-200 text-gray-700 p-1 mt-1;
+    @apply rounded-b-2xl overflow-clip rounded-tr-2xl bg-green-400 text-gray-700 p-1;
 }
 
 .sent-message-attachment{

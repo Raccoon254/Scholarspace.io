@@ -17,7 +17,7 @@
                     <div class="min-w-[128px]">
                         <div
                             onclick="viewAttachment('{{ $attachment->type }}', '{{ Storage::url($attachment->path) }}')"
-                            class="bg-gray-200 rounded-xl ring-1 ring-white overflow-hidden relative">
+                            class="bg-gray-200 rounded-xl ring-1 ring-gray-100 overflow-hidden relative">
                             @if (in_array($attachment->type, ['image/jpeg', 'image/png', 'image/gif']))
                                 <img
                                     src="{{ Storage::url($attachment->path) }}"
