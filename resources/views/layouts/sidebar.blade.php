@@ -5,7 +5,13 @@
     </div>
     <div class="drawer-side">
         <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul class="menu bg-white px-4 pt-0 w-60 h-[80vh] text-black/90">
+        <ul class="menu bg-white px-4 md:pt-0 w-60 h-screen text-black/90">
+            <li class="md:hidden mb-2">
+                <div class="flex center items-center justify-center gap-2 p-4">
+                    <x-application-logo class="h-5"/>
+                    <span class="text-lg font-bold">Scholarspace</span>
+                </div>
+            </li>
             <!-- Sidebar content here -->
             <li class="side {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
@@ -41,7 +47,7 @@
             </li>
         </ul>
 
-        <div class="flex items-center justify-center p-2 w-full">
+        <div class="flex bottom-8 md:bottom-20 absolute w-60 items-center justify-center p-2 md:w-full">
             <form class="w-full" method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="btn text-red-600 btn-warning w-full">
