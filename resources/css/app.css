@@ -49,11 +49,11 @@ input:-webkit-autofill {
 }
 
 .received-message-attachment{
-    @apply rounded-b-2xl rounded-tr-2xl bg-gray-200 text-gray-700 p-1 mt-1 px-4;
+    @apply rounded-b-2xl overflow-clip rounded-tr-2xl bg-gray-200 text-gray-700 p-1 mt-1;
 }
 
 .sent-message-attachment{
-    @apply rounded-b-2xl rounded-tl-2xl bg-blue-500 text-white p-1 mt-1 px-4;
+    @apply rounded-b-2xl overflow-clip rounded-tl-2xl bg-blue-500 text-white p-1 mt-1;
 }
 
 .message-input{
