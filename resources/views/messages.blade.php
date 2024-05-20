@@ -112,7 +112,7 @@
 <script>
     Livewire.on('chatOpened', (event) => {
         setTimeout(() => {
-            let messageContainer = document.getElementById('messageContainer');
+            const messageContainer = document.getElementById('messageContainer');
             messageContainer.scrollTo({
                 top: messageContainer.scrollHeight,
                 behavior: 'smooth',
@@ -120,11 +120,30 @@
         }, 10);
     });
 
+    function ensureScrolledToBottom() {
+        const messageContainer = document.getElementById('messageContainer');
+        messageContainer.scrollTo({
+            top: messageContainer.scrollHeight,
+            behavior: 'smooth',
+        });
+        if (messageContainer.scrollTop !== messageContainer.scrollHeight) {
+            setTimeout(() => {
+                messageContainer.scrollTo({
+                    top: messageContainer.scrollHeight,
+                    behavior: 'smooth',
+                });
+            }, 300);
+        }
+    }
+
     Livewire.on('messagesSent', (event) => {
+        console.log('Messages sent');
         setTimeout(() => {
-            let messageContainer = document.getElementById('messageContainer');
+            const messageContainer = document.getElementById('messageContainer');
             messageContainer.scrollTop = messageContainer.scrollHeight;
         }, 10);
+        //Ensure the message container is scrolled to the bottom
+        ensureScrolledToBottom();
     });
 </script>
 @endscript

@@ -36,7 +36,7 @@
     </div>
     <div class="relative flex gap-2 items-center">
         <label class="w-full">
-            <input id="messageInput" wire:model="newMessage" wire:keydown.enter="sendMessage"
+            <input id="messageInput" wire:model.live="newMessage" wire:keydown.enter="sendMessage"
                    class="message-input"
                    type="text" placeholder="Type your message...">
         </label>

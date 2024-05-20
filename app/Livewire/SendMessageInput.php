@@ -36,7 +36,7 @@ class SendMessageInput extends Component
 
     public function sendMessage(): void
     {
-        sleep(4);
+        //sleep(1);
         if (empty($this->newMessage) && empty($this->attachments)) {
             return;
         }
@@ -49,7 +49,7 @@ class SendMessageInput extends Component
 
         if ($this->attachments) {
             foreach ($this->attachments as $attachment) {
-                $path = $attachment->store('public/'.$this->loggedInUser->name.'/attachments');
+                $path = $attachment->store('public/' . $this->loggedInUser->name . '/attachments');
                 Attachment::create([
                     'message_id' => $message->id,
                     'name' => $attachment->getClientOriginalName(),

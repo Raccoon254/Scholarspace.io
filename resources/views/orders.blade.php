@@ -1,4 +1,4 @@
-<div>
+<div class="p-2 md:p-0 md:py-4">
     <x-slot name="header">
         <h2 class="text-gray-800 leading-tight">
             <i class="fas text-blue-500 fa-shopping-cart"></i>
@@ -6,13 +6,15 @@
         </h2>
     </x-slot>
 
-    <div class="py-8">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're viewing your orders!") }}
-                </div>
-            </div>
+    <div class="max-w-7xl relative h-full mx-auto">
+        <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
+            <!--
+            TODO: Add the Orders component here
+            - Show orders
+            - Create a new order
+            - View order details
+            - Update order status
+            -->
         </div>
     </div>
 </div>
