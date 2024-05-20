@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -11,12 +12,12 @@ class Messages extends Component
 {
     use WithFileUploads;
 
-    public $loggedInUser;
-    public $currentUserRole;
-    public $search = '';
-    public $selectedUser;
-    public $message;
+    public mixed $loggedInUser;
+    public string $currentUserRole;
+    public string $search = '';
+    public User $selectedUser;
     public $messages;
+    public int $unreadMessages;
     public array $attachments = [];
 
     public function mount(): void
@@ -29,28 +30,25 @@ class Messages extends Component
         }
     }
 
+    #[On('messagesSent')]
+    public function messagesSent(): void
+    {
+        $this->messages = $this->loggedInUser->messages()->where('receiver_id', $this->selectedUser->id)->orWhere('sender_id', $this->selectedUser->id)->orderBy('created_at', 'asc')->get();
+    }
+
     public function openChat($id): void
     {
         $this->selectedUser = User::find($id);
         $this->messages = $this->loggedInUser->messages()->where('receiver_id', $id)->orWhere('sender_id', $id)->orderBy('created_at', 'asc')->get();
 
         $this->dispatch('chatOpened');
+        $this->messages->where('receiver_id', $this->loggedInUser->id)->whereNull('read_at')->each->update(['read_at' => now()]);
     }
 
-    //sendMessage
-    public function sendMessage(): void
+    public function unreadMessages(User $user): int
     {
-        if (empty($this->message)) {
-            return;
-        }
-
-        $this->loggedInUser->messages()->create([
-            'receiver_id' => $this->selectedUser->id,
-            'content' => $this->message
-        ]);
-
-        $this->message = '';
-        $this->messages = $this->loggedInUser->messages()->where('receiver_id', $this->selectedUser->id)->orWhere('sender_id', $this->selectedUser->id)->sortBy('created_at', 'asc')->get();
+        //Get the number of unread messages for the authenticated user from the selected user
+        return $this->loggedInUser->receivedMessages()->where('sender_id', $user->id)->whereNull('read_at')->count();
     }
 
     public function render(): View

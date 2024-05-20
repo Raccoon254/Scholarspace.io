@@ -67,7 +67,24 @@
             deleted.
         </div>
     @endif
-    <div class="text-[10px] mt-1 text-blue-500">
-        {{ $message->time }}
+        <!-- justify-end or justify-start -->
+    <div class="flex items-center gap-2 {{ $message->sender_id == Auth::id() ? 'justify-end' : 'justify-start' }}">
+        <div class="text-[10px] text-blue-500">
+            {{ $message->time }}
+        </div>
+        @if ($message->sender_id == Auth::id())
+            @if ($message->read_at)
+                <div class="relative mb-1 px-[2px]">
+                    <i class="fas fa-check m-0 p-0 text-blue-500 text-[10px]"></i>
+                    <i class="fas absolute m-0 p-0 left-[2px] fa-check text-blue-500 text-[10px] top-[43%] transform[-50%]">
+                    </i>
+                </div>
+            @else
+                <div class="relative mb-1 px-[2px]">
+                    <i class="fas fa-check text-green-500 text-[10px]"></i>
+                    <i class="fas absolute m-0 p-0 left-[2px] fa-check text-green-500 text-[10px] top-[43%] transform[-50%]"></i>
+                </div>
+            @endif
+        @endif
     </div>
 </div>

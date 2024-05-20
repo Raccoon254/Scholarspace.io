@@ -60,3 +60,12 @@
         </button>
     </div>
 </div>
+@script
+<script>
+    //messagesSent event listener
+    Livewire.on('messagesSent', (event) => {
+        //clear the message input field
+        document.getElementById('messageInput').value = '';
+    });
+</script>
+@endscript

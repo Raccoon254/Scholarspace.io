@@ -35,8 +35,9 @@
     <div class="navbar-end text-black/80 items-center">
         <div class="btn btn-circle bg-gray-100 btn-sm btn-ghost relative center">
             <i class="fas fa-envelope"></i>
-            <span class="custom-badge">
-            </span>
+            @if(auth()->user()->hasUnreadMessages)
+                <span class="custom-badge"></span>
+            @endif
         </div>
         <div class="btn btn-circle bg-gray-100 btn-sm btn-ghost relative ml-2 center">
             <i class="fas fa-bell-slash"></i>

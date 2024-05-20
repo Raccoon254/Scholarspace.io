@@ -9,7 +9,7 @@
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 gap-4 lg:mx-4 h-full flex-row">
             <div class="flex gap-2 bg-white w-full rounded-lg">
-                <div class="w-2/3 h-[87vh] bg-gray-100 m-2 rounded-md">
+                <div class="w-2/3 h-[84vh] bg-gray-100 m-2 rounded-md">
                     @if($selectedUser)
                         <div class="flex flex-col gap-3 p-3 h-full">
                             <div class="flex gap-3 border-b pb-3 items-center">
@@ -53,8 +53,9 @@
                             <livewire:SendMessageInput :selectedUser="$selectedUser" :key="$selectedUser->id"/>
                         </div>
                     @else
-                        <div class="flex items-center justify-center h-full">
-                            <h1 class="text-gray-800 font-semibold">Select a user to chat with</h1>
+                        <div class="flex items-center flex-col justify-center h-full">
+                            <i class="fas fa-user-slash text-4xl text-gray-500"></i>
+                            <h1 class="text-gray-800 font-semibold">Select a user to message</h1>
                         </div>
                     @endif
                 </div>
@@ -77,16 +78,24 @@
                             @foreach($clients as $user)
                                 <div class="flex gap-3 cursor-pointer p-2 bg-gray-100 rounded-lg"
                                      wire:click="openChat({{ $user->id }})">
-                                    <div class="">
+                                    <!-- unreadMessages(User $user): int
+                                    Call the unreadMessages method in the livewire component -->
+                                    @php
+                                        $unreadMessagesCount = \App\Livewire\Messages::unreadMessages($user);
+                                    @endphp
+                                    <div class="relative">
                                         <img src="{{ $user->profile_photo }}" alt="{{ $user->name }}"
                                              class="w-12 h-12 bg-white rounded-full">
+                                        @if($unreadMessagesCount > 0)
+                                            <span class="custom-message-badge">{{ $unreadMessagesCount }}</span>
+                                        @endif
                                     </div>
                                     <div class="w-2/3">
                                         <h1 class="text-gray-800 font-semibold">{{ $user->name }}</h1>
 
                                         <!-- Last message from user -->
                                         <p class="text-gray-500 text-xs">
-                                            {{ $user->lastMessage ? $user->lastMessage->content : 'No message yet' }}
+                                            {{  $user->lastMessage ? substr($user->lastMessage->content, 0, 20)." ..." : 'No message yet' }}
                                         </p>
                                     </div>
                                 </div>
@@ -103,11 +112,18 @@
 <script>
     Livewire.on('chatOpened', (event) => {
         setTimeout(() => {
-            const messageContainer = document.getElementById('messageContainer');
+            let messageContainer = document.getElementById('messageContainer');
             messageContainer.scrollTo({
                 top: messageContainer.scrollHeight,
                 behavior: 'smooth',
             });
+        }, 10);
+    });
+
+    Livewire.on('messagesSent', (event) => {
+        setTimeout(() => {
+            let messageContainer = document.getElementById('messageContainer');
+            messageContainer.scrollTop = messageContainer.scrollHeight;
         }, 10);
     });
 </script>

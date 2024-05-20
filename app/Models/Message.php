@@ -20,6 +20,11 @@ class Message extends Model
 
     protected array $dates = ['read_at', 'created_at', 'updated_at'];
 
+    public function getTimeAttribute(): string
+    {
+        return $this->created_at->diffForHumans();
+    }
+
     public function sender(): BelongsTo
     {
         return $this->belongsTo(User::class, 'sender_id');

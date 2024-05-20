@@ -36,6 +36,7 @@ class SendMessageInput extends Component
 
     public function sendMessage(): void
     {
+        sleep(4);
         if (empty($this->newMessage) && empty($this->attachments)) {
             return;
         }
@@ -61,6 +62,8 @@ class SendMessageInput extends Component
 
         $this->attachments = [];
         $this->newMessage = '';
+
+        $this->reset('attachments', 'newMessage');
 
         $this->dispatch('messagesSent');
     }

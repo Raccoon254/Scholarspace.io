@@ -40,6 +40,10 @@ input:-webkit-autofill {
     @apply absolute top-1 right-1 h-[6px] w-[6px] bg-blue-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center ring ring-white;
 }
 
+.custom-message-badge{
+    @apply absolute bottom-1 right-0 h-[15px] w-[15px] bg-amber-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center ring ring-white;
+}
+
 .sent-message{
     @apply rounded-t-2xl rounded-bl-2xl bg-blue-500 text-white p-1 px-4;
 }
