@@ -8,13 +8,7 @@
 
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
-            <!--
-            TODO: Add the Orders component here
-            - Show orders
-            - Create a new order
-            - View order details
-            - Update order status
-            -->
+            <livewire:OrderManagement />
         </div>
     </div>
 </div>

@@ -3,11 +3,37 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Order;
 
 class OrderCreate extends Component
 {
+    public $title;
+    public $description;
+    public $total_price;
+
+    public function createOrder()
+    {
+        $this->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'total_price' => 'required|numeric',
+        ]);
+
+        Order::create([
+            'user_id' => auth()->id(),
+            'title' => $this->title,
+            'description' => $this->description,
+            'status' => 'pending',
+            'total_price' => $this->total_price,
+        ]);
+
+        $this->reset(['title', 'description', 'total_price']);
+
+        $this->dispatch('orderCreated');
+    }
+
     public function render()
     {
-        return view('livewire.order-create');
+        return view('orders.create');
     }
 }
