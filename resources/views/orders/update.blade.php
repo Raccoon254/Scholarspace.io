@@ -1,4 +1,4 @@
-<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="bg-white p-6 rounded-lg shadow-sm">
     <h3 class="text-lg font-semibold mb-4">Update Order Status</h3>
     <form wire:submit.prevent="updateStatus">
         <div class="mb-4">

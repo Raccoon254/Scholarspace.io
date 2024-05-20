@@ -15,7 +15,6 @@ class SendMessageInput extends Component
 {
     use WithFileUploads;
 
-    public Message $message;
     public string $newMessage = '';
     public array $attachments = [];
     public User $recipient;
@@ -36,11 +35,14 @@ class SendMessageInput extends Component
 
     public function sendMessage(): void
     {
-        //sleep(1);
         if (empty($this->newMessage) && empty($this->attachments)) {
             return;
         }
 
+        // Emit the message through Socket.IO
+        $this->dispatch('sendMessage', ['message' => $this->newMessage]);
+
+        // Save the message and attachments to the database
         $message = Message::create([
             'sender_id' => $this->loggedInUser->id,
             'receiver_id' => $this->recipient->id,

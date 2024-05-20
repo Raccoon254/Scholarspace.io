@@ -137,7 +137,7 @@
     }
 
     Livewire.on('messagesSent', (event) => {
-        console.log('Messages sent');
+        Livewire.dispatch('refreshMessages', { refreshMessages: true });
         setTimeout(() => {
             const messageContainer = document.getElementById('messageContainer');
             messageContainer.scrollTop = messageContainer.scrollHeight;
