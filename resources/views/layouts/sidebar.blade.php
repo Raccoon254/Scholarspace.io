@@ -32,7 +32,7 @@
             </li>
             <li class="side {{ request()->routeIs('orders') ? 'active' : '' }}">
                 <a href="{{ route('orders') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
-                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-shopping-bag"></i>
                     <span>Orders</span>
                 </a>
             </li>

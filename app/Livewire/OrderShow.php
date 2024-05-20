@@ -2,27 +2,47 @@
 
 namespace App\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
 use App\Models\Order;
+use Livewire\WithPagination;
 
 class OrderShow extends Component
 {
-    public $orders;
+    use WithPagination;
+
+    public string $sortField = 'id'; // Default sort field
+    public bool $sortAsc = true; // Default sort direction
 
     protected $listeners = ['orderCreated' => 'refreshOrders'];
 
-    public function mount()
+    public function sortBy($field): void
     {
-        $this->orders = Order::all();
+        if ($this->sortField === $field) {
+            $this->sortAsc = !$this->sortAsc;
+        } else {
+            $this->sortAsc = true;
+        }
+        $this->sortField = $field;
     }
 
-    public function refreshOrders()
+    public function refreshOrders(): void
     {
-        $this->orders = Order::all();
+        $this->render();
     }
 
-    public function render()
+    public function getSortIcon($field): string
     {
-        return view('orders.show');
+        if ($this->sortField === $field) {
+            return $this->sortAsc ? 'fa-sort-up text-blue-500' : 'fa-sort-down text-blue-500';
+        }
+        return 'fa-sort';
+    }
+
+    public function render(): View
+    {
+        return view('orders.show', [
+            'orders' => Order::orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate(10)
+        ]);
     }
 }

@@ -26,7 +26,7 @@ class OurFeatures extends Component
                 'description' => 'We always deliver our work on time.',
             ],
             [
-                'icon' => 'fa-money-bill-wave',
+                'icon' => 'fa-euro-sign',
                 'title' => 'Money Back Guarantee',
                 'description' => 'We offer a money back guarantee if you\'re not satisfied.',
             ],
