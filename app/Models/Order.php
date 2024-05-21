@@ -35,4 +35,9 @@ class Order extends Model
     {
         return $this->hasMany(Delivery::class);
     }
+
+    public function isPaid(): bool
+    {
+        return $this->payment()->exists();
+    }
 }

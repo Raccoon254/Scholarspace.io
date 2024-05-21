@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Livewire\Component;
 use App\Models\Order;
@@ -13,11 +14,16 @@ class OrderPayment extends Component
     public $payment_method = 'paypal';
     public $payment_methods = ['paypal', 'cash_app', 'zelle'];
     public $payment_details;
+    public bool $isPaid = false;
 
     public function mount($orderId): void
     {
         $this->order = Order::findOrFail($orderId);
         $this->updatePaymentDetails();
+        //if the order is already paid, redirect to the dashboard
+        if ($this->order->isPaid()) {
+            $this->isPaid = true;
+        }
     }
 
     public function updatedPaymentMethod()
@@ -54,8 +60,16 @@ class OrderPayment extends Component
     public function pay()
     {
         // Implement the payment logic here
+        $payment = Payment::create([
+            'order_id' => $this->order->id,
+            'amount' => $this->order->total_price,
+            'payment_method' => $this->payment_method,
+            'status' => 'pending',
+        ]);
         // Show success message
+        // TODO: Send notification to the writer
         // Redirect to the dashboard
+        return redirect()->route('dashboard');
     }
 
     public function render(): View

@@ -57,10 +57,20 @@
                             <p class="text-sm text-gray-700">{{ $payment_details['instructions'] }}</p>
                         </div>
                     @endif
-                    <button type="submit" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg">Proceed to
-                        Verification
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
+                    @if($isPaid)
+                        <div class="mb-4">
+                            <div class="bg-green-100 border border-green-200 text-green-700 px-4 py-3 rounded relative"
+                                 role="alert">
+                                <strong class="font-semibold">Payment Successful!</strong>
+                                <span class="block sm:inline">Your payment has been is being processed.</span>
+                            </div>
+                        </div>
+                    @else
+                        <button type="submit" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg">Proceed to
+                            Verification
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    @endif
                 </form>
             </div>
             <!-- Order details -->
