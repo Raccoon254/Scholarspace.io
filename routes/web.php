@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Livewire\OrderCreate;
 use App\Livewire\Dashboard;
 use App\Livewire\Messages;
+use App\Livewire\OrderPay;
 use App\Livewire\Orders;
 use App\Livewire\Referrals;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/referrals', Referrals::class)->name('referrals');
 
     Route::get('/orders/create', OrderCreate::class)->name('orders.create');
+    Route::get('/orders/{order}/pay', OrderPay::class)->name('orders.pay');
 });
 
 require __DIR__.'/auth.php';

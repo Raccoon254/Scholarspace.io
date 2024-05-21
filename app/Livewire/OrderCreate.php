@@ -20,7 +20,7 @@ class OrderCreate extends Component
             'total_price' => 'required|numeric',
         ]);
 
-        Order::create([
+        $order = Order::create([
             'user_id' => auth()->id(),
             'title' => $this->title,
             'description' => $this->description,
@@ -30,7 +30,7 @@ class OrderCreate extends Component
 
         $this->reset(['title', 'description', 'total_price']);
 
-        $this->dispatch('orderCreated');
+        return redirect()->route('orders.pay', ['order' => $order->id]);
     }
 
     public function render(): View

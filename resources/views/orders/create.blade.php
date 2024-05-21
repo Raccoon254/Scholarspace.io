@@ -8,7 +8,12 @@
 
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
-            <div class="bg-white p-6 rounded-lg shadow-sm">
+            <div class="bg-white p-6 relative md:w-1/3 rounded-lg shadow-sm">
+                <!-- About icon -->
+                <a href="#" class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
+                    <i class="fas h-4 w-4 center fa-info-circle"></i>
+                </a>
+
                 <h3 class="text-lg font-semibold mb-4">Create New Order</h3>
                 <form wire:submit.prevent="createOrder">
                     <div class="mb-4">
