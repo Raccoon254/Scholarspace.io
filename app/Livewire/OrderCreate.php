@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
 use App\Models\Order;
 
@@ -32,7 +33,7 @@ class OrderCreate extends Component
         $this->dispatch('orderCreated');
     }
 
-    public function render()
+    public function render(): View
     {
         return view('orders.create');
     }

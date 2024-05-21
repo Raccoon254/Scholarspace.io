@@ -1,6 +1,6 @@
 <div class="p-2 md:p-0 md:py-4">
     <x-slot name="header">
-        <h2 class="text-gray-800 leading-tight">
+        <h2 class="text-gray-800 flex items-center gap-4 leading-tight">
             <i class="fas text-blue-500 fa-envelope"></i>
             {{ __('Messages') }}
         </h2>

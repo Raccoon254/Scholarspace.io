@@ -1,6 +1,6 @@
 <div class="p-2 md:p-0 md:py-4">
     <x-slot name="header">
-        <h2 class="text-gray-800 leading-tight">
+        <h2 class="text-gray-800 flex items-center gap-4 leading-tight">
             <i class="fas text-blue-500 fa-home"></i>
             {{ __('Dashboard') }}
         </h2>
@@ -19,10 +19,11 @@
                         </div>
 
                         <div class="flex mt-3">
-                            <a href="{{ route('orders') }}"
+                            <a href="{{ route('orders.index') }}"
                                class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">New Order
                             </a>
                         </div>
+
                     </div>
                     <div class="absolute top-28 md:top-8 right-5">
                         <img src="{{ asset('images/svg2.png') }}" alt="Hero" class="w-44 md:w-64 max-w-md mx-auto rounded-lg">
