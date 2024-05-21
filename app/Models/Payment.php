@@ -23,8 +23,8 @@ class Payment extends Model
     public function getStatusClass(): string
     {
         return match ($this->status) {
-            'pending' => 'text-yellow-500',
-            'completed' => 'text-green-500',
+            'pending' => 'bg-gray-500',
+            'completed' => 'text-green-500 bg-green-500',
             default => 'text-gray-500',
         };
     }

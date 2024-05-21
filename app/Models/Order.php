@@ -46,10 +46,9 @@ class Order extends Model
     public function getStatusClass(): string
     {
         return match ($this->status) {
-            'pending' => 'text-yellow-500',
-            'in-progress' => 'text-blue-500',
-            'completed' => 'text-green-500',
-            default => 'text-gray-500',
+            'in-progress' => 'rounded bg-blue-500 text-white',
+            'completed' => 'rounded bg-green-500 text-white',
+            default => 'rounded bg-gray-500 text-white',
         };
     }
 }
