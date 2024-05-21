@@ -43,6 +43,22 @@
                     <span>Referral</span>
                 </a>
             </li>
+
+            @can('manage')
+                <li class="side {{ request()->routeIs('users.*') ? 'active' : '' }}">
+                    <a href="{{ route('users.index') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+
+                <li class="side {{ request()->routeIs('payments.*') ? 'active' : '' }}">
+                    <a href="{{ route('payments.index') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Payments</span>
+                    </a>
+                </li>
+            @endcan
             <li class="side {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
                 <a href="{{ route('profile.edit') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
                     <i class="fas fa-user"></i>

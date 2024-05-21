@@ -12,8 +12,6 @@ class Order extends Model
 {
     use HasFactory;
 
-    // $table->enum('status', ['pending', 'in-progress', 'completed'])->default('pending');
-
     protected $fillable = [
         'user_id', 'title', 'description', 'status', 'total_price',
     ];

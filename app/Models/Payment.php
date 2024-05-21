@@ -10,7 +10,6 @@ class Payment extends Model
 {
     use HasFactory;
 
-    // $table->enum('status', ['pending', 'completed'])->default('pending');
     protected $fillable = [
         'order_id', 'amount', 'payment_method', 'status',
     ];
