@@ -1,4 +1,4 @@
-<div class="flex flex-col text-black/70  gap-4">
+<div class="flex flex-col h-[85vh] text-black/70  gap-4">
 @if(!$orders->isEmpty())
     <div class="flex bg-white p-4 rounded-lg justify-between items-center gap-4">
         <div class="flex gap-4">
@@ -26,11 +26,16 @@
     </div>
 @endif
 
-<div class="bg-white h-[85vh] overflow-y-auto p-6 rounded-lg shadow-sm">
+<div class="bg-white h-full overflow-y-auto p-6 rounded-lg shadow-sm">
     @if($orders->isEmpty())
         <div class="text-black/90 h-full center flex-col">
             <i class="fas fa-box-open text-4xl mb-2"></i>
             You haven't placed any orders yet.
+            @if($role === 'client')
+                <a href="{{ route('orders.create') }}" class="custom-btn">
+                    Place an order
+                </a>
+            @endif
         </div>
     @else
         <div class="overflow-x-auto">

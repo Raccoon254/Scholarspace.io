@@ -13,6 +13,12 @@ class OrderShow extends Component
 
     public string $sortField = 'id'; // Default sort field
     public bool $sortAsc = true; // Default sort direction
+    public string $role;
+
+    public function mount(): void
+    {
+        $this->role = auth()->user()->role ?? 'client';
+    }
 
     protected $listeners = ['orderCreated' => 'refreshOrders'];
 
@@ -41,8 +47,13 @@ class OrderShow extends Component
 
     public function render(): View
     {
+        if ($this->role === 'writer') {
+            $orders = Order::orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate(10);
+        } else {
+            $orders = Order::where('user_id', auth()->id())->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate(10);
+        }
         return view('orders.show', [
-            'orders' => Order::orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate(10)
+            'orders' => $orders
         ]);
     }
 }

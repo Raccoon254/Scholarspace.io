@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\CreateOrder;
 use App\Livewire\Dashboard;
 use App\Livewire\Messages;
 use App\Livewire\Orders;
@@ -22,6 +23,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/messages', Messages::class)->name('messages');
     Route::get('/orders', Orders::class)->name('orders');
     Route::get('/referrals', Referrals::class)->name('referrals');
+
+    Route::get('/orders/create', CreateOrder::class)->name('orders.create');
 });
 
 require __DIR__.'/auth.php';
