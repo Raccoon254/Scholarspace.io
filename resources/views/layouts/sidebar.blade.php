@@ -54,7 +54,7 @@
 
                 <li class="side {{ request()->routeIs('payments.*') ? 'active' : '' }}">
                     <a href="{{ route('payments.index') }}" class="flex items-center gap-2 p-2 hover:bg-gray-200">
-                        <i class="fas fa-money-bill-wave"></i>
+                        <i class="fas fa-money-bill"></i>
                         <span>Payments</span>
                     </a>
                 </li>
