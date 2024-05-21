@@ -35,7 +35,8 @@ class OrderPayment extends Component
         $details = [
             'paypal' => [
                 'logo' => asset('images/paypal.png'),
-                'instructions' => 'Please send your payment to our PayPal address: payments@example.com',
+                'instructions' => 'Please send your payment to our PayPal address:
+                stevovosti64@gmail.com',
             ],
             'cash_app' => [
                 'logo' => asset('images/cash-app-logo.png'),

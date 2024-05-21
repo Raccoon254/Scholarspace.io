@@ -10,14 +10,20 @@
         <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
             <div class="bg-white p-6 relative h-full rounded-lg shadow-sm">
                 <!-- We accept -->
-                <h3 class="text-xl font-semibold mb-10">We Accept</h3>
-                <div class="flex space-x-6 mb-10">
+                <h3 class="text-xl font-semibold mb-8">We Accept</h3>
+                <div class="flex space-x-3 mb-8">
                     @foreach($payment_methods as $method)
                         @php
                         //call getPaymentDetails method from OrderPayment class
                         $logo = (new App\Livewire\OrderPayment)->getPaymentDetails($method)['logo'];
                         @endphp
-                        <img src="{{ $logo }}" alt="{{ $method }} Logo" class="h-16 w-auto">
+                        <div class="w-32 ring-1 ring-inset bg-gray-50 relative rounded-lg ring-blue-200 p-2 h-auto">
+                            <!-- About icon -->
+                            <a href="#" class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
+                                <i class="fas h-2 w-2 text-xs center fa-info-circle"></i>
+                            </a>
+                            <img src="{{ $logo }}" alt="{{ $method }} Logo" class="h-16 object-cover w-auto">
+                        </div>
                     @endforeach
                 </div>
                 <!-- End We accept -->
