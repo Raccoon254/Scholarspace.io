@@ -12,6 +12,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    // $table->enum('status', ['pending', 'in-progress', 'completed'])->default('pending');
+
     protected $fillable = [
         'user_id', 'title', 'description', 'status', 'total_price',
     ];
@@ -39,5 +41,15 @@ class Order extends Model
     public function isPaid(): bool
     {
         return $this->payment()->exists();
+    }
+
+    public function getStatusClass(): string
+    {
+        return match ($this->status) {
+            'pending' => 'text-yellow-500',
+            'in-progress' => 'text-blue-500',
+            'completed' => 'text-green-500',
+            default => 'text-gray-500',
+        };
     }
 }

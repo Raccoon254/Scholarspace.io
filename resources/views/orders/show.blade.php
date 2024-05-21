@@ -50,6 +50,7 @@
                             <i class="fas {{ $this->getSortIcon($field) }}"></i>
                         </th>
                     @endforeach
+                    <th class="py-3 text-black/80 text-[14px]">Payment</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -59,6 +60,7 @@
                         <td class="px-4 py-2 border-b border-gray-100">{{ $order->description }}</td>
                         <td class="px-4 py-2 border-b border-gray-100">${{ $order->total_price }}</td>
                         <td class="px-4 py-2 border-b border-gray-100">{{ $order->status }}</td>
+                        <td class="px-4 py-2 border-b border-gray-100">{{ $order->isPaid() ? $order->payment->status : 'Not Paid' }}</td>
                     </tr>
                 @endforeach
                 </tbody>

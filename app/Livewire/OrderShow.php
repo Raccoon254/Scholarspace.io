@@ -24,6 +24,10 @@ class OrderShow extends Component
 
     public function sortBy($field): void
     {
+        if ($field === 'payment_status') {
+            $field = 'status';
+        }
+
         if ($this->sortField === $field) {
             $this->sortAsc = !$this->sortAsc;
         } else {
