@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\ManageUsers;
 use App\Livewire\OrderCreate;
 use App\Livewire\Dashboard;
 use App\Livewire\Messages;
 use App\Livewire\OrderPayment;
 use App\Livewire\Orders;
 use App\Livewire\Referrals;
+use App\Livewire\VerifyPayments;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\PagesController;
@@ -28,8 +30,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/orders/create', OrderCreate::class)->name('orders.create');
     Route::get('/orders/pay/{orderId}', OrderPayment::class)->name('orders.pay');
 
-    Route::get('/payments', [PagesController::class, 'payments'])->name('payments.index');
-    Route::get('/users', [PagesController::class, 'users'])->name('users.index');
+    Route::get('/payments', VerifyPayments::class)->name('payments.index');
+    Route::get('/users', ManageUsers::class)->name('users.index');
 });
 
 require __DIR__.'/auth.php';
