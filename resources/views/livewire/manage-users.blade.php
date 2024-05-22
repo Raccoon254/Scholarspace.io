@@ -12,9 +12,9 @@
                     <h1 class="text-2xl font-semibold my-4 text-center text-gray-800">
                         Manage Users
                     </h1>
-                    <div class="card-header max-w-md relative">
-                        <input type="text" wire:model.live="search" class="w-full p-2 border border-gray-300 rounded-lg"
-                               placeholder="Search Users">
+                    <div class="flex justify-end relative">
+                        <input type="text" wire:model.live="search" class="w-full max-w-sm p-2 border border-gray-300 rounded-lg"
+                               placeholder="Search Payments">
                         <i class="fas fa-search absolute top-3 right-3 text-gray-400"></i>
                     </div>
                     <table class="table my-4 ring-1 ring-blue-200 overflow-clip">
