@@ -11,9 +11,10 @@ class OrderShow extends Component
 {
     use WithPagination;
 
-    public string $sortField = 'id'; // Default sort field
-    public bool $sortAsc = true; // Default sort direction
+    public string $sortField = 'id';
+    public bool $sortAsc = true;
     public string $role;
+    public string $search = '';
 
     public function mount(): void
     {
@@ -56,6 +57,17 @@ class OrderShow extends Component
         } else {
             $orders = Order::where('user_id', auth()->id())->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate(10);
         }
+
+        //apply search
+        if ($this->search) {
+            $orders = Order::where('title', 'like', '%' . $this->search . '%')
+                ->orWhere('description', 'like', '%' . $this->search . '%')
+                ->orWhere('status', 'like', '%' . $this->search . '%')
+                ->orWhere('total_price', 'like', '%' . $this->search . '%')
+                ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+                ->paginate(10);
+        }
+
         return view('orders.show', [
             'orders' => $orders
         ]);

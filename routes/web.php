@@ -28,8 +28,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/orders/create', OrderCreate::class)->name('orders.create');
     Route::get('/orders/pay/{orderId}', OrderPayment::class)->name('orders.pay');
 
-    //payments.index
-    //users.index
     Route::get('/payments', [PagesController::class, 'payments'])->name('payments.index');
     Route::get('/users', [PagesController::class, 'users'])->name('users.index');
 });

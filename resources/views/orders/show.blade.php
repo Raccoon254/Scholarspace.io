@@ -3,7 +3,7 @@
         <div class="flex bg-white p-4 rounded-lg justify-between items-center gap-4">
             <div class="flex gap-4">
                 <div class="relative">
-                    <input type="text" wire:model="search" class="p-2 pl-8 border border-gray-300 rounded-md"
+                    <input type="text" wire:model.live.debounce="search" class="p-2 pl-8 border border-gray-300 rounded-md"
                            placeholder="Search Orders">
                     <i class="fas fa-search absolute top-[13px] left-3 text-gray-700"></i>
                 </div>
@@ -31,12 +31,22 @@
         @if($orders->isEmpty())
             <div class="text-black/90 h-full center flex-col">
                 <i class="fas fa-box-open text-4xl mb-2"></i>
-                You haven't placed any orders yet.
-                @if($role === 'client')
-                    <a href="{{ route('orders.create') }}" class="custom-btn">
-                        Place an order
-                    </a>
-                @endif
+                @if($search)
+                <span>
+                            No orders found for "{{ $search }}"
+                            <button class="custom-btn" wire:click="resetFilters">
+                                <i class="fas fa-sync-alt"></i>
+                                Reset Search
+                            </button>
+                        @else
+                            You haven't placed any orders yet.
+                            @if($role === 'client')
+                            <a href="{{ route('orders.create') }}" class="custom-btn">
+                                Place an order
+                            </a>
+                        @endif
+                        @endif
+                </span>
             </div>
         @else
             <div class="overflow-x-auto">
