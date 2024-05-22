@@ -14,7 +14,7 @@ class ManageUsers extends Component
         $users = User::where('name', 'like', '%' . $this->search . '%')
             ->orWhere('email', 'like', '%' . $this->search . '%')
             ->orWhere('role', 'like', '%' . $this->search . '%')
-            ->paginate(10);
+            ->paginate(40);
         return view('livewire.manage-users', [
             'users' => $users
         ]);
