@@ -24,7 +24,6 @@
                                 Filter
                             </button>
                             <div class="border border-gray-300 rounded-md center gap-3 p-2">
-                                <!-- Date filter -->
                                 <i class="fas fa-calendar left-3 text-gray-700"></i>
                                 01 Jan - 04 Jan
                             </div>
@@ -46,60 +45,57 @@
                             <i class="fas fa-box-open text-4xl mb-2"></i>
                             @if($search)
                                 <span>
-                            No orders found for "{{ $search }}"
-                            <button class="custom-btn" wire:click="resetFilters">
-                                <i class="fas fa-sync-alt"></i>
-                                Reset Search
-                            </button>
-                        @else
+                                    No orders found for "{{ $search }}"
+                                    <button class="custom-btn" wire:click="resetFilters">
+                                        <i class="fas fa-sync-alt"></i>
+                                        Reset Search
+                                    </button>
+                                @else
                                         You haven't placed any orders yet.
                                         @if($role === 'client')
                                             <a href="{{ route('orders.create') }}" class="custom-btn">
-                                Place an order
-                            </a>
+                                                        Place an order
+                                                    </a>
                                         @endif
                                     @endif
-                </span>
+                                </span>
                         </div>
                     @else
-                        <div class="overflow-x-auto">
-                            <!-- Loading for sortByMethod -->
-                            <table class="table">
+                            <table class="table my-4 ring-1 ring-gray-200 overflow-clip">
                                 <thead>
                                 <tr class="border-gray-100">
                                     @foreach(['title' => 'Orders', 'description' => 'Description', 'total_price' => 'Total Price', 'status' => 'Status'] as $field => $label)
                                         <th onselectstart="return false"
-                                            class="gap-2 py-3 text-black/80 text-[14px] cursor-pointer"
+                                            class="text-black/80 text-[14px] cursor-pointer"
                                             wire:click="sortBy('{{ $field }}')">
                                             {{ $label }}
                                             <i class="fas {{ $this->getSortIcon($field) }}"></i>
                                         </th>
                                     @endforeach
-                                    <th class="py-3 text-black/80 text-[14px]">Payment</th>
+                                    <th class="text-black/80 text-[14px]">Payment</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($orders as $order)
                                     <tr>
-                                        <td class="px-4 py-2 border-b border-gray-100">{{ $order->title }}</td>
-                                        <td class="px-4 py-2 border-b border-gray-100">{{ $order->description }}</td>
-                                        <td class="px-4 py-2 border-b border-gray-100">$ {{ $order->total_price }}</td>
-                                        <td class="px-4 py-2 border-b border-gray-100">
-                                <span class="rounded-full px-2 py-1 {{ $order->getStatusClass() }} text-white">
-                                    {{ $order->status }}
-                                </span>
+                                        <td class="border-gray-200 border-b">{{ $order->title }}</td>
+                                        <td class="border-gray-200 border-b">{{ $order->description }}</td>
+                                        <td class="border-gray-200 border-b">$ {{ $order->total_price }}</td>
+                                        <td class="border-gray-200 border-b">
+                                            <span class="rounded-full px-2 py-1 {{ $order->getStatusClass() }} text-white">
+                                                {{ $order->status }}
+                                            </span>
                                         </td>
-                                        <td class="px-4 py-2 border-b border-gray-100">
-                                <span
-                                    class="rounded-full px-2 py-1 {{ $order->isPaid() ? $order->payment->getStatusClass() : 'bg-red-500' }} text-white">
-                                    {{ $order->isPaid() ? $order->payment->status : 'Not Paid' }}
-                                </span>
+                                        <td class="border-gray-200 border-b">
+                                            <span
+                                                class="rounded-full px-2 py-1 {{ $order->isPaid() ? $order->payment->getStatusClass() : 'bg-red-500' }} text-white">
+                                                {{ $order->isPaid() ? $order->payment->status : 'Not Paid' }}
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                        </div>
 
                         <!-- Pagination -->
                         <div class="mt-4">
