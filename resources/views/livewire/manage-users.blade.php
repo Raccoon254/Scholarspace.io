@@ -8,8 +8,10 @@
     <div class="max-w-7xl text-black/80 relative h-full mx-auto">
         <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
             <div class="w-full md:pr-2 flex-col">
-                <div class="rounded-lg p-4 relative w-full bg-white">
-                    <h1>Manage Users</h1>
+                <div class="rounded-lg h-[85vh] overflow-scroll p-4 relative w-full bg-white">
+                    <h1 class="text-2xl font-semibold my-4 text-center text-gray-800">
+                        Manage Users
+                    </h1>
                     <div class="card-header max-w-md relative">
                         <input type="text" wire:model.live="search" class="w-full p-2 border border-gray-300 rounded-lg"
                                placeholder="Search Users">
@@ -17,7 +19,7 @@
                     </div>
                     <table class="table my-4 ring-1 ring-blue-200 overflow-clip">
                         <thead>
-                        <tr class="bg-gray-100 text-gray-600 text-sm">
+                        <tr class="bg-gray-100 border-blue-300 text-gray-600 text-sm">
                             <th>Id</th>
                             <th>Avatar</th>
                             <th>Name</th>
@@ -28,7 +30,7 @@
                         </thead>
                         <tbody>
                         @foreach($users as $user)
-                            <tr>
+                            <tr class="border-blue-200">
                                 <td>{{ $user->id }}</td>
                                 <td>
                                     <img src="{{ $user->profile_photo }}" alt="{{ $user->name }}"
