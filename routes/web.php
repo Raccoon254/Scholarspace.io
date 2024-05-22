@@ -7,6 +7,7 @@ use App\Livewire\Dashboard;
 use App\Livewire\Messages;
 use App\Livewire\OrderPayment;
 use App\Livewire\Orders;
+use App\Livewire\OrderShow;
 use App\Livewire\Referrals;
 use App\Livewire\VerifyPayments;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/messages', Messages::class)->name('messages');
-    Route::get('/orders', Orders::class)->name('orders.index');
+    Route::get('/orders', OrderShow::class)->name('orders.index');
     Route::get('/referrals', Referrals::class)->name('referrals');
 
     Route::get('/orders/create', OrderCreate::class)->name('orders.create');
