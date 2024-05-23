@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Illuminate\View\View;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -10,19 +11,14 @@ class ProfileImageUploader extends Component
 {
     use WithFileUploads;
 
+    #[Validate('image|max:1024')]
     public $profilePhoto;
 
-    public function save()
+    public function save(): void
     {
-        $this->validate([
-            'profilePhoto' => 'image|max:1024', // 1MB Max
-        ]);
-
         $path = $this->profilePhoto->store('public/' . auth()->user()->name . '/profile');
 
         auth()->user()->update(['profile_photo' => $path]);
-
-        dd('Profile photo uploaded successfully.');
     }
 
     public function render(): View

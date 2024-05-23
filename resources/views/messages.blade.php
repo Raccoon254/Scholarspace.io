@@ -16,7 +16,7 @@
                                 @if($selectedUser->role == 'client')
                                     <div class="flex-shrink-0">
                                         <img src="{{ $selectedUser->profile_photo }}" alt="{{ $selectedUser->name }}"
-                                             class="w-10 h-10 bg-white rounded-full">
+                                             class="w-10 h-10 object-cover bg-white rounded-full">
                                     </div>
                                     <div class="flex-grow">
                                         <h1 class="text-gray-800 font-semibold">{{ $selectedUser->name }}</h1>
@@ -73,10 +73,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="h-[76vh] flex overflow-y-auto flex-col gap-3 rounded-lg">
+                        <div class="h-[76vh] flex overflow-y-auto p-1 flex-col gap-3 rounded-lg">
                             <!-- All users -->
                             @foreach($clients as $user)
-                                <div class="flex gap-3 cursor-pointer p-2 bg-gray-100 rounded-lg"
+                                <div class="flex gap-3 cursor-pointer p-2 bg-gray-100 w-full"
+                                     style="border-radius: 20rem 50px 50px 20rem"
                                      wire:click="openChat({{ $user->id }})">
                                     <!-- unreadMessages(User $user): int
                                     Call the unreadMessages method in the livewire component -->
@@ -85,7 +86,7 @@
                                     @endphp
                                     <div class="relative">
                                         <img src="{{ $user->profile_photo }}" alt="{{ $user->name }}"
-                                             class="w-12 h-12 bg-white rounded-full">
+                                             class="w-12 h-12 bg-white object-cover ring ring-blue-500 rounded-full">
                                         @if($unreadMessagesCount > 0)
                                             <span class="custom-message-badge">{{ $unreadMessagesCount }}</span>
                                         @endif
