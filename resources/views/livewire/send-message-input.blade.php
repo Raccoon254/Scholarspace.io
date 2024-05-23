@@ -37,6 +37,7 @@
         <label class="w-full">
             <input id="messageInput" wire:model.live="newMessage" wire:keydown.enter="sendMessage"
                    class="message-input"
+                   autocomplete="off"
                    type="text" placeholder="Type your message...">
         </label>
         <input wire:model.live="attachments" type="file" id="fileInput" multiple style="display: none;" accept="image/*, application/pdf, application/zip, application/x-rar-compressed application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">

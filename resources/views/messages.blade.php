@@ -77,7 +77,7 @@
                             <!-- All users -->
                             @foreach($clients as $user)
                                 <div class="flex gap-3 cursor-pointer p-2 bg-gray-100 w-full"
-                                     style="border-radius: 20rem 50px 50px 20rem"
+                                     style="border-radius: 20rem 100px 100px 20rem"
                                      wire:click="openChat({{ $user->id }})">
                                     <!-- unreadMessages(User $user): int
                                     Call the unreadMessages method in the livewire component -->
