@@ -21,6 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'role',
+        'profile_photo',
         'password',
     ];
 
@@ -67,7 +68,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getProfilePhotoAttribute(): string
     {
-        return $this->profile_photo ?? $this->avatar;
+        return isset($this->attributes['profile_photo']) && $this->attributes['profile_photo']
+            ? asset('storage/' . $this->attributes['profile_photo'])
+            : $this->avatar;
     }
 
     /**
