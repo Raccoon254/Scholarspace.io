@@ -44,7 +44,7 @@
             <div class="md:w-1/3 md:absolute rounded-lg p-4 right-0 -top-8 bg-blue-500 md:h-[103vh]">
                 <div class="center mt-20">
                         <div class="center flex-col">
-                                <livewire:profile-image-uploader />
+                                <livewire:profile-image-uploader :color="'blue-500'" />
                             <div class="text-white text-center">
                                 <h4 class="mt-3 text-xl font-semibold">{{ auth()->user()->name }}</h4>
                                 <p class="text-xs text-gray-200">{{ auth()->user()->email }}</p>

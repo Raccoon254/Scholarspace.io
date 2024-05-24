@@ -13,6 +13,12 @@ class ProfileImageUploader extends Component
 
     #[Validate('image|max:1024')]
     public $profilePhoto;
+    public $color = 'blue-500';
+
+    public function mount($color): void
+    {
+        $this->color = $color;
+    }
 
     public function save(): void
     {
