@@ -36,4 +36,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/users', ManageUsers::class)->name('users.index');
 });
 
+Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+Route::post('/contact', [PagesController::class, 'contact_submit'])->name('contact.submit');
 require __DIR__.'/auth.php';

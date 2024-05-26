@@ -10,4 +10,9 @@ class PagesController extends Controller
     {
         return view('dashboard');
     }
+
+    public function contact(): View
+    {
+        return view('contact');
+    }
 }
