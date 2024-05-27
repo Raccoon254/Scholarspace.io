@@ -18,6 +18,21 @@ class PagesController extends Controller
         return view('contact');
     }
 
+    public function howItWorks(): View
+    {
+        return view('static.how-it-works');
+    }
+
+    public function services(): View
+    {
+        return view('static.services');
+    }
+
+    public function about(): View
+    {
+        return view('static.about');
+    }
+
     public function submit(Request $request)
     {
         // Validate the form data
