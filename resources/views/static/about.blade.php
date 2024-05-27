@@ -1,7 +1,7 @@
 <x-logged-out>
     <!-- Title -->
     <x-slot name="title">
-        About Us
+        About Us - Scholarspace
     </x-slot>
 
     <div class="bg-gray-50 min-h-screen">
