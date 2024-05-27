@@ -39,7 +39,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="message" class="block text-black/70 font-semibold mb-2">Message</label>
-                        <textarea name="message" id="message" cols="30" rows="6" class="w-full textarea bg-white border border-gray-300 rounded-lg shadow-sm" required></textarea>
+                        <textarea name="user_message" id="message" cols="30" rows="6" class="w-full textarea bg-white border border-gray-300 rounded-lg shadow-sm" required></textarea>
                     </div>
                     <div>
                         <button class="custom-btn w-full" type="submit">Submit</button>

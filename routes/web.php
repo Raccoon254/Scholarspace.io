@@ -37,5 +37,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
-Route::post('/contact', [PagesController::class, 'contact_submit'])->name('contact.submit');
+Route::post('/contact', [PagesController::class, 'submit'])->name('contact.submit');
 require __DIR__.'/auth.php';

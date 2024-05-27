@@ -17,14 +17,27 @@ class PriceCalculator extends Component
     public int $price = 0;
 
     public array $subjects = [
-        'Mathematics',
-        'Physics',
-        'Chemistry',
-        'Biology',
-        'English',
-        'History',
-        'Geography',
-        'Computer Science'
+        'Engineering',
+        'Agriculture',
+        'Accounting',
+        'Computer Science',
+        'Research paper',
+        'Essay (any type)',
+        'Admission essay',
+        'Annotated bibliography',
+        'Argumentative essay',
+        'Article review',
+        'Book/movie review',
+        'Business plan',
+        'Case study',
+        'Coursework',
+        'Creative writing',
+        'Critical thinking',
+        'Presentation or speech',
+        'Research proposal',
+        'Term paper',
+        'Thesis/Dissertation chapter',
+        'Other'
     ];
 
     public function placeOrder(): void

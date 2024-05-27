@@ -30,7 +30,7 @@ class OrderCreate extends Component
 
         $this->reset(['title', 'description', 'total_price']);
 
-        return redirect()->route('orders.pay', ['order' => $order->id]);
+        return redirect()->route('orders.pay', ['orderId' => $order->id]);
     }
 
     public function render(): View
