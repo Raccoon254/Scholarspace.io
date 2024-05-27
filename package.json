@@ -19,6 +19,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "aos": "^2.3.4",
         "concurrently": "^8.2.2",
         "express": "^4.19.2",
         "socket.io": "^4.7.5"
