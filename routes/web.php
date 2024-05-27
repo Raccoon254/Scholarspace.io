@@ -38,4 +38,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [PagesController::class, 'submit'])->name('contact.submit');
+Route::get('/how-it-works', [PagesController::class, 'howItWorks'])->name('how-it-works');
+Route::get('/services', [PagesController::class, 'services'])->name('services');
+Route::get('/about', [PagesController::class, 'about'])->name('about');
 require __DIR__.'/auth.php';
