@@ -20,7 +20,46 @@ class PagesController extends Controller
 
     public function howItWorks(): View
     {
-        return view('static.how-it-works');
+        $steps = [
+            [
+                'icon' => 'fas fa-clipboard-list',
+                'color' => 'blue-500',
+                'title' => 'Kickstart Your Journey',
+                'description' => 'Begin your academic journey with us by filling out our secure order form. Provide us with detailed instructions, your deadline, and any additional requirements for your paper.',
+            ],
+            [
+                'icon' => 'fas fa-user-edit',
+                'color' => 'green-500',
+                'title' => 'Expert Matchmaking',
+                'description' => 'Our team of seasoned writers will review your order. We will assign the most qualified writer based on their expertise and subject area to ensure the best fit.',
+            ],
+            [
+                'icon' => 'fas fa-file-alt',
+                'color' => 'yellow-500',
+                'title' => 'Crafting Your Paper',
+                'description' => 'Your assigned writer will dive deep into research and craft a well-written, plagiarism-free paper tailored to your requirements. They will adhere strictly to your instructions and academic standards.',
+            ],
+            [
+                'icon' => 'fas fa-check-double',
+                'color' => 'red-500',
+                'title' => 'Quality Check',
+                'description' => 'Our rigorous quality assurance process ensures that your paper meets the highest standards before delivery. This includes meticulous proofreading, formatting, and compliance with your instructions.',
+            ],
+            [
+                'icon' => 'fas fa-download',
+                'color' => 'purple-500',
+                'title' => 'Delivery & Support',
+                'description' => 'Your completed paper will be delivered to you before the deadline. Our support team is available round the clock to assist you with any questions or concerns.',
+            ],
+            [
+                'icon' => 'fas fa-sync-alt',
+                'color' => 'orange-500',
+                'title' => 'Revisions On Demand',
+                'description' => 'We offer unlimited revisions to ensure your complete satisfaction with the final product. If you need any changes or adjustments, simply request a revision, and we will take care of it promptly.',
+            ],
+        ];
+
+        return view('static.how-it-works', ['steps' => $steps]);
     }
 
     public function services(): View
