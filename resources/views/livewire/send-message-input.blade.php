@@ -72,6 +72,7 @@
         console.log('New message received:', message);
         //Emit refresh messages event
         Livewire.dispatch('messagesSent');
+        Livewire.dispatch('received-message');
     });
 
     document.getElementById('sendMessageButton').addEventListener('click', sendMessage);
