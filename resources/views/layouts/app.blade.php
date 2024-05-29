@@ -17,7 +17,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-white">
-            @include('layouts.navigation')
+            <livewire:navbar />
             <div class="flex relative gap-2 p-2">
                 @include('layouts.sidebar')
                 <!-- Page Content -->
