@@ -1,5 +1,5 @@
 <div class="avatar relative">
-    <div class="w-28 rounded-full border border-{{ $color }} ring-1 ring-offset-{{ $color }} ring-blue-200 ring-inset ring-offset-[6px]">
+    <div class="w-28 rounded-full border border-{{ $color }} ring-1 ring-offset-blue-500 ring-blue-200 ring-inset ring-offset-[6px]">
         <img src="{{ $profilePhoto ? $profilePhoto->temporaryUrl() : auth()->user()->profile_photo }}" alt="{{ auth()->user()->name }}" class="w-28 h-28 p-2 rounded-full">
         <div class="absolute top-0 left-0 w-28 h-28 rotate-[270deg] rounded-full overflow-visible">
             <svg class="w-full h-full">

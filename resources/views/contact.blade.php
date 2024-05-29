@@ -27,12 +27,14 @@
                         <x-text-input id="name" name="name" :required="true" class="w-full" />
                     </div>
                     <div class="mb-4">
-                        <label for="email" class="block text-black/70 font-semibold mb-2">Email</label>
-                        <x-text-input id="email" name="email" :required="true" class="w-full" />
+                        <label for='email' class="block text-black/70 font-semibold mb-2">Email</label>
+                        <x-text-input id='email' name= 'email' :required="true" class="w-full" />
                     </div>
                     <div class="mb-4">
-                        <label for="message" class="block text-black/70 font-semibold mb-2">Message</label>
-                        <textarea name="user_message" id="message" cols="30" rows="6" class="w-full textarea bg-white border border-gray-300 rounded-lg shadow-sm" required></textarea>
+                        <label for='message' class="block text-black/70 font-semibold mb-2">Message</label>
+                        <textarea name="user_message" id='message' cols="30" rows="6"
+                                  class="w-full textarea bg-white border border-gray-300 rounded-lg shadow-sm" required>
+                        </textarea>
                     </div>
                     <div>
                         <button class="custom-btn w-full" type="submit">Submit</button>
