@@ -6,16 +6,17 @@
                 <circle cx="50%" cy="50%" r="48%" fill="transparent" stroke="white" stroke-width="4" stroke-linecap="round" stroke-dashoffset="61px" stroke-dasharray="288.88px"></circle>
             </svg>
         </div>
-        <!-- Camera Icon -->
-        <div class="absolute bottom-2 right-1 text-white rounded-full">
-            <label for="profilePhoto" class="btn btn-sm btn-circle btn-warning fas fa-camera cursor-pointer"></label>
-            <input type="file" id="profilePhoto" wire:model="profilePhoto" class="hidden">
-        </div>
         @if ($profilePhoto)
-            <div class="absolute bottom-0 right-0 text-white rounded-full">
+            <div class="absolute bottom-2 right-2 text-white rounded-full">
                 <button wire:click="save" class="btn btn-sm btn-circle btn-info ring ring-white">
-                    <i class="fas text-black/60 fa-check"></i>
+                    <i wire:loading.class="hidden" class="fas text-black/60 fa-check"></i>
+                    <span wire:loading wire:target="save" class="loading loading-sm"></span>
                 </button>
+            </div>
+        @else
+            <div class="absolute bottom-2 right-1 text-white rounded-full">
+                <label for="profilePhoto" class="btn btn-sm btn-circle btn-warning fas fa-camera cursor-pointer"></label>
+                <input type="file" id="profilePhoto" wire:model="profilePhoto" class="hidden" accept="image/*">
             </div>
         @endif
     </div>

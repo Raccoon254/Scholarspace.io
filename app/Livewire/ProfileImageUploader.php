@@ -23,8 +23,10 @@ class ProfileImageUploader extends Component
     public function save(): void
     {
         $path = $this->profilePhoto->store('public/' . auth()->user()->name . '/profile');
-
+        sleep(5);
         auth()->user()->update(['profile_photo' => $path]);
+        $this->profilePhoto = null;
+        $this->dispatch('profile-photo-updated');
     }
 
     public function render(): View
