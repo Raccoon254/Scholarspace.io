@@ -43,7 +43,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function allMessages(): HasMany
     {
-        // get messages sent and received by the user
         return $this->messages()->union($this->receivedMessages());
     }
 

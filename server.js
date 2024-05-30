@@ -10,26 +10,61 @@ const io = new Server(server, {
     }
 });
 
+// Store connected users and their socket IDs
+const connectedUsers = new Map();
+
 io.on('connection', (socket) => {
+    console.log('A user connected');
+
     socket.on('userConnected', (user) => {
-        console.log(user['name'] + ' connected');
-        //TODO! Set online status
+        console.log(`${user.name} connected`);
+        connectedUsers.set(socket.id, user);
+        // Emit the list of connected users to all clients
+        io.emit('connectedUsers', Array.from(connectedUsers.values()));
     });
 
     socket.on('userDisconnected', (user) => {
-        console.log(user['name'] + ' disconnected');
-        //TODO! Set offline status
+        console.log(`${user.name} disconnected`);
+        connectedUsers.delete(socket.id);
+        // Emit the list of connected users to all clients
+        io.emit('connectedUsers', Array.from(connectedUsers.values()));
     });
 
     socket.on('typing', (data) => {
-        //TODO! Data format must have the current user and the user that is being typed to
-        //TODO! Set typing status
-        console.log(data['from'] + ' is typing to ' + data['to']);
+        const { from, to } = data;
+        const recipient = Array.from(connectedUsers.values()).find(user => user.id === to);
+        if (recipient) {
+            const recipientSocketId = Array.from(connectedUsers.entries()).find(([_, user]) => user.id === to)[0];
+            io.to(recipientSocketId).emit('typing', from);
+        }
     });
 
-    socket.on('sendMessage', (message) => {
-        console.log(message);
-        io.emit('receiveMessage', message);
+    socket.on('stopTyping', (data) => {
+        const { from, to } = data;
+        const recipient = Array.from(connectedUsers.values()).find(user => user.id === to);
+        if (recipient) {
+            const recipientSocketId = Array.from(connectedUsers.entries()).find(([_, user]) => user.id === to)[0];
+            io.to(recipientSocketId).emit('stopTyping', from);
+        }
+    });
+
+    socket.on('sendMessage', (data) => {
+        const { from, to, message } = data;
+        const recipient = Array.from(connectedUsers.values()).find(user => user.id === to);
+        if (recipient) {
+            const recipientSocketId = Array.from(connectedUsers.entries()).find(([_, user]) => user.id === to)[0];
+            io.to(recipientSocketId).emit('receiveMessage', { from, message });
+        }
+    });
+
+    socket.on('disconnect', () => {
+        console.log('A user disconnected');
+        const user = connectedUsers.get(socket.id);
+        if (user) {
+            connectedUsers.delete(socket.id);
+            // Emit the list of connected users to all clients
+            io.emit('connectedUsers', Array.from(connectedUsers.values()));
+        }
     });
 });
 

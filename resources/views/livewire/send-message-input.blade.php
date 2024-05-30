@@ -35,7 +35,7 @@
     </div>
     <div class="relative flex gap-2 items-center">
         <label class="w-full">
-            <input id="messageInput" wire:model.live="newMessage" wire:keydown.enter="sendMessage"
+            <input id="messageInput" wire:model.live="newMessage"
                    class="message-input"
                    autocomplete="off"
                    type="text" placeholder="Type your message...">
@@ -70,7 +70,6 @@
 
     socket.on('receiveMessage', (message) => {
         console.log('New message received:', message);
-        //Emit refresh messages event
         Livewire.dispatch('messagesSent');
         Livewire.dispatch('received-message');
     });
