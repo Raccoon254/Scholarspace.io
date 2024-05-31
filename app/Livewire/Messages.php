@@ -19,6 +19,7 @@ class Messages extends Component
     public $messages;
     public int $unreadMessages;
     public array $attachments = [];
+    public $onlineUsers = [];
 
     public function mount(): void
     {
@@ -28,6 +29,13 @@ class Messages extends Component
         if ($this->currentUserRole === 'client') {
             $this->openChat(User::where('role', 'writer')->first()->id);
         }
+    }
+
+    #[On('connectedUsers')]
+    public function connectedUsers($onlineUsers): void
+    {
+        // Convert the array to a collection and pluck the user ids
+        $this->onlineUsers = collect($onlineUsers)->pluck('id')->toArray();
     }
 
     #[On('messagesSent')]

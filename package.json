@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "start": "concurrently \"npm run dev\" \"php artisan serve\" \"node server.js\"",
+        "start": "concurrently \"npm run dev\" \"php artisan serve\" \"nodemon server.js\"",
         "clean": "php artisan optimize:clear && php artisan view:clear && php artisan route:clear && php artisan config:clear"
     },
     "devDependencies": {
@@ -22,6 +22,7 @@
         "aos": "^2.3.4",
         "concurrently": "^8.2.2",
         "express": "^4.19.2",
+        "nodemon": "^3.1.2",
         "socket.io": "^4.7.5"
     }
 }

@@ -14,7 +14,6 @@ const io = new Server(server, {
 const connectedUsers = new Map();
 
 io.on('connection', (socket) => {
-    console.log('A user connected');
 
     socket.on('userConnected', (user) => {
         console.log(`${user.name} connected`);
@@ -62,7 +61,6 @@ io.on('connection', (socket) => {
         const user = connectedUsers.get(socket.id);
         if (user) {
             connectedUsers.delete(socket.id);
-            // Emit the list of connected users to all clients
             io.emit('connectedUsers', Array.from(connectedUsers.values()));
         }
     });

@@ -29,6 +29,8 @@ class SendMessageInput extends Component
     public function updating($newMessage): void
     {
         $this->dispatch('typing', ['isTyping' => !empty($newMessage)]);
+        //after 1 second, the typing event will be emitted with isTyping set to false
+        $this->dispatch('stopTyping', ['isTyping' => !empty($newMessage)]);
     }
 
     public function removeAttachment($name): void

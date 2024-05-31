@@ -85,6 +85,10 @@
                                         $unreadMessagesCount = \App\Livewire\Messages::unreadMessages($user);
                                     @endphp
                                     <div class="relative">
+                                        <!-- If the user is in $onlineUsers array, show the online status -->
+                                        @if(in_array($user->id, $onlineUsers))
+                                            <div class="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full"></div>
+                                        @endif
                                         <img src="{{ $user->profile_photo }}" alt="{{ $user->name }}"
                                              class="w-12 h-12 bg-white object-cover ring ring-blue-500 rounded-full">
                                         @if($unreadMessagesCount > 0)
@@ -146,5 +150,6 @@
         //Ensure the message container is scrolled to the bottom
         ensureScrolledToBottom();
     });
+
 </script>
 @endscript

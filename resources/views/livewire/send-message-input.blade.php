@@ -52,14 +52,17 @@
             <i class="fas fa-paper-plane"></i>
         </button>
     </div>
+        <div id="typingStatus"></div>
 </div>
+
 @script
 <script>
     const socket = io('http://localhost:3000');
 
-    //send the username to the server on connection
+    // Send the username to the server on connection
     let authUser = '{{ auth()->user() }}';
     authUser = JSON.parse(authUser.replace(/&quot;/g, '"'));
+
     socket.on('connect', () => {
         socket.emit('userConnected', authUser);
     });
@@ -68,9 +71,11 @@
         socket.emit('userDisconnected', authUser);
     });
 
+
+
     socket.on('receiveMessage', (message) => {
         console.log('New message received:', message);
-        //Emit refresh messages event
+        // Emit refresh messages event
         Livewire.dispatch('messagesSent');
         Livewire.dispatch('received-message');
     });
@@ -84,27 +89,43 @@
         const message = messageInput.value;
 
         if (message) {
-            socket.emit('sendMessage', message);
-            //Simulate Enter key press
-            const enterKeyEvent = new KeyboardEvent('keydown', {
-                key: 'Enter',
-                code: 'Enter',
-                keyCode: 13,
-                which: 13,
-                bubbles: true
-            });
-            messageInput.dispatchEvent(enterKeyEvent);
+            socket.emit('sendMessage', { from: authUser.id, to: receiver.id, message });
             messageInput.value = '';
         }
     }
 
-    //'typing', ['isTyping' => !empty($newMessage)]);
     Livewire.on('typing', (isTyping) => {
-        socket.emit('typing', { isTyping, from: authUser.name, to: receiver.name });
+        socket.emit('typing', { from: authUser.id, to: receiver.id });
+    });
+
+    Livewire.on('stopTyping', () => {
+        socket.emit('stopTyping', { from: authUser.id, to: receiver.id });
+    });
+
+    socket.on('typing', (from) => {
+        document.getElementById('typingStatus').innerText = `${from} is typing...`;
+    });
+
+    socket.on('stopTyping', (from) => {
+        document.getElementById('typingStatus').innerText = '';
+    });
+
+    socket.on('connectedUsers', (data) => {
+        console.log('Connected users:', data);
+        Livewire.dispatch('connectedUsers', { onlineUsers : data });
     });
 
     Livewire.on('messagesSent', () => {
         document.getElementById('messageInput').value = '';
+    });
+
+    // Input event listeners for typing
+    document.getElementById('messageInput').addEventListener('input', () => {
+        Livewire.dispatch('typing', document.getElementById('messageInput').value.length > 0);
+    });
+
+    document.getElementById('messageInput').addEventListener('blur', () => {
+        Livewire.dispatch('stopTyping');
     });
 </script>
 @endscript
