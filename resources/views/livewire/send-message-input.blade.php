@@ -98,6 +98,11 @@
         }
     }
 
+    //'typing', ['isTyping' => !empty($newMessage)]);
+    Livewire.on('typing', (isTyping) => {
+        socket.emit('typing', { isTyping, from: authUser.name, to: receiver.name });
+    });
+
     Livewire.on('messagesSent', () => {
         document.getElementById('messageInput').value = '';
     });

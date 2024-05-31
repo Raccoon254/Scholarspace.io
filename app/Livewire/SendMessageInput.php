@@ -26,6 +26,11 @@ class SendMessageInput extends Component
         $this->loggedInUser = Auth::user();
     }
 
+    public function updating($newMessage): void
+    {
+        $this->dispatch('typing', ['isTyping' => !empty($newMessage)]);
+    }
+
     public function removeAttachment($name): void
     {
         $this->attachments = $this->attachments->filter(function ($attachment) use ($name) {
