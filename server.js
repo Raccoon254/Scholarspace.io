@@ -38,10 +38,19 @@ io.on('connection', (socket) => {
 
     socket.on('typing', (data) => {
         const { from, to } = data;
+        console.log('Typing event received:', data);
+
         const recipient = Array.from(connectedUsers.values()).find(user => user.id === to);
         if (recipient) {
             const recipientSocketId = Array.from(connectedUsers.entries()).find(([_, user]) => user.id === to)[0];
-            io.to(recipientSocketId).emit('typing', from);
+            if (recipientSocketId) {
+                console.log('Emitting typing event to:', recipientSocketId);
+                io.to(recipientSocketId).emit('typing', from);
+            } else {
+                console.log('Recipient socket ID not found.');
+            }
+        } else {
+            console.log('Recipient not found.');
         }
     });
 
@@ -64,7 +73,6 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        console.log('A user disconnected');
         const user = connectedUsers.get(socket.id);
         if (user) {
             connectedUsers.delete(socket.id);

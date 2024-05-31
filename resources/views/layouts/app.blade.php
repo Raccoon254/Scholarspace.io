@@ -34,7 +34,6 @@
     const socket = io('http://localhost:3000');
 
     socket.on('connectedUsers', (data) => {
-        console.log('Connected users:', data);
         Livewire.dispatch('connectedUsers', {onlineUsers: data});
     });
 
@@ -44,12 +43,36 @@
 
     socket.on('connect', () => {
         socket.emit('userConnected', authUser);
-        console.log('User connected:', authUser);
     });
 
     socket.on('disconnect', () => {
         socket.emit('userDisconnected', authUser);
     });
+
+    socket.on('receiveMessage', (message) => {
+        console.log('New message received:', message);
+        Livewire.dispatch('messagesSent');
+        Livewire.dispatch('received-message');
+    });
+
+    socket.on('typing', (from) => {
+        console.log('Typing event from:', from);
+        // Update the UI to show typing status
+        showTypingStatus(from);
+    });
+
+    function showTypingStatus(userId) {
+        // Logic to display typing status on the UI
+        const typingElement = document.getElementById('typingStatus')
+        typingElement.innerText = 'Typing...'
+
+        // Hide typing status after a short delay
+        setTimeout(() => {
+            let currentTime = new Date().getTime();
+            typingElement.innerText = ''
+        }, 4000);
+    }
+
 </script>
 </body>
 </html>

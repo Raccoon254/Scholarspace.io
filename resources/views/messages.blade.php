@@ -20,6 +20,8 @@
                                     </div>
                                     <div class="flex-grow">
                                         <h1 class="text-gray-800 font-semibold">{{ $selectedUser->name }}</h1>
+                                        <div class="text-xs" id="typingStatus">
+                                        </div>
                                     </div>
                                 @else
                                     <div class="flex-shrink-0">
@@ -31,6 +33,8 @@
                                         <h1 class="text-gray-800 font-semibold">
                                             ScholarSpace Support
                                         </h1>
+                                        <div class="text-xs" id="typingStatus">
+                                        </div>
                                     </div>
                                 @endif
                             </div>
