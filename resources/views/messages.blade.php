@@ -154,5 +154,13 @@
         ensureScrolledToBottom();
     });
 
+
+    let server = 'http://localhost:3000'
+    fetch(`${server}/online-users`)
+        .then(response => response.json())
+        .then(data => {
+            Livewire.dispatch('connectedUsers', { onlineUsers: data });
+        });
+
 </script>
 @endscript

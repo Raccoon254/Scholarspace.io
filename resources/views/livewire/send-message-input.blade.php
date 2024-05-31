@@ -63,14 +63,6 @@
     let authUser = '{{ auth()->user() }}';
     authUser = JSON.parse(authUser.replace(/&quot;/g, '"'));
 
-    socket.on('connect', () => {
-        socket.emit('userConnected', authUser);
-    });
-
-    socket.on('disconnect', () => {
-        socket.emit('userDisconnected', authUser);
-    });
-
     socket.on('receiveMessage', (message) => {
         console.log('New message received:', message);
         // Emit refresh messages event

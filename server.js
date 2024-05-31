@@ -10,6 +10,13 @@ const io = new Server(server, {
     }
 });
 
+//allow cors on app
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
+
 // Store connected users and their socket IDs
 const connectedUsers = new Map();
 
@@ -64,6 +71,10 @@ io.on('connection', (socket) => {
             io.emit('connectedUsers', Array.from(connectedUsers.values()));
         }
     });
+});
+
+app.get('/online-users', (req, res) => {
+    res.json(Array.from(connectedUsers.values()));
 });
 
 server.listen(3000, () => {
