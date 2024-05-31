@@ -118,6 +118,9 @@
     Livewire.on('chatOpened', (event) => {
         setTimeout(() => {
             const messageContainer = document.getElementById('messageContainer');
+            if (!messageContainer) {
+                return;
+            }
             messageContainer.scrollTo({
                 top: messageContainer.scrollHeight,
                 behavior: 'smooth',

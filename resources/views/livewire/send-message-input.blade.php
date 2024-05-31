@@ -71,8 +71,6 @@
         socket.emit('userDisconnected', authUser);
     });
 
-
-
     socket.on('receiveMessage', (message) => {
         console.log('New message received:', message);
         // Emit refresh messages event
@@ -110,10 +108,10 @@
         document.getElementById('typingStatus').innerText = '';
     });
 
-    socket.on('connectedUsers', (data) => {
-        console.log('Connected users:', data);
-        Livewire.dispatch('connectedUsers', { onlineUsers : data });
-    });
+    // socket.on('connectedUsers', (data) => {
+    //     console.log('Connected users:', data);
+    //     Livewire.dispatch('connectedUsers', { onlineUsers : data });
+    // });
 
     Livewire.on('messagesSent', () => {
         document.getElementById('messageInput').value = '';

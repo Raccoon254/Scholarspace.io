@@ -28,5 +28,15 @@
         </div>
         <script defer src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
         <script defer src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener('load', function () {
+                const socket = io('http://localhost:3000');
+
+                socket.on('connectedUsers', (data) => {
+                    console.log('Connected users:', data);
+                    Livewire.dispatch('connectedUsers', {onlineUsers: data});
+                });
+            })
+        </script>
     </body>
 </html>
