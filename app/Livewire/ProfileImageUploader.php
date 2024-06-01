@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -22,8 +23,18 @@ class ProfileImageUploader extends Component
 
     public function save(): void
     {
+        sleep(1);
+        if (auth()->user()->profile_photo) {
+            $fullPath = Storage::path(auth()->user()->profile_photo);
+            // Replace the path to the storage folder
+            $fullPath = str_replace('storage/app/storage/', 'storage/app/public/', $fullPath);
+            if (file_exists($fullPath)) {
+                unlink($fullPath);
+            } else {
+                dd('File does not exist.'. $fullPath);
+            }
+        }
         $path = $this->profilePhoto->store('public/' . auth()->user()->name . '/profile');
-        sleep(5);
         auth()->user()->update(['profile_photo' => $path]);
         $this->profilePhoto = null;
         $this->dispatch('profile-photo-updated');
