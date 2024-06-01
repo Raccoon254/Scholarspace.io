@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
@@ -31,7 +32,7 @@ class ProfileImageUploader extends Component
             if (file_exists($fullPath)) {
                 unlink($fullPath);
             } else {
-                dd('File does not exist.'. $fullPath);
+                Log::error('File not found: ' . $fullPath . ' for user: ' . auth()->user()->name);
             }
         }
         $path = $this->profilePhoto->store('public/' . auth()->user()->name . '/profile');
