@@ -15,7 +15,7 @@ class Messages extends Component
     public mixed $loggedInUser;
     public string $currentUserRole;
     public string $search = '';
-    public User $selectedUser;
+    public ?User $selectedUser = null;
     public $messages;
     public int $unreadMessages;
     public array $attachments = [];
@@ -41,6 +41,8 @@ class Messages extends Component
     #[On('messagesSent')]
     public function messagesSent(): void
     {
+        if($this->selectedUser == null)
+            return;
         $this->messages = $this->loggedInUser->messages()->where('receiver_id', $this->selectedUser->id)->orWhere('sender_id', $this->selectedUser->id)->orderBy('created_at', 'asc')->get();
     }
 

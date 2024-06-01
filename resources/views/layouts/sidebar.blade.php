@@ -25,7 +25,7 @@
                     <span>
                         {{ auth()->user()->role == 'client' ? 'Support' : 'Messages' }}
                     </span>
-                    @if(auth()->user()->hasUnreadMessages)
+                    @if($hasMessages)
                         <span class="custom-badge"></span>
                     @endif
                 </a>

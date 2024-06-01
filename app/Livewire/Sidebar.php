@@ -7,21 +7,9 @@ use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class Navbar extends Component
+class Sidebar extends Component
 {
-    public $hasNotifications = false;
     public $hasMessages = false;
-
-    #[On('profile-photo-updated')]
-    public function mount(): void
-    {
-        $user = Auth::user();
-        if ($user) {
-            $this->hasMessages = $user->hasUnreadMessages ?? false;
-            //TODO: Add hasUnreadNotifications attribute to the User model
-            $this->hasNotifications = $user->hasUnreadNotifications ?? false;
-        }
-    }
 
     #[On('received-message')]
     public function receivedMessage(): void
@@ -38,6 +26,6 @@ class Navbar extends Component
 
     public function render(): View
     {
-        return view('layouts.navigation');
+        return view('layouts.sidebar');
     }
 }

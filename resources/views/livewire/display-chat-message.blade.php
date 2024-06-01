@@ -16,8 +16,7 @@
                 @foreach($message->attachments as $attachment)
                     <div class="min-w-[128px]">
                         <div
-                            onclick="viewAttachment('{{ $attachment->type }}', '{{ Storage::url($attachment->path) }}')"
-                            class="bg-gray-200 rounded-xl ring-1 ring-blue-100 overflow-hidden relative">
+                            class="attachmentContainer container-{{ $attachment->id }} bg-gray-200 rounded-xl ring-1 ring-blue-100 overflow-hidden relative" data-type="{{ $attachment->type }}" data-path="{{ Storage::url($attachment->path) }}" >
                             @if (in_array($attachment->type, ['image/jpeg', 'image/png', 'image/gif']))
                                 <img
                                     src="{{ Storage::url($attachment->path) }}"
@@ -50,7 +49,7 @@
                                 </div>
                             @endif
                             <a href="{{ Storage::url($attachment->path) }}"
-                               class="absolute top-0 btn btn-xs btn-circle btn-ghost right-0 mt-1 mr-1 bg-gray-500 text-white text-xs px-2 py-1">
+                               class="absolute top-0 btn btn-xs btn-circle btn-ghost bg-blue-500 right-0 mt-1 mr-1 text-white hover:ring-1 ring-blue-500 text-xs px-2 py-1">
                                 <i class="fas fa-download"></i>
                             </a>
                         </div>
@@ -88,3 +87,18 @@
         @endif
     </div>
 </div>
+@script
+<script>
+    let containers = document.querySelectorAll('.attachmentContainer');
+    containers.forEach(container => {
+        container.addEventListener('click', () => {
+            let type = container.getAttribute('data-type');
+            let path = container.getAttribute('data-path');
+            viewAttachment(type, path);
+        });
+    });
+    function viewAttachment(type, path) {
+        alert('View attachment: ' + path)
+    }
+</script>
+@endscript

@@ -19,7 +19,7 @@
 <div class="min-h-screen bg-white">
     <livewire:navbar/>
     <div class="flex relative gap-2 p-2">
-        @include('layouts.sidebar')
+        <livewire:sidebar/>
         <!-- Page Content -->
         <main class="w-full bg-gray-100 overflow-clip rounded-[16px]">
             {{ $slot }}
@@ -50,14 +50,14 @@
     });
 
     socket.on('receiveMessage', (message) => {
-        console.log('New message received:', message);
         Livewire.dispatch('messagesSent');
         Livewire.dispatch('received-message');
+        // Play notification sound
+        const audio = new Audio('/sounds/message-alert.mp3');
+        audio.play();
     });
 
     socket.on('typing', (from) => {
-        console.log('Typing event from:', from);
-        // Update the UI to show typing status
         showTypingStatus(from);
     });
 
@@ -68,9 +68,8 @@
 
         // Hide typing status after a short delay
         setTimeout(() => {
-            let currentTime = new Date().getTime();
             typingElement.innerText = ''
-        }, 4000);
+        }, 2000);
     }
 
 </script>
