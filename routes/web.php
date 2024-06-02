@@ -41,4 +41,5 @@ Route::post('/contact', [PagesController::class, 'submit'])->name('contact.submi
 Route::get('/how-it-works', [PagesController::class, 'howItWorks'])->name('how-it-works');
 Route::get('/services', [PagesController::class, 'services'])->name('services');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
+Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
 require __DIR__.'/auth.php';
