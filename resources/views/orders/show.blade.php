@@ -61,7 +61,7 @@
                                 </span>
                         </div>
                     @else
-                            <table class="table my-4 ring-1 ring-gray-200 overflow-clip">
+                            <table class="table my-4 ring-1 ring-gray-50 rounded-md overflow-clip">
                                 <thead>
                                 <tr class="border-gray-100">
                                     @foreach(['title' => 'Orders', 'description' => 'Description', 'total_price' => 'Total Price', 'status' => 'Status'] as $field => $label)
@@ -77,20 +77,27 @@
                                 </thead>
                                 <tbody>
                                 @foreach($orders as $order)
-                                    <tr>
-                                        <td class="border-gray-200 border-b">{{ $order->title }}</td>
-                                        <td class="border-gray-200 border-b">{{ $order->description }}</td>
-                                        <td class="border-gray-200 border-b">$ {{ $order->total_price }}</td>
-                                        <td class="border-gray-200 border-b">
-                                            <span class="rounded-full px-2 py-1 {{ $order->getStatusClass() }} text-white">
+                                    <tr class="border-b border-gray-100">
+                                        <td class="">{{ $order->title }}</td>
+                                        <td class="">{{ $order->description }}</td>
+                                        <td class="">$ {{ $order->total_price }}</td>
+                                        <td class="">
+                                            <span class="rounded-md grid place-items-center px-2 py-1 {{ $order->getStatusClass() }} text-white">
                                                 {{ $order->status }}
                                             </span>
                                         </td>
-                                        <td class="border-gray-200 border-b">
+                                        <td class="">
                                             <span
-                                                class="rounded-full px-2 py-1 {{ $order->isPaid() ? $order->payment->getStatusClass() : 'bg-red-500' }} text-white">
+                                                class="rounded-md place-items-center px-2 py-1 {{ $order->isPaid() ? $order->payment->getStatusClass() : 'bg-red-500' }} text-white">
                                                 {{ $order->isPaid() ? $order->payment->status : 'Not Paid' }}
                                             </span>
+                                            <!-- Show payment button if order is not paid -->
+                                            @if(!$order->isPaid())
+                                                <button wire:click="payOrder({{ $order->id }})"
+                                                        class="p-2 mx-4 px-4 bg-blue-500 text-white font-semibold rounded-md">
+                                                    Pay
+                                                </button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
