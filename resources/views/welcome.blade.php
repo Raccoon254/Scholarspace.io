@@ -19,12 +19,14 @@
     <div class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div class="flex px-1 sm:px-4 lg:px-8 flex-col md:flex-row items-center justify-between">
             <div class="text-center w-2/3 relative md:text-left">
-                <img src="{{ asset('images/svg2.png') }}" alt="Hero" class="w-64 -top-16 opacity-50 right-0 absolute rounded-lg">
+                <img src="{{ asset('images/svg2.png') }}" alt="Hero"
+                     class="w-64 -top-16 opacity-50 right-0 absolute rounded-lg">
                 <div class="top-0 left-0 w-full h-full flex flex-col justify-center">
                     <section class="text-center mb-4 md:text-left">
                         <header class="mb-4">
                             <h1 class="text-4xl font-bold text-black/90 leading-snug">
-                                Premium <span class="text-red-500">Essay Writing</span> <br> Services for College Students
+                                Premium <span class="text-red-500">Essay Writing</span> <br> Services for College
+                                Students
                             </h1>
                         </header>
                         <p class="text-lg text-black/50 leading-relaxed">
@@ -113,6 +115,47 @@
             @endforeach
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Scholarspace</h3>
+                    <p class="text-sm text-gray-300">We offer premium essay writing services for college students. Our
+                        professional writers are here to help you with your assignments.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="text-sm">
+                        <li><a href="#" class="hover:text-blue-500">Home</a></li>
+                        <li><a href="#" class="hover:text-blue-500">How It Works</a></li>
+                        <li><a href="#" class="hover:text-blue-500">Services</a></li>
+                        <li><a href="#" class="hover:text-blue-500">About Us</a></li>
+                        <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p class="text-sm flex gap-4 text-gray-300">
+                        <i class="fas fa-map-marker"></i>
+                        109 Nairobi [Kenya]
+                    </p>
+                    <p class="text-sm flex gap-4 text-gray-300">
+                        <i class="fas fa-phone"></i>
+                        254758481320
+                    </p>
+                    <p class="text-sm flex gap-4 text-gray-300"> <i class="fas fa-envelope"></i>
+                        <a href="mailto:tomsteve187@gmail.com" class="hover:text-blue-500">hello@scholarspace.io</a>
+                    </p>
+                    <p class="text-sm flex gap-4 text-gray-300">
+                        <i class="fas fa-clock"></i>
+                        Available 24/7
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 </body>
 </html>
