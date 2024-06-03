@@ -4,10 +4,13 @@
         <i class="fas h-4 w-4 center fa-info-circle"></i>
     </a>
 
-    <h3 class="text-xl font-semibold mb-6 text-center">Order Price Calculator</h3>
+    <h3 class="text-xl font-semibold mb-6 text-center">
+        Order Price Calculator
+    </h3>
 
     <div class="mb-4">
         <input type="text" wire:model="topic" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Topic">
+        @error('topic') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
     </div>
 
     <div class="mb-4">
@@ -19,14 +22,19 @@
                 <option value="{{ $subject }}">{{ $subject }}</option>
             @endforeach
         </select>
+        @error('subject') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
     </div>
 
     <div class="mb-4">
         <input type="date" wire:model.live="deadline" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Deadline">
+        @error('deadline') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
     </div>
 
     <div class="mb-4 flex items-center">
-        <input type="number" wire:model.live="wordCount" class="flex-grow p-2 border border-gray-300 w-1/2 rounded-lg" placeholder="No of {{ $isWords ? 'Words' : 'Pages' }}">
+        <div class="flex flex-col w-full">
+            <input type="number" wire:model.live="wordCount" class="flex-grow p-2 border border-gray-300 rounded-lg" placeholder="No of {{ $isWords ? 'Words' : 'Pages' }}">
+            @error('wordCount') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
+        </div>
         <div class="ml-2 flex">
             <button wire:click="$set('isWords', true)" class="px-3 py-2 border {{ $isWords ? 'bg-green-500 text-white border-green-500' : 'border-gray-300' }} rounded-l-lg">Words</button>
             <button wire:click="$set('isWords', false)" class="px-3 py-2 border {{ !$isWords ? 'bg-green-500 text-white border-green-500' : 'border-gray-300' }} rounded-r-lg">

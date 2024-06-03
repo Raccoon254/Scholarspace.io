@@ -3,6 +3,7 @@
         <div class="flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-black/90">Scholarspace</a>
             <div class="hidden md:flex items-center space-x-4">
+                <a href="{{ route('home') }}" class="text-black/50 hover:text-black">Home</a>
                 <a href="{{ route('how-it-works') }}" class="text-black/50 hover:text-black">How It Works</a>
                 <a href="{{ route('services') }}" class="text-black/50 hover:text-black">Services</a>
                 <a href="{{ route('about') }}"

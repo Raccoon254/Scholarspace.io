@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Illuminate\Support\Facades\Date;
 use Illuminate\View\View;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use function PHPUnit\Framework\isFalse;
 
@@ -42,8 +43,14 @@ class PriceCalculator extends Component
 
     public function placeOrder(): void
     {
-        // Place order modal pre-filled with the data
-        // Load the modal
+        $this->validate([
+            'topic' => 'required|string',
+            'subject' => 'required|string',
+            'deadline' => 'required|date',
+            'wordCount' => 'required|integer|min:1',
+        ]);
+
+        $this->price = $this->calculateRate();
     }
 
     public function render(): View
