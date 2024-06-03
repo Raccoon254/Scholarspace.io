@@ -9,6 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -65,12 +66,15 @@
                 $colors = ['text-blue-500', 'text-green-500', 'text-yellow-500', 'text-red-500'];
             @endphp
             @foreach($process_steps as $item)
-                <div class="bg-white rounded-lg shadow-md shadow-gray-200 p-6">
+                <div class="bg-white rounded-lg shadow-md shadow-gray-200 p-6 hover:scale-105 transition cursor-pointer hover:ring ring-gray-300">
                     <i class="{{ $item['icon'] }} fa-3x {{ $colors[$loop->index % 4] }} mb-4"></i>
                     <h3 class="text-xl font-bold text-black/90 mb-2">{{ $item['title'] }}</h3>
                     <p class="text-black/50">{{ $item['text'] }}</p>
                 </div>
             @endforeach
+        </div>
+        <div class="text-black/80 text-center mt-8">
+            For more detailed information, visit our <a href="{{ route('how-it-works') }}" class="text-blue-500 hover:underline">How It Works</a>
         </div>
     </div>
 
@@ -100,7 +104,7 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach($testimonials as $testimonial)
-                <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="bg-white rounded-lg shadow-md p-6 hover:scale-105 transition cursor-pointer hover:ring ring-gray-300">
                     <div class="flex items-center mb-4">
                         <img src="{{ asset($testimonial['avatar']) }}" alt="Avatar"
                              class="w-12 h-12 rounded-full object-cover mr-4"
