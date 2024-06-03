@@ -19,18 +19,18 @@
 <div class="bg-gray-50">
     <div class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div class="flex px-1 sm:px-4 lg:px-8 flex-col md:flex-row items-center justify-between">
-            <div class="text-center w-2/3 relative md:text-left">
+            <div class="text-center sm:w-2/3 relative md:text-left">
                 <img src="{{ asset('images/svg2.png') }}" alt="Hero"
-                     class="w-64 -top-16 opacity-50 right-0 absolute rounded-lg">
+                     class="w-64 hidden md:block -top-16 opacity-50 right-0 absolute rounded-lg">
                 <div class="top-0 left-0 w-full h-full flex flex-col justify-center">
-                    <section class="text-center mb-4 md:text-left">
+                    <section class="mb-4 text-left">
                         <header class="mb-4">
-                            <h1 class="text-4xl font-bold text-black/90 leading-snug">
+                            <h1 class="text-2xl sm:text-4xl font-bold text-black/90 leading-snug">
                                 Premium <span class="text-red-500">Essay Writing</span> <br> Services for College
                                 Students
                             </h1>
                         </header>
-                        <p class="text-lg text-black/50 leading-relaxed">
+                        <p class="text-md sm:text-lg text-black/50 leading-relaxed">
                             Struggling with essays? Our <span
                                 class="font-semibold text-blue-500">professional writers</span> are here to help. <br>
                             We offer <span class="font-semibold text-green-500">top-notch, plagiarism-free essays</span>
