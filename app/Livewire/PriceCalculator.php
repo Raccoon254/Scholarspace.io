@@ -2,20 +2,11 @@
 
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\Date;
 use Illuminate\View\View;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
-use function PHPUnit\Framework\isFalse;
 
 class PriceCalculator extends Component
 {
-    public string $topic;
-    public string $subject;
-    public string $deadline;
-    public int $wordCount;
-    public bool $isWords = true;
-    public int $price = 0;
 
     public array $subjects = [
         'Engineering',
@@ -41,47 +32,9 @@ class PriceCalculator extends Component
         'Other'
     ];
 
-    public function placeOrder(): void
-    {
-        $this->validate([
-            'topic' => 'required|string',
-            'subject' => 'required|string',
-            'deadline' => 'required|date',
-            'wordCount' => 'required|integer|min:1',
-        ]);
-
-        $this->price = $this->calculateRate();
-    }
 
     public function render(): View
     {
-        $rate = $this->calculateRate();
-        $wordCount = $this->wordCount ?? 0;
-        $deadline = $this->getDeadline();
-
-        return view('livewire.price-calculator', [
-            'calculated_price' => $wordCount * $rate
-        ]);
-    }
-
-    private function calculateRate(): float
-    {
-        $baseRate = $this->isWords ? 15 / 500 : 15.00;
-        $deadline = $this->getDeadline();
-
-        if ($deadline == Date::now()->format('Y-m-d')) {
-            return $baseRate + $baseRate * 0.10;
-        } elseif ($deadline == Date::now()->addDay()->format('Y-m-d')) {
-            return $baseRate + $baseRate * 0.05;
-        } elseif ($deadline == Date::now()->addDays(2)->format('Y-m-d')) {
-            return $baseRate;
-        }
-
-        return $baseRate;
-    }
-
-    private function getDeadline(): string
-    {
-        return $this->deadline ?? Date::now()->addDays(4)->format('Y-m-d');
+        return view('livewire.price-calculator');
     }
 }
