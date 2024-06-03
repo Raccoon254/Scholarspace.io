@@ -137,18 +137,18 @@
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-4">Contact Us</h3>
-                    <p class="text-sm flex gap-4 text-gray-300">
+                    <p class="text-sm flex gap-4 items-center mb-1 text-gray-300">
                         <i class="fas fa-map-marker"></i>
                         109 Nairobi [Kenya]
                     </p>
-                    <p class="text-sm flex gap-4 text-gray-300">
+                    <p class="text-sm flex gap-4 items-center mb-1 text-gray-300">
                         <i class="fas fa-phone"></i>
                         254758481320
                     </p>
-                    <p class="text-sm flex gap-4 text-gray-300"> <i class="fas fa-envelope"></i>
+                    <p class="text-sm flex gap-4 items-center mb-1 text-gray-300"> <i class="fas fa-envelope"></i>
                         <a href="mailto:tomsteve187@gmail.com" class="hover:text-blue-500">hello@scholarspace.io</a>
                     </p>
-                    <p class="text-sm flex gap-4 text-gray-300">
+                    <p class="text-sm flex gap-4 items-center mb-1 text-gray-300">
                         <i class="fas fa-clock"></i>
                         Available 24/7
                     </p>
