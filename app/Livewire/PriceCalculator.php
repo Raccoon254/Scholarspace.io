@@ -3,11 +3,14 @@
 namespace App\Livewire;
 
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class PriceCalculator extends Component
 {
-
+    public $topic;
+    public $subject;
+    public $word_count;
     public array $subjects = [
         'Engineering',
         'Agriculture',
@@ -32,6 +35,16 @@ class PriceCalculator extends Component
         'Other'
     ];
 
+    function placeOrder()
+    {
+        dd($this->topic, $this->subject);
+    }
+
+    #[On('toggleWordMode')]
+    function toggleWordMode($wordMode)
+    {
+        dd($wordMode);
+    }
 
     public function render(): View
     {

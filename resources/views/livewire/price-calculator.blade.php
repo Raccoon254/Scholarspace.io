@@ -10,7 +10,7 @@
 
     <div class="mb-4">
         <input type="text" id="topic" wire:model="topic" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Topic">
-        @error('topic') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
+        @error('topic') <span class="text-xs text-red-500">{{ $message }}</span>@enderror
     </div>
 
     <div class="mb-4">
@@ -32,7 +32,7 @@
 
     <div class="mb-4 flex items-center">
         <div class="flex flex-col w-full">
-            <input type="number" id="wordCount" wire:model.live="wordCount" class="flex-grow p-2 border border-gray-300 rounded-lg" placeholder="No of Words/Pages" oninput="calculatePrice()">
+            <input type="number" id="wordCount" wire:model.live="word_count" class="flex-grow p-2 border border-gray-300 rounded-lg" placeholder="No of Words/Pages" oninput="calculatePrice()">
             @error('wordCount') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="ml-2 flex">
@@ -67,6 +67,8 @@
         document.getElementById('pagesButton').classList.toggle('bg-green-500', !isWords);
         document.getElementById('pagesButton').classList.toggle('border-green-500', !isWords);
         calculatePrice();
+
+        Livewire.dispatch('toggleWordMode', wordsMode)
     }
 
     function calculatePrice() {
