@@ -36,8 +36,10 @@
             @error('wordCount') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="ml-2 flex">
-            <button wire:click="setCalculationMode(true)" class="px-3 py-2 border bg-green-500 border-green-500 rounded-l-lg" id="wordsButton">Words</button>
-            <button wire:click="setCalculationMode(false)" class="px-3 py-2 border border-gray-300 rounded-r-lg" id="pagesButton">Pages</button>
+            <button wire:click="setCalculationMode(true)" class="px-3 py-2 border {{ $isWords ? 'bg-green-500 text-white border-green-500' : 'border-gray-300' }}
+            rounded-l-lg" id="wordsButton">Words</button>
+            <button wire:click="setCalculationMode(false)" class="px-3 py-2 border {{ $isWords ? 'border-gray-300' : 'bg-green-500 text-white border-green-500' }}
+            rounded-r-lg" id="pagesButton">Pages</button>
         </div>
     </div>
 
@@ -46,9 +48,14 @@
             <span>
                 Total Price:
             </span>
-            <span class="text-green-500 h-6" id="totalPrice">
-                ${{ number_format($totalPrice, 2) }}
+            @if($price < 1)
+                <span class="loading loading-spinner h-6"></span>
+                <span>Calculating...</span>
+            @else
+                <span class="text-green-500 h-6" id="totalPrice">
+                ${{ number_format($price, 2) }}
             </span>
+            @endif
         </div>
     </div>
 

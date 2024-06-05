@@ -72,9 +72,16 @@ class PriceCalculator extends Component
 
     public function render(): View
     {
+        try {
+            $pages = $this->isWords ? ceil((int)($this->word_count ?? 0) / 275) : (int)($this->word_count ?? 0);
+            $this->totalPrice = $this->isWords ? ceil((int)($this->word_count ?? 0) * 0.054545) : $pages * 15;
+        } catch (\Exception $e) {
+            $this->totalPrice = 0;
+        }
+
         return view('livewire.price-calculator',
-        [
-            'totalPrice' => $this->totalPrice
-        ]);
+            [
+                'price' => $this->totalPrice
+            ]);
     }
 }
