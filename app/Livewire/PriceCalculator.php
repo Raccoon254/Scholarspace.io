@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use Illuminate\View\View;
-use Livewire\Attributes\On;
 use Livewire\Component;
 
 class PriceCalculator extends Component
@@ -11,6 +10,10 @@ class PriceCalculator extends Component
     public $topic;
     public $subject;
     public $word_count;
+    public $totalPrice = 0.00;
+    public $showModal = false;
+    public $isWords = true;
+
     public array $subjects = [
         'Engineering',
         'Agriculture',
@@ -35,19 +38,43 @@ class PriceCalculator extends Component
         'Other'
     ];
 
-    function placeOrder()
+    public function setCalculationMode($wordsMode): void
     {
-        dd($this->topic, $this->subject);
+        $this->isWords = $wordsMode;
+        $this->calculatePrice();
+        $this->dispatch('toggleWordMode', $wordsMode);
     }
 
-    #[On('toggleWordMode')]
-    function toggleWordMode($wordMode)
+    public function calculatePrice(): void
     {
-        dd($wordMode);
+        $pages = $this->isWords ? ceil($this->word_count / 275) : $this->word_count;
+        $this->totalPrice = $this->isWords ? ceil($this->word_count * 0.054545) : $pages * 15;
+    }
+
+    public function showPriceModal(): void
+    {
+        $this->calculatePrice();
+        $this->showModal = true;
+    }
+
+    public function closeModal(): void
+    {
+        $this->showModal = false;
+    }
+
+    public function placeOrder(): void
+    {
+        // Logic to create the order
+        $this->reset(['topic', 'subject', 'word_count']);
+        $this->closeModal();
+        // dd($this->topic, $this->subject, $this->word_count);
     }
 
     public function render(): View
     {
-        return view('livewire.price-calculator');
+        return view('livewire.price-calculator',
+        [
+            'totalPrice' => $this->totalPrice
+        ]);
     }
 }

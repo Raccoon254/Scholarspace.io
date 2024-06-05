@@ -32,12 +32,12 @@
 
     <div class="mb-4 flex items-center">
         <div class="flex flex-col w-full">
-            <input type="number" id="wordCount" wire:model.live="word_count" class="flex-grow p-2 border border-gray-300 rounded-lg" placeholder="No of Words/Pages" oninput="calculatePrice()">
+            <input type="number" id="wordCount" wire:model.live="word_count" class="flex-grow p-2 border border-gray-300 rounded-lg" placeholder="No of Words/Pages">
             @error('wordCount') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="ml-2 flex">
-            <button onclick="setCalculationMode(true)" class="px-3 py-2 border bg-green-500 border-green-500 rounded-l-lg" id="wordsButton">Words</button>
-            <button onclick="setCalculationMode(false)" class="px-3 py-2 border border-gray-300 rounded-r-lg" id="pagesButton">Pages</button>
+            <button wire:click="setCalculationMode(true)" class="px-3 py-2 border bg-green-500 border-green-500 rounded-l-lg" id="wordsButton">Words</button>
+            <button wire:click="setCalculationMode(false)" class="px-3 py-2 border border-gray-300 rounded-r-lg" id="pagesButton">Pages</button>
         </div>
     </div>
 
@@ -47,37 +47,44 @@
                 Total Price:
             </span>
             <span class="text-green-500 h-6" id="totalPrice">
-                $0.00
+                ${{ number_format($totalPrice, 2) }}
             </span>
         </div>
     </div>
 
-    <button wire:click="placeOrder" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg">
-        Order Now
+    <button wire:click="showPriceModal" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg">
+        Calculate Price
     </button>
 </div>
 
+<!-- Modal -->
+@if($showModal)
+    <div class="fixed z-10 inset-0 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="bg-white p-6 rounded-lg shadow-lg relative w-full max-w-md">
+                <h3 class="text-lg font-semibold mb-4">Order Price</h3>
+                <p>Total Price: ${{ number_format($totalPrice, 2) }}</p>
+                <p>Topic: {{ $topic }}</p>
+                <p>Subject: {{ $subject }}</p>
+                <p>Word Count: {{ $word_count }}</p>
+                <button wire:click="placeOrder" class="w-full py-2 mt-4 bg-green-500 text-white font-semibold rounded-lg">
+                    Create Order
+                </button>
+                <button wire:click="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800">
+                    &times;
+                </button>
+            </div>
+        </div>
+    </div>
+@endif
+
 <script>
-    let isWords = true;
-
-    function setCalculationMode(wordsMode) {
-        isWords = wordsMode;
-        document.getElementById('wordsButton').classList.toggle('bg-green-500', isWords);
-        document.getElementById('wordsButton').classList.toggle('border-green-500', isWords);
-        document.getElementById('pagesButton').classList.toggle('bg-green-500', !isWords);
-        document.getElementById('pagesButton').classList.toggle('border-green-500', !isWords);
-        calculatePrice();
-
-        Livewire.dispatch('toggleWordMode', wordsMode)
-    }
-
-    function calculatePrice() {
-        const wordCount = document.getElementById('wordCount').value;
-        const pages = isWords ? Math.ceil(wordCount / 275) : wordCount;
-        let price = pages * 15;
-        if(isWords){
-            price = Math.ceil(wordCount*0.054545)
-        }
-        document.getElementById('totalPrice').innerText = `$${price.toFixed(2)}`;
-    }
+    document.addEventListener('livewire:load', function () {
+        Livewire.on('toggleWordMode', mode => {
+            document.getElementById('wordsButton').classList.toggle('bg-green-500', mode);
+            document.getElementById('wordsButton').classList.toggle('border-green-500', mode);
+            document.getElementById('pagesButton').classList.toggle('bg-green-500', !mode);
+            document.getElementById('pagesButton').classList.toggle('border-green-500', !mode);
+        });
+    });
 </script>
