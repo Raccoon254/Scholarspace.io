@@ -12,19 +12,26 @@
                 <a href="{{ route('register') }}" class="bg-green-500 text-black/90 hover:bg-green-600 font-semibold py-2 px-4 rounded-md">Register</a>
             </div>
             <div class="md:hidden">
-                <button id="menu-button">
+                <button class="text-blue-500" id="menu-button">
                     <i id="menu-icon" class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
-        <div id="menu" class="md:hidden flex flex-col gap-1 w-full p-1">
-            <a href="{{ route('home') }}" class="block py-1 text-black/50 hover:text-black">Home</a>
-            <a href="{{ route('how-it-works') }}" class="block py-1 text-black/50 hover:text-black">How It Works</a>
-            <a href="{{ route('services') }}" class="block py-1 text-black/50 hover:text-black">Services</a>
-            <a href="{{ route('about') }}" class="block py-1 text-black/50 hover:text-black">About Us</a>
-            <a href="{{ route('contact') }}" class="block py-1 text-black/50 hover:text-black">Contact</a>
-            <a href="{{ route('login') }}" class="block py-1 px-2 bg-blue-500 text-white/90 hover:bg-blue-600 font-semibold rounded-md">Login</a>
-            <a href="{{ route('register') }}" class="block py-1 px-2 bg-green-500 text-black/90 hover:bg-green-600 font-semibold rounded-md">Register</a>
+        <div id="menu" class="md:hidden hidden flex-col gap-1 mt-4 w-full p-1">
+            <div class="mb-4 text-black/80 text-lg font-semibold">
+                Navigation Links
+            </div>
+            <a href="{{ route('home') }}" class="block bg-gray-50 mb-2 px-4 rounded-md py-2 border-blue-200 border text-black/50 hover:text-black">Home</a>
+            <a href="{{ route('how-it-works') }}" class="block bg-gray-50 mb-2 px-4 rounded-md py-2 border-blue-200 border text-black/50 hover:text-black">How It Works</a>
+            <a href="{{ route('services') }}" class="block bg-gray-50 mb-2 px-4 rounded-md py-2 border-blue-200 border text-black/50 hover:text-black">Services</a>
+            <a href="{{ route('about') }}" class="block bg-gray-50 mb-2 px-4 rounded-md py-2 border-blue-200 border text-black/50 hover:text-black">About Us</a>
+            <a href="{{ route('contact') }}" class="block bg-gray-50 mb-2 px-4 rounded-md py-2 border-blue-200 border text-black/50 hover:text-black">Contact</a>
+            <a href="{{ route('login') }}" class="flex items-center gap-2 py-2 mb-2 px-4 bg-blue-500 text-white/90 hover:bg-blue-600 font-semibold rounded-md">
+                Login <i class="fas fa-user-circle"></i>
+            </a>
+            <a href="{{ route('register') }}" class="flex items-center gap-2 py-2 px-4 bg-green-500 text-black/90 hover:bg-green-600 font-semibold rounded-md">
+                Register <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </div>
 </nav>
