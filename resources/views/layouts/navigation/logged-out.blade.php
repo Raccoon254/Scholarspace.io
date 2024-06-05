@@ -1,7 +1,7 @@
 <nav class="bg-gray-100">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div class="flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-black/90">Scholarspace</a>
+            <a href="{{ route('home')  }}" class="text-2xl font-bold text-black/90">Scholarspace</a>
             <div class="hidden md:flex items-center space-x-4">
                 <a href="{{ route('home') }}" class="text-black/50 hover:text-black">Home</a>
                 <a href="{{ route('how-it-works') }}" class="text-black/50 hover:text-black">How It Works</a>
