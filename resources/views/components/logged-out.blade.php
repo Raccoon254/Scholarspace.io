@@ -20,5 +20,6 @@
 <body class="font-sans min-h-screen bg-gray-50 antialiased">
 @include('layouts.navigation.logged-out')
 {{ $slot }}
+@include('layouts.footer')
 </body>
 </html>
