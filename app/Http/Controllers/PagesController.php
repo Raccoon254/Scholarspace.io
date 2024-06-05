@@ -123,12 +123,11 @@ class PagesController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'user_message' => 'required',
+            'user_message' => 'required|min:10',
         ]);
 
         // Send the email
         Mail::send('emails.contact', $request->all(), function ($message) {
-            //email from env
             $owner_email = env('OWNER_EMAIL' ?? 'tomsteve187@gmail.com');
             $message->to($owner_email)->subject('Contact Form Submission');
         });

@@ -28,7 +28,7 @@
                     </div>
                     <div class="mb-4">
                         <label for='email' class="block text-black/70 font-semibold mb-2">Email</label>
-                        <x-text-input id='email' name= 'email' :required="true" class="w-full" />
+                        <x-text-input id='email' name='email' :required="true" class="w-full" />
                     </div>
                     <div class="mb-4">
                         <label for='message' class="block text-black/70 font-semibold mb-2">Message</label>
