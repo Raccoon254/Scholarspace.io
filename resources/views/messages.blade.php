@@ -66,22 +66,22 @@
                 </div>
 
                 @if($currentUserRole == 'writer')
-                    <div class="md:w-1/3 p-3 flex overflow-y-auto flex-col gap-3 rounded-lg">
+                    <div class="absolute right-0 md:relative md:w-1/3 flex overflow-y-auto flex-col gap-3 rounded-lg">
                         <!-- All users drawer-->
                         <div class="drawer lg:drawer-open">
                             <input id="my-drawer-clients" type="checkbox" class="drawer-toggle"/>
-                            <div class="drawer-content flex flex-col items-center justify-center">
+                            <div class="drawer-content md:w-0 flex flex-col items-center justify-center">
                                 <!-- Page content here -->
                                 <label for="my-drawer-clients"
-                                       class="btn btn-circle text-white btn-primary drawer-button lg:hidden">
+                                       class="btn btn-circle text-white btn-primary drawer-button md:hidden">
                                     <i class="fas fa-users"></i>
                                 </label>
                             </div>
-                            <div class="drawer-side">
+                            <div class="drawer-side md:w-full">
                                 <label for="my-drawer-clients" aria-label="close sidebar"
                                        class="drawer-overlay"></label>
                                 <!-- Search -->
-                                <div class="bg-white p-2 pt-4 flex flex-col gap-3">
+                                <div class="bg-white p-2 pt-4 md:pt-2 flex flex-col gap-3">
                                     <div class="flex md:sticky flex-col rounded-lg">
                                         <div class="flex w-full relative gap-3 bg-gray-100 rounded-lg">
                                             <input name="search" id="searchInput" type="text" wire:model.live="search"
@@ -95,7 +95,6 @@
                                     </div>
                                     <div
                                         class="h-[98vh] md:h-[76vh] flex overflow-y-auto p-1 flex-col gap-3 rounded-lg">
-
                                         @foreach($clients as $user)
                                             <div class="flex gap-3 cursor-pointer p-2 md:bg-gray-100 w-full"
                                                  style="border-radius: 20rem 100px 100px 20rem"
