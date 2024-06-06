@@ -9,7 +9,7 @@
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 gap-4 lg:mx-4 h-full flex-row">
             <div class="flex gap-2 bg-white w-full rounded-lg">
-                <div class="w-2/3 h-[84vh] bg-gray-100 m-2 rounded-md">
+                <div class="w-full md:w-2/3 h-[84vh] bg-gray-100 m-2 rounded-md">
                     @if($selectedUser)
                         <div class="flex flex-col gap-3 p-3 h-full">
                             <div class="flex gap-3 border-b pb-3 items-center">
@@ -47,7 +47,8 @@
                                 @else
                                     <div id="messageContainer" class="space-y-4 overflow-y-auto">
                                         @foreach($messages as $message)
-                                            <livewire:DisplayChatMessage :message="$message" :key="$message->id.$message->updated_at"/>
+                                            <livewire:DisplayChatMessage :message="$message"
+                                                                         :key="$message->id.$message->updated_at"/>
                                         @endforeach
                                     </div>
                                 @endif
@@ -65,50 +66,67 @@
                 </div>
 
                 @if($currentUserRole == 'writer')
-                    <div class="w-1/3 p-3 flex overflow-y-auto flex-col gap-3 rounded-lg">
-                        <!-- Search -->
-                        <div class="flex sticky flex-col rounded-lg">
-                            <div class="flex relative gap-3 bg-gray-100 rounded-lg">
-                                <input name="search" id="searchInput" type="text" wire:model.live="search" placeholder="Type to search ..."
-                                       class="w-full p-2 rounded-lg border border-gray-200 focus:outline-none">
-                                <div
-                                    class="absolute text-black/80 right-5 top-[50%] transform translate-x-1/2 -translate-y-1/2">
-                                    <i class="fas fa-search"></i>
+                    <div class="md:w-1/3 p-3 flex overflow-y-auto flex-col gap-3 rounded-lg">
+                            <!-- All users drawer-->
+                            <div class="drawer lg:drawer-open">
+                                <input id="my-drawer-clients" type="checkbox" class="drawer-toggle"/>
+                                <div class="drawer-content flex flex-col items-center justify-center">
+                                    <!-- Page content here -->
+                                    <label for="my-drawer-clients" class="btn btn-circle text-white btn-primary drawer-button lg:hidden">
+                                        <i class="fas fa-users"></i>
+                                    </label>
+                                </div>
+                                <div class="drawer-side">
+                                    <label for="my-drawer-clients" aria-label="close sidebar"
+                                           class="drawer-overlay"></label>
+                                    <!-- Search -->
+                                    <div class="flex sticky flex-col rounded-lg">
+                                        <div class="flex relative gap-3 bg-gray-100 rounded-lg">
+                                            <input name="search" id="searchInput" type="text" wire:model.live="search"
+                                                   placeholder="Type to search ..."
+                                                   class="w-full p-2 rounded-lg border border-gray-200 focus:outline-none">
+                                            <div
+                                                class="absolute text-black/80 right-5 top-[50%] transform translate-x-1/2 -translate-y-1/2">
+                                                <i class="fas fa-search"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="h-[76vh] flex overflow-y-auto p-1 flex-col gap-3 rounded-lg">
+
+                                        @foreach($clients as $user)
+                                            <div class="flex gap-3 cursor-pointer p-2 bg-gray-100 w-full"
+                                                 style="border-radius: 20rem 100px 100px 20rem"
+                                                 wire:click="openChat({{ $user->id }})">
+                                                <!-- unreadMessages(User $user): int
+                                                Call the unreadMessages method in the livewire component -->
+                                                @php
+                                                    $unreadMessagesCount = \App\Livewire\Messages::unreadMessages($user);
+                                                @endphp
+                                                <div class="relative">
+                                                    <!-- If the user is in $onlineUsers array, show the online status -->
+                                                    @if(in_array($user->id, $onlineUsers))
+                                                        <div
+                                                            class="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full"></div>
+                                                    @endif
+                                                    <img src="{{ $user->profile_photo }}" alt="{{ $user->name }}"
+                                                         class="w-12 h-12 bg-white object-cover ring ring-blue-500 rounded-full">
+                                                    @if($unreadMessagesCount > 0)
+                                                        <span
+                                                            class="custom-message-badge">{{ $unreadMessagesCount }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="w-2/3">
+                                                    <h1 class="text-gray-800 font-semibold">{{ $user->name }}</h1>
+
+                                                    <!-- Last message from user -->
+                                                    <p class="text-gray-500 text-xs">
+                                                        {{  $user->lastMessage ? substr($user->lastMessage->content, 0, 20)." ..." : 'No message yet' }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        @endforeach
                                 </div>
                             </div>
-                        </div>
-                        <div class="h-[76vh] flex overflow-y-auto p-1 flex-col gap-3 rounded-lg">
-                            <!-- All users -->
-                            @foreach($clients as $user)
-                                <div class="flex gap-3 cursor-pointer p-2 bg-gray-100 w-full"
-                                     style="border-radius: 20rem 100px 100px 20rem"
-                                     wire:click="openChat({{ $user->id }})">
-                                    <!-- unreadMessages(User $user): int
-                                    Call the unreadMessages method in the livewire component -->
-                                    @php
-                                        $unreadMessagesCount = \App\Livewire\Messages::unreadMessages($user);
-                                    @endphp
-                                    <div class="relative">
-                                        <!-- If the user is in $onlineUsers array, show the online status -->
-                                        @if(in_array($user->id, $onlineUsers))
-                                            <div class="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full"></div>
-                                        @endif
-                                        <img src="{{ $user->profile_photo }}" alt="{{ $user->name }}"
-                                             class="w-12 h-12 bg-white object-cover ring ring-blue-500 rounded-full">
-                                        @if($unreadMessagesCount > 0)
-                                            <span class="custom-message-badge">{{ $unreadMessagesCount }}</span>
-                                        @endif
-                                    </div>
-                                    <div class="w-2/3">
-                                        <h1 class="text-gray-800 font-semibold">{{ $user->name }}</h1>
-
-                                        <!-- Last message from user -->
-                                        <p class="text-gray-500 text-xs">
-                                            {{  $user->lastMessage ? substr($user->lastMessage->content, 0, 20)." ..." : 'No message yet' }}
-                                        </p>
-                                    </div>
-                                </div>
-                            @endforeach
                         </div>
                     </div>
 
@@ -149,7 +167,7 @@
     }
 
     Livewire.on('messagesSent', (event) => {
-        Livewire.dispatch('refreshMessages', { refreshMessages: true });
+        Livewire.dispatch('refreshMessages', {refreshMessages: true});
         setTimeout(() => {
             const messageContainer = document.getElementById('messageContainer');
             messageContainer.scrollTop = messageContainer.scrollHeight;
@@ -163,7 +181,7 @@
     fetch(`${server}/online-users`)
         .then(response => response.json())
         .then(data => {
-            Livewire.dispatch('connectedUsers', { onlineUsers: data });
+            Livewire.dispatch('connectedUsers', {onlineUsers: data});
         });
 
 </script>
