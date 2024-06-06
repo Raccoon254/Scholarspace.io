@@ -48,7 +48,7 @@
         </button>
 
         <button id="sendMessageButton" wire:click="sendMessage"
-                class="btn right-3 btn-primary ring-1 ring-offset-2 border rounded-md btn-square mr-2">
+                class="btn right-3 btn-primary ring-1 ring-offset-2 border rounded-lg btn-square">
             <i class="fas fa-paper-plane"></i>
         </button>
     </div>

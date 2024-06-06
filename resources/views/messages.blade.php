@@ -9,9 +9,9 @@
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 gap-4 lg:mx-4 h-full flex-row">
             <div class="flex gap-2 bg-white w-full rounded-lg">
-                <div class="w-full md:w-2/3 h-[84vh] bg-gray-100 m-2 rounded-md">
+                <div class="w-full md:w-2/3 h-[84vh] bg-gray-100 md:m-2 rounded-md">
                     @if($selectedUser)
-                        <div class="flex flex-col gap-3 p-3 h-full">
+                        <div class="flex flex-col gap-3 o-1 md:p-3 h-full">
                             <div class="flex gap-3 border-b pb-3 items-center">
                                 @if($selectedUser->role == 'client')
                                     <div class="flex-shrink-0">
@@ -73,7 +73,7 @@
                             <div class="drawer-content md:w-0 flex flex-col items-center justify-center">
                                 <!-- Page content here -->
                                 <label for="my-drawer-clients"
-                                       class="btn btn-circle text-white btn-primary drawer-button md:hidden">
+                                       class="btn h-12 w-12 rounded-md text-white btn-primary drawer-button md:hidden">
                                     <i class="fas fa-users"></i>
                                 </label>
                             </div>
