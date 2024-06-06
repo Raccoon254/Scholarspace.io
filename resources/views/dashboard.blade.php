@@ -65,7 +65,7 @@
                 <div class="mt-6 md:px-2 w-full text-white">
                     <div class="text-xl flex justify-between items-center font-semibold">
                         3 Previous Orders
-                        <i class="fas btn btn-circle btn-sm bg-white text-blue-500 btn-ghost fa-calendar-alt"></i>
+                        <i class="fas btn btn-circle btn-sm bg-white text-blue-500 btn-ghost hover:text-white hover:ring ring-white fa-calendar-alt"></i>
                     </div>
 
                     <div class="orders">
