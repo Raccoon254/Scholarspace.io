@@ -81,7 +81,7 @@
                                 <label for="my-drawer-clients" aria-label="close sidebar"
                                        class="drawer-overlay"></label>
                                 <!-- Search -->
-                                <div class="bg-white p-2 pt-4 md:pt-2 flex flex-col gap-3">
+                                <div class="bg-white w-72 p-2 pt-4 md:pt-2 flex flex-col gap-3">
                                     <div class="flex md:sticky flex-col rounded-lg">
                                         <div class="flex w-full relative gap-3 bg-gray-100 rounded-lg">
                                             <input name="search" id="searchInput" type="text" wire:model.live="search"
