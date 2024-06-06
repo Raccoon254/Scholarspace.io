@@ -67,21 +67,23 @@
 
                 @if($currentUserRole == 'writer')
                     <div class="md:w-1/3 p-3 flex overflow-y-auto flex-col gap-3 rounded-lg">
-                            <!-- All users drawer-->
-                            <div class="drawer lg:drawer-open">
-                                <input id="my-drawer-clients" type="checkbox" class="drawer-toggle"/>
-                                <div class="drawer-content flex flex-col items-center justify-center">
-                                    <!-- Page content here -->
-                                    <label for="my-drawer-clients" class="btn btn-circle text-white btn-primary drawer-button lg:hidden">
-                                        <i class="fas fa-users"></i>
-                                    </label>
-                                </div>
-                                <div class="drawer-side">
-                                    <label for="my-drawer-clients" aria-label="close sidebar"
-                                           class="drawer-overlay"></label>
-                                    <!-- Search -->
-                                    <div class="flex sticky flex-col rounded-lg">
-                                        <div class="flex relative gap-3 bg-gray-100 rounded-lg">
+                        <!-- All users drawer-->
+                        <div class="drawer lg:drawer-open">
+                            <input id="my-drawer-clients" type="checkbox" class="drawer-toggle"/>
+                            <div class="drawer-content flex flex-col items-center justify-center">
+                                <!-- Page content here -->
+                                <label for="my-drawer-clients"
+                                       class="btn btn-circle text-white btn-primary drawer-button lg:hidden">
+                                    <i class="fas fa-users"></i>
+                                </label>
+                            </div>
+                            <div class="drawer-side">
+                                <label for="my-drawer-clients" aria-label="close sidebar"
+                                       class="drawer-overlay"></label>
+                                <!-- Search -->
+                                <div class="bg-white p-2 pt-4 flex flex-col gap-3">
+                                    <div class="flex md:sticky flex-col rounded-lg">
+                                        <div class="flex w-full relative gap-3 bg-gray-100 rounded-lg">
                                             <input name="search" id="searchInput" type="text" wire:model.live="search"
                                                    placeholder="Type to search ..."
                                                    class="w-full p-2 rounded-lg border border-gray-200 focus:outline-none">
@@ -91,10 +93,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="h-[76vh] flex overflow-y-auto p-1 flex-col gap-3 rounded-lg">
+                                    <div
+                                        class="h-[98vh] md:h-[76vh] flex overflow-y-auto p-1 flex-col gap-3 rounded-lg">
 
                                         @foreach($clients as $user)
-                                            <div class="flex gap-3 cursor-pointer p-2 bg-gray-100 w-full"
+                                            <div class="flex gap-3 cursor-pointer p-2 md:bg-gray-100 w-full"
                                                  style="border-radius: 20rem 100px 100px 20rem"
                                                  wire:click="openChat({{ $user->id }})">
                                                 <!-- unreadMessages(User $user): int
@@ -115,7 +118,7 @@
                                                             class="custom-message-badge">{{ $unreadMessagesCount }}</span>
                                                     @endif
                                                 </div>
-                                                <div class="w-2/3">
+                                                <div class="w-2/3 overflow-clip text-nowrap">
                                                     <h1 class="text-gray-800 font-semibold">{{ $user->name }}</h1>
 
                                                     <!-- Last message from user -->
@@ -125,6 +128,7 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
