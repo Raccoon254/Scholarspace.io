@@ -3,10 +3,18 @@
     <div class="drawer-content flex flex-col items-center justify-center">
         <!-- Page content here -->
     </div>
-    <div class="drawer-side flex flex-col justify-between h-full">
-        <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul class="menu bg-white px-4 md:pt-0 w-60 h-[82vh] text-black/90">
-            <li class="md:hidden mb-2">
+    <div class="drawer-side flex z-50 flex-col justify-between h-full">
+        <label for="my-drawer-2" aria-label="close sidebar" class="z-40 absolute drawer-overlay"></label>
+        <ul class="menu bg-white px-4 md:pt-0 w-60 h-[100vh] text-black/90">
+            <!-- CLose Sidebar -->
+            <li class="absolute top-0 right-0 md:hidden">
+                <div class="flex justify-end p-4">
+                    <label for="my-drawer-2" class="cursor-pointer ring-gray-300 btn btn-sm btn-circle btn-ghost ring ring-inset ring-offset-2 z-50">
+                        <i class="fas fa-times"></i>
+                    </label>
+                </div>
+            </li>
+            <li class="md:hidden mt-4 mb-2">
                 <div class="flex center items-center justify-center gap-2 p-4">
                     <x-application-logo class="h-5"/>
                     <span class="text-lg font-bold">Scholarspace</span>
