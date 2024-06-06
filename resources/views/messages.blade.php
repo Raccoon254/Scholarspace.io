@@ -96,7 +96,7 @@
                                     <div
                                         class="h-[98vh] md:h-[76vh] flex overflow-y-auto p-1 flex-col gap-3 rounded-lg">
                                         @foreach($clients as $user)
-                                            <div class="flex gap-3 cursor-pointer p-2 md:bg-gray-100 w-full"
+                                            <label for="my-drawer-clients" aria-label="close sidebar" class="flex gap-3 cursor-pointer p-2 md:bg-gray-100 w-full"
                                                  style="border-radius: 20rem 100px 100px 20rem"
                                                  wire:click="openChat({{ $user->id }})">
                                                 <!-- unreadMessages(User $user): int
@@ -125,7 +125,7 @@
                                                         {{  $user->lastMessage ? substr($user->lastMessage->content, 0, 20)." ..." : 'No message yet' }}
                                                     </p>
                                                 </div>
-                                            </div>
+                                            </label>
                                         @endforeach
                                     </div>
                                 </div>
