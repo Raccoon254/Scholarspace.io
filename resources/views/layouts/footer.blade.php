@@ -10,11 +10,11 @@
             <div>
                 <h3 class="text-xl font-bold mb-4">Quick Links</h3>
                 <ul class="text-sm">
-                    <li><a href="#" class="hover:text-blue-500">Home</a></li>
-                    <li><a href="#" class="hover:text-blue-500">How It Works</a></li>
-                    <li><a href="#" class="hover:text-blue-500">Services</a></li>
-                    <li><a href="#" class="hover:text-blue-500">About Us</a></li>
-                    <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+                    <li><a href="{{ route('home') }}" class="hover:text-blue-500">Home</a></li>
+                    <li><a href="{{ route('how-it-works') }}" class="hover:text-blue-500">How It Works</a></li>
+                    <li><a href="{{ route('services') }}" class="hover:text-blue-500">Services</a></li>
+                    <li><a href="{{ route('about') }}" class="hover:text-blue-500">About Us</a></li>
+                    <li><a href="{{ route('contact') }}" class="hover:text-blue-500">Contact</a></li>
                 </ul>
             </div>
             <div>
