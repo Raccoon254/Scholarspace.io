@@ -23,14 +23,9 @@
                     <i class="fas fa-map-marker"></i>
                     85001 Phoenix [City], Arizona [State], USA
                 </p>
-                <p class="text-sm flex gap-4 items-center mb-1 text-gray-300">
+                <a class="text-sm flex gap-4 items-center mb-1 text-gray-300" href="tel:+254790743009">
                     <i class="fas fa-phone"></i>
                     +254 790 743 009
-                </p>
-                <a href="https://wa.me/254790743009?text=Hello%20Scholarspace\n I%20need%20help%20with%20my%20assignment"
-                   class="text-sm flex gap-4 items-center mb-1 text-gray-300" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    Message us on WhatsApp
                 </a>
                 <p class="text-sm flex gap-4 items-center mb-1 text-gray-300"> <i class="fas fa-envelope"></i>
                     <a href="mailto:tomsteve187@gmail.com" class="hover:text-blue-500">hello@scholarspace.io</a>
@@ -39,6 +34,10 @@
                     <i class="fas fa-clock"></i>
                     Available 24/7
                 </p>
+                <a class="btn btn-sm ring mt-4" href="https://wa.me/254790743009?text=Hello%20Scholarspace\n I%20need%20help%20with%20my%20assignment">
+                    <i class="fab fa-whatsapp"></i>
+                    Chat with us
+                </a>
             </div>
         </div>
     </div>
