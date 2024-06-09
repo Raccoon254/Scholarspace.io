@@ -27,6 +27,10 @@ class ProcessSentMessages implements ShouldQueue
      */
     public function handle(): void
     {
+        // Check if the message has been read
+        if (!$this->message->read_at === null) {
+            return;
+        }
         // Send a notification to the recipient
         $this->message->receiver->notify(new MessageSentNotification($this->message));
     }
