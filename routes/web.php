@@ -43,4 +43,5 @@ Route::get('/services', [PagesController::class, 'services'])->name('services');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
 Route::fallback([PagesController::class, 'notfound'])->where('catchall', '.*');
+Route::get('/info/price-calculator', [PagesController::class, 'info_price_calculator'])->name('info.price-calculator');
 require __DIR__.'/auth.php';

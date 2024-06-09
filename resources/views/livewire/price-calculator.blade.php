@@ -1,6 +1,7 @@
 <div class="bg-white p-4 relative text-black/80 rounded-lg shadow-sm">
     <!-- About icon -->
-    <a href="#" class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
+    <a href="{{ route('info.price-calculator') }}"
+       class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
         <i class="fas h-4 w-4 center fa-info-circle"></i>
     </a>
 
@@ -59,39 +60,23 @@
         </div>
     </div>
 
-    <button wire:click="showPriceModal" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg">
+    <button onclick="order_creation_modal.showModal()" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg">
         Calculate Price
     </button>
-</div>
 
-<!-- Modal -->
-@if($showModal)
-    <div class="fixed z-10 inset-0 overflow-y-auto">
-        <div class="flex items-center justify-center min-h-screen px-4">
-            <div class="bg-white p-6 rounded-lg shadow-lg relative w-full max-w-md">
-                <h3 class="text-lg font-semibold mb-4">Order Price</h3>
-                <p>Total Price: ${{ number_format($totalPrice, 2) }}</p>
-                <p>Topic: {{ $topic }}</p>
-                <p>Subject: {{ $subject }}</p>
-                <p>Word Count: {{ $word_count }}</p>
-                <button wire:click="placeOrder" class="w-full py-2 mt-4 bg-green-500 text-white font-semibold rounded-lg">
-                    Create Order
-                </button>
-                <button wire:click="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800">
-                    &times;
-                </button>
-            </div>
+    <dialog id="order_creation_modal" class="modal">
+        <div class="modal-box bg-white">
+            <form method="dialog">
+                <button class="btn btn-sm ring-1 ring-inset btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="text-lg font-semibold mb-4">Order Price</h3>
+            <p>Total Price: ${{ number_format($totalPrice, 2) }}</p>
+            <p>Topic: {{ $topic }}</p>
+            <p>Subject: {{ $subject }}</p>
+            <p>Word Count: {{ $word_count }}</p>
+            <button wire:click="placeOrder" class="w-full py-2 mt-4 bg-green-500 text-white font-semibold rounded-lg">
+                Create Order
+            </button>
         </div>
-    </div>
-@endif
-
-<script>
-    document.addEventListener('livewire:load', function () {
-        Livewire.on('toggleWordMode', mode => {
-            document.getElementById('wordsButton').classList.toggle('bg-green-500', mode);
-            document.getElementById('wordsButton').classList.toggle('border-green-500', mode);
-            document.getElementById('pagesButton').classList.toggle('bg-green-500', !mode);
-            document.getElementById('pagesButton').classList.toggle('border-green-500', !mode);
-        });
-    });
-</script>
+    </dialog>
+</div>

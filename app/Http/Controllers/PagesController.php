@@ -23,6 +23,11 @@ class PagesController extends Controller
         return view('errors.404');
     }
 
+    public function info_price_calculator(): View
+    {
+        return view('info.price-calculator');
+    }
+
     public function howItWorks(): View
     {
         $steps = [
