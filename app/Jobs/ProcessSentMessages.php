@@ -28,6 +28,6 @@ class ProcessSentMessages implements ShouldQueue
     public function handle(): void
     {
         // Send a notification to the recipient
-        $this->message->receiver->notify(new MessageSentNotification());
+        $this->message->receiver->notify(new MessageSentNotification($this->message));
     }
 }
