@@ -56,7 +56,11 @@
 
 @script
 <script>
-    const socket = io('http://localhost:3000');
+    //Get socket.io server from the .env file
+    const socketServer = '{{ env('SOCKET_URL') }}';
+
+    //Connect to socket.io -- server
+    const socket = io(socketServer);
 
     // Send the username to the server on connection
     let authUser = '{{ auth()->user() }}';

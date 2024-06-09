@@ -34,7 +34,7 @@
 <script>
     //Get socket.io server from the .env file
     const socketServer = '{{ env('SOCKET_URL') }}';
-    alert(socketServer)
+
     //Connect to socket.io -- server
     const socket = io(socketServer);
 
