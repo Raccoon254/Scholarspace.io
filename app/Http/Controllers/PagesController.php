@@ -18,6 +18,11 @@ class PagesController extends Controller
         return view('contact');
     }
 
+    public function notfound(): View
+    {
+        return view('errors.404');
+    }
+
     public function howItWorks(): View
     {
         $steps = [

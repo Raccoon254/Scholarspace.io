@@ -42,4 +42,5 @@ Route::get('/how-it-works', [PagesController::class, 'howItWorks'])->name('how-i
 Route::get('/services', [PagesController::class, 'services'])->name('services');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
+Route::any('{catchall}', [PagesController::class, 'notfound'])->where('catchall', '.*');
 require __DIR__.'/auth.php';
