@@ -13,6 +13,7 @@ class PriceCalculator extends Component
     public $totalPrice = 0.00;
     public $showModal = false;
     public $isWords = true;
+    public $deadline;
 
     public array $subjects = [
         'Engineering',
@@ -53,13 +54,22 @@ class PriceCalculator extends Component
 
     public function showPriceModal(): void
     {
+        //validate the form
+        $this->validate([
+            'topic' => 'required|string',
+            'subject' => 'required|string',
+            'word_count' => 'required|numeric|min:1',
+            'deadline' => 'required|date|after:today'
+        ]);
         $this->calculatePrice();
         $this->showModal = true;
+        $this->dispatch('toggleModal', true);
     }
 
     public function closeModal(): void
     {
         $this->showModal = false;
+        $this->dispatch('toggleModal', false);
     }
 
     public function placeOrder(): void

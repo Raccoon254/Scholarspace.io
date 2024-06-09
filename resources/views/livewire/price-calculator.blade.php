@@ -9,60 +9,69 @@
         Order Price Calculator
     </h3>
 
-    <div class="mb-4">
-        <input type="text" id="topic" wire:model="topic" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Topic">
-        @error('topic') <span class="text-xs text-red-500">{{ $message }}</span>@enderror
-    </div>
-
-    <div class="mb-4">
-        <select id="subject" wire:model="subject" class="w-full p-2 border border-gray-300 rounded-lg">
-            <option value="" selected>
-                Select Subject
-            </option>
-            @foreach($subjects as $subject)
-                <option value="{{ $subject }}">{{ $subject }}</option>
-            @endforeach
-        </select>
-        @error('subject') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
-    </div>
-
-    <div class="mb-4">
-        <input type="date" id="deadline" wire:model.live="deadline" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Deadline">
-        @error('deadline') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
-    </div>
-
-    <div class="mb-4 flex items-center">
-        <div class="flex flex-col w-full">
-            <input type="number" id="wordCount" wire:model.live="word_count" class="flex-grow p-2 border border-gray-300 rounded-lg" placeholder="No of Words/Pages">
-            @error('wordCount') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
+    <form wire:submit.prevent="showPriceModal">
+        <div class="mb-4 relative">
+            <input type="text" id="topic" wire:model="topic" class="w-full p-2 border border-gray-300 rounded-lg"
+                   placeholder="Topic">
+            @error('topic') <span class="text-xs absolute top-[1px] left-2 text-red-500">{{ $message }}</span>@enderror
         </div>
-        <div class="ml-2 flex">
-            <button wire:click="setCalculationMode(true)" class="px-3 py-2 border {{ $isWords ? 'bg-green-500 text-white border-green-500' : 'border-gray-300' }}
-            rounded-l-lg" id="wordsButton">Words</button>
-            <button wire:click="setCalculationMode(false)" class="px-3 py-2 border {{ $isWords ? 'border-gray-300' : 'bg-green-500 text-white border-green-500' }}
-            rounded-r-lg" id="pagesButton">Pages</button>
-        </div>
-    </div>
 
-    <div class="mb-4">
-        <div class="text-gray-700 flex gap-4 items-center">
+        <div class="mb-4 relative">
+            <select id="subject" wire:model="subject" class="w-full p-2 border border-gray-300 rounded-lg">
+                <option value="" selected>
+                    Select Subject
+                </option>
+                @foreach($subjects as $subject)
+                    <option value="{{ $subject }}">{{ $subject }}</option>
+                @endforeach
+            </select>
+            @error('subject') <span class="text-xs absolute top-[1px] left-2 text-red-500">{{ $message }}</span> @enderror
+        </div>
+
+        <div class="mb-4 relative">
+            <input type="date" id="deadline" wire:model.live="deadline"
+                   class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Deadline">
+            @error('deadline') <span class="text-xs absolute top-[1px] left-2 text-red-500">{{ $message }}</span> @enderror
+        </div>
+
+        <div class="mb-4 relative flex items-center">
+            <div class="flex flex-col w-full">
+                <input type="number" id="wordCount" wire:model.live="word_count"
+                       class="flex-grow p-2 border border-gray-300 rounded-lg" placeholder="No of Words/Pages">
+                @error('word_count') <span class="text-xs absolute top-[1px] left-2 text-red-500">{{ $message }}</span> @enderror
+            </div>
+            <div class="ml-2 flex">
+                <button wire:click="setCalculationMode(true)" class="px-3 py-2 border {{ $isWords ? 'bg-green-500 text-white border-green-500' : 'border-gray-300' }}
+            rounded-l-lg" id="wordsButton">Words
+                </button>
+                <button wire:click="setCalculationMode(false)" class="px-3 py-2 border {{ $isWords ? 'border-gray-300' : 'bg-green-500 text-white border-green-500' }}
+            rounded-r-lg" id="pagesButton">Pages
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-4 relative">
+            <div class="text-gray-700 flex gap-4 items-center">
             <span>
                 Total Price:
             </span>
-            @if($price < 1)
-                <span class="loading loading-spinner h-6"></span>
-                <span>Calculating...</span>
-            @else
-                <span class="text-green-500 h-6" id="totalPrice">
+                @if($price < 1)
+                    <span class="loading loading-spinner h-6"></span>
+                    <span>Calculating...</span>
+                @else
+                    <span class="text-green-500 h-6" id="totalPrice">
                 ${{ number_format($price, 2) }}
             </span>
-            @endif
+                @endif
+            </div>
         </div>
-    </div>
 
-    <button onclick="order_creation_modal.showModal()" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg">
-        Calculate Price
-    </button>
+        <button class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg">
+            Calculate Price
+        </button>
+    </form>
+
+    <button onclick="order_creation_modal.showModal()"></button>
 
     <dialog id="order_creation_modal" class="modal">
         <div class="modal-box bg-white">
