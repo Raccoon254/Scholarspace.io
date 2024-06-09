@@ -23,6 +23,7 @@
         <livewire:sidebar/>
         <!-- Page Content -->
         <main class="w-full bg-gray-100 overflow-clip rounded-[16px]">
+            @include('session.alerts')
             {{ $slot }}
         </main>
     </div>
@@ -31,8 +32,11 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
 <script>
+    //Get socket.io server from the .env file
+    const socketServer = '{{ env('SOCKET_URL') }}';
+    alert(socketServer)
     //Connect to socket.io -- server
-    const socket = io('http://localhost:3000');
+    const socket = io(socketServer);
 
     socket.on('connectedUsers', (data) => {
         Livewire.dispatch('connectedUsers', {onlineUsers: data});

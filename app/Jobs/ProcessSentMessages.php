@@ -29,6 +29,7 @@ class ProcessSentMessages implements ShouldQueue
     {
         // Check if the message has been read
         if (!$this->message->read_at === null) {
+            session()->flash('message', 'Message has been read already.');
             return;
         }
         // Send a notification to the recipient
