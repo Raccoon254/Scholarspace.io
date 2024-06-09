@@ -19,11 +19,11 @@
             <li><strong>Number of Words/Pages:</strong> Enter the number of words or pages for your order. You can toggle between words and pages.</li>
             <div class="bg-blue-500 p-4 rounded-md text-white">
                 <div class="flex mb-2">
-                    <button class="px-3 py-2 border bg-green-500 text-white border-green-500 rounded-l-lg" id="wordsButton">Words</button>
-                    <button class="px-3 py-2 border border-gray-300 rounded-r-lg" id="pagesButton">Pages</button>
+                    <button class="px-3 py-2 border bg-green-500 text-white border-gray-200 rounded-l-lg" id="wordsButton">Words</button>
+                    <button class="px-3 py-2 border border-gray-200 rounded-r-lg" id="pagesButton">Pages</button>
                 </div>
                 Currently the rate is {{ env('PRICE_PER_PAGE') ?? '15 USD' }} per page, 275 words per page.
-                <p class="text-xs text-red-400 mt-1">
+                <p class="text-xs text-red-100 mt-1">
                     <i class="fas fa-exclamation-triangle"></i>
                     <strong>Note:</strong> The price per page may vary depending on the type of order.
                 </p>
