@@ -52,51 +52,56 @@
             <i class="fas fa-paper-plane"></i>
         </button>
     </div>
+    <div id="socket" class="hidden">
+        {{ $socket_server  }}
+    </div>
 </div>
 
 @script
 <script>
-    //Get socket.io server from the .env file
-    const socketServer = '{{ env('SOCKET_URL') }}';
+    document.addEventListener('livewire:initialized', () => {
+        // Get the socket server URL from the hidden div
+        const socketServer = document.getElementById('socket').innerText;
+        // Clean the socket server URL
+        let cleanSocketServer = socketServer.replace(/\s/g, '');
+        const socket = io(cleanSocketServer);
 
-    //Connect to socket.io -- server
-    const socket = io(socketServer);
+        // Send the username to the server on connection
+        let authUser = '{{ auth()->user() }}';
+        authUser = JSON.parse(authUser.replace(/&quot;/g, '"'));
 
-    // Send the username to the server on connection
-    let authUser = '{{ auth()->user() }}';
-    authUser = JSON.parse(authUser.replace(/&quot;/g, '"'));
+        document.getElementById('sendMessageButton').addEventListener('click', sendMessage);
+        let receiver = '{{ $recipient }}';
+        receiver = JSON.parse(receiver.replace(/&quot;/g, '"'));
 
-    document.getElementById('sendMessageButton').addEventListener('click', sendMessage);
-    let receiver = '{{ $recipient }}';
-    receiver = JSON.parse(receiver.replace(/&quot;/g, '"'));
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
 
-    function sendMessage() {
-        const messageInput = document.getElementById('messageInput');
-        const message = messageInput.value;
-
-        if (message) {
-            socket.emit('sendMessage', { from: authUser.id, to: receiver.id, message });
-            messageInput.value = '';
+            if (message) {
+                socket.emit('sendMessage', {from: authUser.id, to: receiver.id, message});
+                messageInput.value = '';
+            }
         }
-    }
 
-    socket.on('stopTyping', (from) => {
-        //document.getElementById('typingStatus').innerText = '';
-    });
+        socket.on('stopTyping', (from) => {
+            //document.getElementById('typingStatus').innerText = '';
+        });
 
-    Livewire.on('messagesSent', () => {
-        document.getElementById('messageInput').value = '';
-    });
+        Livewire.on('messagesSent', () => {
+            document.getElementById('messageInput').value = '';
+        });
 
-    // Input event listeners for typing
-    document.getElementById('messageInput').addEventListener('input', () => {
-        socket.emit('typing', { from: authUser.id, to: receiver.id });
-        console.log('Typing...');
-    });
+        // Input event listeners for typing
+        document.getElementById('messageInput').addEventListener('input', () => {
+            socket.emit('typing', {from: authUser.id, to: receiver.id});
+            console.log('Typing...');
+        });
 
-    document.getElementById('messageInput').addEventListener('blur', () => {
-        socket.emit('stopTyping', { from: authUser.id, to: receiver.id });
-        console.log('Stopped typing...');
-    });
+        document.getElementById('messageInput').addEventListener('blur', () => {
+            socket.emit('stopTyping', {from: authUser.id, to: receiver.id});
+            console.log('Stopped typing...');
+        });
+    })
 </script>
 @endscript

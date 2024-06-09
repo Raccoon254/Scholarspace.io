@@ -20,11 +20,13 @@ class SendMessageInput extends Component
     public array $attachments = [];
     public User $recipient;
     public mixed $loggedInUser;
+    public mixed $socket_server;
 
     public function mount($selectedUser): void
     {
         $this->recipient = $selectedUser;
         $this->loggedInUser = Auth::user();
+        $this->socket_server = env('SOCKET_URL');
     }
 
     public function updating($newMessage): void
