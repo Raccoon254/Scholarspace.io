@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Jobs\ProcessSentMessages;
 use App\Models\Attachment;
 use App\Models\Message;
 use App\Models\User;
@@ -75,6 +76,7 @@ class SendMessageInput extends Component
         $this->reset('attachments', 'newMessage');
 
         $this->dispatch('messagesSent');
+        ProcessSentMessages::dispatch($message)->delay(now()->addSeconds(10));
     }
 
     public function render(): View
