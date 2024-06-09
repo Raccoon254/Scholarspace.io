@@ -20,7 +20,7 @@
         <div class="bg-blue-500 p-4 rounded-md flex gap-4">
             <livewire:profile-image-uploader :color="'blue-500'" />
             <div class="instructions center">
-                <div class="text-white">
+                <div class="text-sm md:text-md text-white">
                     1. Click on the camera icon to upload a new profile picture.
                     <br>
                     2. Click on the checkmark icon to save the new profile picture.
