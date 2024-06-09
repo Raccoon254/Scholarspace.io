@@ -12,7 +12,7 @@
         </ul>
         <p class="mb-4">You can return to our homepage by clicking the button below </p>
         <a href="{{ route('home') }}" class="custom-btn">
-            Here <i class="fa fa-home"></i>
+            Home <i class="fa fa-home"></i>
         </a>
     </div>
 </x-logged-out>

@@ -17,7 +17,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
-<body class="font-sans min-h-screen bg-gray-50 antialiased">
+<body class="font-sans min-h-screen flex justify-between flex-col bg-gray-50 antialiased">
 @include('layouts.navigation.logged-out')
 {{ $slot }}
 @include('layouts.footer')

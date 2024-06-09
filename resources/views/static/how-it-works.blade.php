@@ -12,12 +12,13 @@
         <div class="flex flex-col md:flex-row md:justify-center" data-aos="fade-up"
              data-aos-delay="200">
             <div class="md:w-1/2">
-                <ol class="space-y-14">
+                <ol class="space-y-10">
                     @foreach($steps as $step)
-                        <li class="ring-1 ring-gray-100 shadow-md p-3 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                        <li class="ring-gray-200 p-3 rounded-xl ring ring-inset cursor-pointer hover:scale-105 transition-transform"
+                            data-aos="fade-up" data-aos-delay="100">
                             <div class="flex items-center">
                                 <div
-                                    class="flex items-center justify-center ring ring-inset ring-{{ $step['color'] }} w-12 h-12 bg-gray-100 text-{{ $step['color'] }}-500 rounded-full mr-4">
+                                    class="flex items-center justify-center ring ring-opacity-20 ring-inset ring-{{ $step['color'] }} w-12 h-12 bg-gray-100 text-{{ $step['color'] }}-500 rounded-full mr-4">
                                     <i class="{{ $step['icon'] }} text-{{ $step['color'] }}"></i>
                                 </div>
                                 <h3 class="text-xl font-bold text-black/90">{{ $step['title'] }}</h3>
