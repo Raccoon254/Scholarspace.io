@@ -10,13 +10,13 @@
     </h3>
 
     <form wire:submit.prevent="showPriceModal">
-        <div class="mb-4 relative">
+        <div class="mb-4">
             <input type="text" id="topic" wire:model="topic" class="w-full p-2 border border-gray-300 rounded-lg"
                    placeholder="Topic">
-            @error('topic') <span class="text-xs absolute top-[1px] left-2 text-red-500">{{ $message }}</span>@enderror
+            @error('topic') <span class="text-xs text-red-500">{{ $message }}</span>@enderror
         </div>
 
-        <div class="mb-4 relative">
+        <div class="mb-4">
             <select id="subject" wire:model="subject" class="w-full p-2 border border-gray-300 rounded-lg">
                 <option value="" selected>
                     Select Subject
@@ -25,20 +25,20 @@
                     <option value="{{ $subject }}">{{ $subject }}</option>
                 @endforeach
             </select>
-            @error('subject') <span class="text-xs absolute top-[1px] left-2 text-red-500">{{ $message }}</span> @enderror
+            @error('subject') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
         </div>
 
-        <div class="mb-4 relative">
+        <div class="mb-4">
             <input type="date" id="deadline" wire:model.live="deadline"
                    class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Deadline">
-            @error('deadline') <span class="text-xs absolute top-[1px] left-2 text-red-500">{{ $message }}</span> @enderror
+            @error('deadline') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
         </div>
 
-        <div class="mb-4 relative flex items-center">
+        <div class="mb-4 flex items-center">
             <div class="flex flex-col w-full">
                 <input type="number" id="wordCount" wire:model.live="word_count"
                        class="flex-grow p-2 border border-gray-300 rounded-lg" placeholder="No of Words/Pages">
-                @error('word_count') <span class="text-xs absolute top-[1px] left-2 text-red-500">{{ $message }}</span> @enderror
+                @error('wordCount') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
             </div>
             <div class="ml-2 flex">
                 <button wire:click="setCalculationMode(true)" class="px-3 py-2 border {{ $isWords ? 'bg-green-500 text-white border-green-500' : 'border-gray-300' }}
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="mb-4 relative">
+        <div class="mb-4">
             <div class="text-gray-700 flex gap-4 items-center">
             <span>
                 Total Price:
@@ -71,9 +71,7 @@
         </button>
     </form>
 
-    <button onclick="order_creation_modal.showModal()"></button>
-
-    <dialog id="order_creation_modal" class="modal">
+    <dialog id="order_creation_modal" class="modal" {{ $showModal ? 'open' : '' }}>
         <div class="modal-box bg-white">
             <form method="dialog">
                 <button class="btn btn-sm ring-1 ring-inset btn-circle btn-ghost absolute right-2 top-2">✕</button>
