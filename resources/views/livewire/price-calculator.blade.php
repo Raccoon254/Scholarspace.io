@@ -9,6 +9,10 @@
         Order Price Calculator
     </h3>
 
+    <p class="mb-4">
+        Fill in the details below to calculate <br> the price of your order.
+    </p>
+
     <form wire:submit.prevent="showPriceModal">
         <div class="relative mb-3">
             <input type="text" id="topic" wire:model="topic" class="w-full p-2 border border-gray-300 rounded-lg"
