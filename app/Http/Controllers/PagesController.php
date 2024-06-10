@@ -15,19 +15,13 @@ class PagesController extends Controller
         return view('dashboard');
     }
 
-    #[NoReturn]
-    public function orderCreate(): void
+    public function orderCreate(): View
     {
         $orderData = session('orderData');
-        dd($orderData);
-        //array:5 [▼ // app/Http/Controllers/PagesController.php:22
-        //  "user_id" => null
-        //  "title" => null
-        //  "description" => null
-        //  "total_price" => 28
-        //  "status" => "pending"
-        //]
+        //set the user_id to the authenticated user
+        $orderData['user_id'] = auth()->id();
 
+        return view('order.create', ['orderData' => $orderData]);
     }
 
     public function contact(): View

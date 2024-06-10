@@ -94,7 +94,14 @@ class PriceCalculator extends Component
         $this->reset(['topic', 'subject', 'word_count']);
 
         // redirect to the order creation page
-        return redirect()->route('orders.create.new');
+        if (!auth()->check()) {
+            $message = 'You need to login or register to place an order';
+            session()->flash('error', $message);
+        }else{
+            $message = 'Order placed successfully';
+        }
+
+        return redirect()->route('orders.create.new')->with('success', $message);
     }
 
     public function render(): View

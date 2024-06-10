@@ -19,6 +19,7 @@
 </head>
 <body class="font-sans min-h-screen flex justify-between flex-col bg-gray-50 antialiased">
 @include('layouts.navigation.logged-out')
+@include('session.alerts')
 {{ $slot }}
 @include('layouts.footer')
 </body>
