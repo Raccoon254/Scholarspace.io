@@ -66,6 +66,10 @@ class PriceCalculator extends Component
         $this->calculatePrice();
         $this->showModal = true;
         $this->dispatch('toggleModal', true);
+
+        if (!auth()->check()) {
+            session()->flash('error', 'You need to login or register to place an order');
+        }
     }
 
     public function closeModal(): void
@@ -95,13 +99,10 @@ class PriceCalculator extends Component
 
         // redirect to the order creation page
         if (!auth()->check()) {
-            $message = 'You need to login or register to place an order';
-            session()->flash('error', $message);
-        }else{
-            $message = 'Order placed successfully';
+            session()->flash('error', 'You need to login or register to place an order');
         }
 
-        return redirect()->route('orders.create.new')->with('success', $message);
+        return redirect()->route('orders.create.new');
     }
 
     public function render(): View
