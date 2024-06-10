@@ -8,7 +8,6 @@ class StaticPageController extends Controller
 {
     public function welcome(): View
     {
-        session()->flash('success', 'Welcome to Scholarspace! Get help with your assignments from expert writers.');
 
         $process_steps = [
             [
