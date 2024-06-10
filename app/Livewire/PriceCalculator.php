@@ -77,7 +77,6 @@ class PriceCalculator extends Component
     public function placeOrder()
     {
         // Logic to create the order
-        $this->reset(['topic', 'subject', 'word_count']);
         $this->closeModal();
 
         $orderData = [
@@ -90,6 +89,9 @@ class PriceCalculator extends Component
 
         // Store the order in the session
         session(['orderData' => $orderData]);
+
+        // Reset the form fields
+        $this->reset(['topic', 'subject', 'word_count']);
 
         // redirect to the order creation page
         return redirect()->route('orders.create.new');

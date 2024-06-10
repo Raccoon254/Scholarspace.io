@@ -20,6 +20,14 @@ class PagesController extends Controller
     {
         $orderData = session('orderData');
         dd($orderData);
+        //array:5 [▼ // app/Http/Controllers/PagesController.php:22
+        //  "user_id" => null
+        //  "title" => null
+        //  "description" => null
+        //  "total_price" => 28
+        //  "status" => "pending"
+        //]
+
     }
 
     public function contact(): View
