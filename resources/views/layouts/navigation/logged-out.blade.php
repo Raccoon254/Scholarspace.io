@@ -12,6 +12,16 @@
                     <a href="{{ route('login') }}" class="bg-blue-500 text-white/90 hover:bg-blue-600 font-semibold py-2 px-4 rounded-md">Login</a>
                     <a href="{{ route('register') }}" class="bg-green-500 text-black/90 hover:bg-green-600 font-semibold py-2 px-4 rounded-md">Register</a>
                 @endguest
+
+                @auth
+                    <a href="{{ route('dashboard') }}" class="bg-blue-500 text-white/90 hover:bg-blue-600 font-semibold py-2 px-4 rounded-md">Dashboard</a>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="bg-red-500 text-white/90 hover:bg-red-600 font-semibold py-2 px-4 rounded-md">
+                            Logout
+                        </button>
+                    </form>
+                @endauth
             </div>
             <div class="md:hidden">
                 <button class="text-blue-500" id="menu-button">
@@ -28,12 +38,26 @@
             <a href="{{ route('services') }}" class="block bg-gray-50 mb-2 px-4 rounded-md py-2 border-blue-200 border text-black/50 hover:text-black">Services</a>
             <a href="{{ route('about') }}" class="block bg-gray-50 mb-2 px-4 rounded-md py-2 border-blue-200 border text-black/50 hover:text-black">About Us</a>
             <a href="{{ route('contact') }}" class="block bg-gray-50 mb-2 px-4 rounded-md py-2 border-blue-200 border text-black/50 hover:text-black">Contact</a>
-            <a href="{{ route('login') }}" class="flex items-center gap-2 py-2 mb-2 px-4 bg-blue-500 text-white/90 hover:bg-blue-600 font-semibold rounded-md">
-                Login <i class="fas fa-user-circle"></i>
-            </a>
-            <a href="{{ route('register') }}" class="flex items-center gap-2 py-2 px-4 bg-green-500 text-black/90 hover:bg-green-600 font-semibold rounded-md">
-                Register <i class="fas fa-arrow-right"></i>
-            </a>
+            @guest
+                <a href="{{ route('login') }}" class="flex items-center gap-2 py-2 mb-2 px-4 bg-blue-500 text-white/90 hover:bg-blue-600 font-semibold rounded-md">
+                    Login <i class="fas fa-user-circle"></i>
+                </a>
+                <a href="{{ route('register') }}" class="flex items-center gap-2 py-2 px-4 bg-green-500 text-black/90 hover:bg-green-600 font-semibold rounded-md">
+                    Register <i class="fas fa-arrow-right"></i>
+                </a>
+            @endguest
+
+            @auth
+                <a href="{{ route('dashboard') }}" class="flex items-center gap-2 py-2 mb-2 px-4 bg-blue-500 text-white/90 hover:bg-blue-600 font-semibold rounded-md">
+                    Dashboard <i class="fas fa-home"></i>
+                </a>
+                <form class="w-full" action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="flex w-full items-center gap-2 py-2 px-4 bg-red-500 text-white/90 hover:bg-red-600 font-semibold rounded-md">
+                        Logout <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </form>
+            @endauth
         </div>
     </div>
 </nav>
