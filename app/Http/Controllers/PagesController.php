@@ -21,6 +21,14 @@ class PagesController extends Controller
         //set the user_id to the authenticated user
         $orderData['user_id'] = auth()->id();
 
+        //dd($orderData);
+        //array:5 [▼ // app/Http/Controllers/PagesController.php:24
+        //  "user_id" => 1
+        //  "title" => "Test"
+        //  "description" => "Agriculture"
+        //  "total_price" => 33
+        //  "status" => "pending"
+        //]
         return view('order.create', ['orderData' => $orderData]);
     }
 

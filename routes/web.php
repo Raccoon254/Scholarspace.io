@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\AutoOrderCreate;
 use App\Livewire\EditProfile;
 use App\Livewire\ManageUsers;
 use App\Livewire\OrderCreate;
@@ -35,7 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/payments', VerifyPayments::class)->name('payments.index');
     Route::get('/users', ManageUsers::class)->name('users.index');
 
-    Route::get('/orders/create/new/', [PagesController::class, 'orderCreate'])->name('orders.create.new');
+    Route::get('/orders/create/new/', AutoOrderCreate::class)->name('orders.create.new');
 });
 
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');

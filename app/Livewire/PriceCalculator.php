@@ -85,8 +85,8 @@ class PriceCalculator extends Component
 
         $orderData = [
             'user_id' => auth()->check() ? auth()->id() : null,
-            'title' => $this->topic,
-            'description' => $this->subject,
+            'title' => $this->topic . ' - ' . $this->subject,
+            'description' => $this->topic . ' - ' . $this->subject . ' - ' . $this->word_count . ' words',
             'total_price' => $this->totalPrice,
             'status' => 'pending',
         ];
