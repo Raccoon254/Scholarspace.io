@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use JetBrains\PhpStorm\NoReturn;
 
 class PagesController extends Controller
 {
     public function dashboard(): View
     {
         return view('dashboard');
+    }
+
+    #[NoReturn]
+    public function orderCreate(): void
+    {
+        $orderData = session('orderData');
+        dd($orderData);
     }
 
     public function contact(): View

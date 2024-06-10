@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\Order;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -72,12 +74,25 @@ class PriceCalculator extends Component
         $this->dispatch('toggleModal', false);
     }
 
-    public function placeOrder(): void
+    public function placeOrder()
     {
         // Logic to create the order
         $this->reset(['topic', 'subject', 'word_count']);
         $this->closeModal();
-        // dd($this->topic, $this->subject, $this->word_count);
+
+        $orderData = [
+            'user_id' => auth()->check() ? auth()->id() : null,
+            'title' => $this->topic,
+            'description' => $this->subject,
+            'total_price' => $this->totalPrice,
+            'status' => 'pending',
+        ];
+
+        // Store the order in the session
+        session(['orderData' => $orderData]);
+
+        // redirect to the order creation page
+        return redirect()->route('orders.create.new');
     }
 
     public function render(): View

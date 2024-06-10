@@ -8,8 +8,10 @@
                 <a href="{{ route('services') }}" class="text-black/50 hover:text-black">Services</a>
                 <a href="{{ route('about') }}" class="text-black/50 hover:text-black">About Us</a>
                 <a href="{{ route('contact') }}" class="text-black/50 hover:text-black">Contact</a>
-                <a href="{{ route('login') }}" class="bg-blue-500 text-white/90 hover:bg-blue-600 font-semibold py-2 px-4 rounded-md">Login</a>
-                <a href="{{ route('register') }}" class="bg-green-500 text-black/90 hover:bg-green-600 font-semibold py-2 px-4 rounded-md">Register</a>
+                @guest
+                    <a href="{{ route('login') }}" class="bg-blue-500 text-white/90 hover:bg-blue-600 font-semibold py-2 px-4 rounded-md">Login</a>
+                    <a href="{{ route('register') }}" class="bg-green-500 text-black/90 hover:bg-green-600 font-semibold py-2 px-4 rounded-md">Register</a>
+                @endguest
             </div>
             <div class="md:hidden">
                 <button class="text-blue-500" id="menu-button">
