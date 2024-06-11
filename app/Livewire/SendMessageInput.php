@@ -61,7 +61,7 @@ class SendMessageInput extends Component
 
         if ($this->attachments) {
             foreach ($this->attachments as $attachment) {
-                $path = $attachment->store('public/' . $this->loggedInUser->name . '/attachments');
+                $path = $attachment->store('public/' . $this->loggedInUser->name . '/messages/attachments');
                 Attachment::create([
                     'message_id' => $message->id,
                     'name' => $attachment->getClientOriginalName(),

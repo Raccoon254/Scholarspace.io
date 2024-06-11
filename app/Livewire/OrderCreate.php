@@ -7,12 +7,23 @@ use Illuminate\View\View;
 use Livewire\Component;
 use App\Models\Order;
 use Livewire\Features\SupportRedirects\Redirector;
+use Livewire\WithFileUploads;
 
 class OrderCreate extends Component
 {
+    use WithFileUploads;
+
     public $title;
     public $description;
     public $total_price;
+    public $loggedInUser;
+
+    public array $attachments = [];
+
+    public function mount(): void
+    {
+        $this->loggedInUser = auth()->user();
+    }
 
     public function createOrder(): Redirector
     {
@@ -20,6 +31,7 @@ class OrderCreate extends Component
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'total_price' => 'required|numeric',
+            'attachments.*' => 'file|max:10240', // 10MB max for each file
         ]);
 
         $order = Order::create([
@@ -29,6 +41,18 @@ class OrderCreate extends Component
             'status' => 'pending',
             'total_price' => $this->total_price,
         ]);
+
+        if ($this->attachments) {
+            foreach ($this->attachments as $attachment) {
+                $attachmentPath = $attachment->store('public/' . $this->loggedInUser->name . '/orders/attachments');
+                $order->attachments()->create([
+                    'name' => $attachment->getClientOriginalName(),
+                    'path' => $attachmentPath,
+                    'type' => $attachment->getMimeType(),
+                    'size' => $attachment->getSize(),
+                ]);
+            }
+        }
 
         $this->reset(['title', 'description', 'total_price']);
 
