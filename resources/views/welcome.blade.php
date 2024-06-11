@@ -16,11 +16,11 @@
                                 Students
                             </h1>
                         </header>
-                        <p class="text-md sm:text-lg text-black/50 leading-relaxed">
+                        <p class="text-md sm:text-lg text-black/70 leading-relaxed">
                             Struggling with essays? Our <span
-                                class="font-semibold text-blue-500">professional writers</span> are here to help. <br>
-                            We offer <span class="font-semibold text-green-500">top-notch, plagiarism-free essays</span>
-                            tailored to your needs. Choose us for <span class="font-semibold text-yellow-500">quality and punctuality</span>.
+                                class="font-semibold text-blue-700">professional writers</span> are here to help. <br>
+                            We offer <span class="font-semibold text-green-700">top-notch, plagiarism-free essays</span>
+                            tailored to your needs. Choose us for <span class="font-semibold text-yellow-700">quality and punctuality</span>.
                             Experience a stress-free academic life with Scholarspace.
                         </p>
                     </section>
