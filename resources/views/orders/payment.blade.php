@@ -8,7 +8,7 @@
 
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 lg:mx-4 gap-4 flex-col h-full md:flex-row">
-            <div class="bg-white relative p-6 md:w-2/3 relative h-full rounded-lg shadow-sm">
+            <div class="bg-white p-6 md:w-2/3 relative h-full rounded-lg shadow-sm">
                 <!-- About icon -->
                 <a href="{{ route('info.order.payment') }}"
                    class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
@@ -82,11 +82,6 @@
             <!-- Order details -->
             <div class="w-full md:w-1/3">
                 <div class="bg-white p-6 relative rounded-lg shadow-sm">
-                    <!-- About icon -->
-                    <a href="{{ route('info.order.payment') }}"
-                       class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
-                        <i class="fas h-4 w-4 center fa-info-circle"></i>
-                    </a>
 
                     <h3 class="text-lg font-semibold mb-4">Order Details</h3>
                     <div class="mb-4">
