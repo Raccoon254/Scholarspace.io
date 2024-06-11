@@ -17,12 +17,19 @@ class OrderCreate extends Component
     public $description;
     public $total_price;
     public $loggedInUser;
+    public $isWords;
 
     public array $attachments = [];
 
     public function mount(): void
     {
+        $this->isWords = true;
         $this->loggedInUser = auth()->user();
+    }
+
+    public function setCalculationMode($mode): void
+    {
+        $this->isWords = $mode;
     }
 
     public function createOrder(): Redirector
@@ -57,6 +64,22 @@ class OrderCreate extends Component
         $this->reset(['title', 'description', 'total_price']);
 
         return redirect()->route('orders.pay', ['orderId' => $order->id])->with('success', 'Order created successfully.');
+    }
+
+    public function removeAttachment($name): void
+    {
+        $initialCount = count($this->attachments);
+        $this->attachments = collect($this->attachments)->filter(function ($attachment) use ($name) {
+            return $attachment->getClientOriginalName() !== $name;
+        })->all();
+
+        // Confirm that the attachment was removed
+        if (count($this->attachments) === $initialCount) {
+            dd('Attachment not found');
+        }
+        //Convert the collection back to an array
+
+        $this->attachments = array_values($this->attachments);
     }
 
     public function render(): View
