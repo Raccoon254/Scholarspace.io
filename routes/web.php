@@ -48,4 +48,5 @@ Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
 Route::view('/coming-soon', 'static.coming-soon')->name('coming-soon');
 Route::fallback([PagesController::class, 'notfound'])->where('catchall', '.*');
 Route::get('/info/price-calculator', [PagesController::class, 'info_price_calculator'])->name('info.price-calculator');
+Route::view('/info/order/create', 'info.order.create')->name('info.order.create');
 require __DIR__.'/auth.php';

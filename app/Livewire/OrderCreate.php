@@ -18,6 +18,8 @@ class OrderCreate extends Component
     public $total_price;
     public $loggedInUser;
     public $isWords;
+    public $words;
+    public $pages;
 
     public array $attachments = [];
 
@@ -31,6 +33,19 @@ class OrderCreate extends Component
     {
         $this->isWords = $mode;
     }
+
+    public function updated($propertyName): void
+    {
+        $price_per_word = 15/275;
+
+        if ($this->words) {
+            $this->total_price = $this->words * $price_per_word;
+        }
+        if ($this->pages) {
+            $this->total_price = $this->pages * 15;
+        }
+    }
+
 
     public function createOrder(): Redirector
     {
