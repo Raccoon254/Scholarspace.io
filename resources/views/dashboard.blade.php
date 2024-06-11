@@ -19,7 +19,7 @@
                         </div>
 
                         <div class="flex mt-3">
-                            <a href="{{ route('orders.index') }}"
+                            <a href="{{ route('orders.create') }}"
                                class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">New
                                 Order
                             </a>
