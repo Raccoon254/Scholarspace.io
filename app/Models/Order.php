@@ -53,4 +53,9 @@ class Order extends Model
             default => 'rounded bg-gray-500 text-white',
         };
     }
+
+    public function attachments(): HasMany
+    {
+        return $this->hasMany(OrderAttachment::class);
+    }
 }
