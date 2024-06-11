@@ -2,9 +2,11 @@
 
 namespace App\Livewire;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Livewire\Component;
 use App\Models\Order;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class OrderCreate extends Component
 {
@@ -12,7 +14,7 @@ class OrderCreate extends Component
     public $description;
     public $total_price;
 
-    public function createOrder()
+    public function createOrder(): Redirector
     {
         $this->validate([
             'title' => 'required|string|max:255',
@@ -30,7 +32,7 @@ class OrderCreate extends Component
 
         $this->reset(['title', 'description', 'total_price']);
 
-        return redirect()->route('orders.pay', ['orderId' => $order->id]);
+        return redirect()->route('orders.pay', ['orderId' => $order->id])->with('success', 'Order created successfully.');
     }
 
     public function render(): View

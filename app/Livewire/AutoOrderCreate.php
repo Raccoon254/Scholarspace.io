@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Order;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -20,13 +21,17 @@ class AutoOrderCreate extends Component
 
     public function mount()
     {
+        // Check if the order data is available in the session
+        if (!session()->has('orderData')) {
+            return redirect()->route('orders.create');
+        }
         $orderData = session('orderData');
         $this->title = $orderData['title'] ?? '';
         $this->description = $orderData['description'] ?? '';
         $this->totalPrice = $orderData['total_price'] ?? 0;
     }
 
-    public function createOrder()
+    public function createOrder(): RedirectResponse
     {
         $this->validate();
 

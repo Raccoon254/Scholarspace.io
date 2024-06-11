@@ -19,11 +19,11 @@
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-white">
     <livewire:navbar/>
+    @include('session.alerts')
     <div class="flex relative gap-2 p-2">
         <livewire:sidebar/>
         <!-- Page Content -->
-        <main class="w-full bg-gray-100 overflow-clip rounded-[16px]">
-            @include('session.alerts')
+        <main class="w-full bg-gray-100 text-black/80 overflow-clip rounded-[16px]">
             {{ $slot }}
         </main>
     </div>
