@@ -11,6 +11,11 @@
                 <div class="top-0 left-0 w-full h-full flex flex-col justify-center">
                     <section class="mb-4 text-left">
                         <header class="mb-4">
+                            @auth
+                                <h1 class="text-lg bg-green-500 p-4 rounded-sm font-semibold text-white mb-4 leading-snug">
+                                   You're logged in as {{ auth()->user()->name }}
+                                </h1>
+                            @endauth
                             <h1 class="text-2xl sm:text-4xl font-bold text-black/90 leading-snug">
                                 Premium <span class="text-red-500">Essay Writing</span> <br> Services for College
                                 Students
