@@ -75,19 +75,49 @@
         </button>
     </form>
 
-    <dialog id="order_creation_modal" class="modal bg-black/50 backdrop-blur-sm" {{ $showModal ? 'open' : '' }}>
-        <div class="modal-box bg-white">
-            <form method="dialog">
-                <button class="btn btn-sm ring-1 ring-inset btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            </form>
-            <h3 class="text-lg font-semibold mb-4">Order Price</h3>
-            <p>Total Price: ${{ number_format($totalPrice, 2) }}</p>
-            <p>Topic: {{ $topic }}</p>
-            <p>Subject: {{ $subject }}</p>
-            <p>Word Count: {{ $word_count }}</p>
-            <button wire:click="placeOrder" class="w-full py-2 mt-4 bg-green-500 text-white font-semibold rounded-lg">
-                Create Order
+<dialog id="order_creation_modal" class="modal bg-black/50 backdrop-blur-sm" open {{ $showModal ? 'open' : '' }}>
+    <div class="modal-box bg-white p-6">
+        <form method="dialog">
+            <button class="btn btn-sm ring-1 ring-gray-600 ring-inset btn-circle btn-ghost absolute right-2 top-2">
+                <i class="fas fa-times"></i>
             </button>
-        </div>
-    </dialog>
+        </form>
+        <h3 class="text-lg sm:text-2xl font-semibold mb-4">
+            Order Price
+        </h3>
+        <table class="table-auto w-full mb-4">
+            <tbody>
+                <tr class="border-b">
+                    <td class="py-2"><i class="mr-2 fas fa-tag"></i> Total Price:</td>
+                    <td class="py-2">${{ number_format($totalPrice, 2) }}</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="py-2"><i class="mr-2 fas fa-book"></i> Topic:</td>
+                    <td class="py-2">{{ $topic }}</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="py-2"><i class="mr-2 fas fa-bookmark">
+
+                        </i> Subject:</td>
+                    <td class="py-2">{{ $subject }}</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="py-2"><i class="mr-2 fas fa-file-word"></i> Word Count:</td>
+                    <td class="py-2">{{ $word_count }}</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="py-2"><i class="mr-2 fas fa-calendar-alt"></i> Deadline:</td>
+                    <td class="py-2">{{ $deadline }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class=" bg-blue-500 rounded p-2 text-white text-sm">
+            <i class="fas fa-info-circle"></i> Please review your order details before proceeding. Once you click "Create Order", you will be redirected to the order creation page.
+        </p>
+        <button wire:click="placeOrder" class="w-full py-2 mt-4 bg-green-500 text-white font-semibold rounded-lg">
+            Create Order
+        </button>
+    </div>
+</dialog>
+
 </div>
