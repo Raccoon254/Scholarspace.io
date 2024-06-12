@@ -78,7 +78,7 @@ class PriceCalculator extends Component
         $this->dispatch('toggleModal', false);
     }
 
-    public function placeOrder()
+    public function placeOrder(): mixed
     {
         // Logic to create the order
         $this->closeModal();
@@ -102,7 +102,7 @@ class PriceCalculator extends Component
             session()->flash('error', 'You need to login or register to place an order');
         }
 
-        return redirect()->route('orders.create.new');
+        return redirect()->route('orders.create');
     }
 
     public function render(): View

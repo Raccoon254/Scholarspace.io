@@ -27,6 +27,13 @@ class OrderCreate extends Component
     {
         $this->isWords = true;
         $this->loggedInUser = auth()->user();
+
+        if (session()->has('orderData')) {
+            $orderData = session('orderData');
+            $this->title = $orderData['title'] ?? '';
+            $this->description = $orderData['description'] ?? '';
+            $this->total_price = $orderData['total_price'] ?? 0;
+        }
     }
 
     public function setCalculationMode($mode): void
@@ -36,7 +43,7 @@ class OrderCreate extends Component
 
     public function updated($propertyName): void
     {
-        $price_per_word = 15/275;
+        $price_per_word = 15 / 275;
 
         if ($this->words) {
             $this->total_price = $this->words * $price_per_word;
@@ -47,7 +54,7 @@ class OrderCreate extends Component
     }
 
 
-    public function createOrder(): Redirector
+    public function createOrder(): Redirector | RedirectResponse
     {
         $this->validate([
             'title' => 'required|string|max:255',
