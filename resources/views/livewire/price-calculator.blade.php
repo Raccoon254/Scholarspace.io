@@ -75,7 +75,7 @@
         </button>
     </form>
 
-<dialog id="order_creation_modal" class="modal bg-black/50 backdrop-blur-sm" open {{ $showModal ? 'open' : '' }}>
+<dialog id="order_creation_modal" class="modal bg-black/50 backdrop-blur-sm" {{ $showModal ? 'open' : '' }}>
     <div class="modal-box bg-white p-6">
         <form method="dialog">
             <button class="btn btn-sm ring-1 ring-gray-600 ring-inset btn-circle btn-ghost absolute right-2 top-2">
