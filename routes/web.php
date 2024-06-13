@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/payments', VerifyPayments::class)->name('payments.index');
     Route::get('/users', ManageUsers::class)->name('users.index');
+    Route::get('/users/{user}', [ManageUsers::class, 'show'])->name('users.show');
 
     Route::get('/orders/create/new/', AutoOrderCreate::class)->name('orders.create.new');
     Route::get('/payments/{paymentId}', VerifyOrderPayment::class)->name('payments.show');
