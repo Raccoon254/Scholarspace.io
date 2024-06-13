@@ -40,8 +40,8 @@ class NewUserJoined extends Notification
             ->line('A new user has joined the website.')
             ->line('Name: ' . $this->user->name)
             ->line('Email: ' . $this->user->email)
-            ->line('Phone: ' . $this->user->phone)
-            ->line('Location: ' . $this->user->location)
+            ->line('Phone: ' . $this->user->phone ?? 'Not provided')
+            ->line('Location: ' . $this->user->location ?? 'Not provided')
             ->action('View User', url(route('users.show', $this->user)))
             ->line('Thank you for using our application!');
     }
@@ -56,6 +56,8 @@ class NewUserJoined extends Notification
         return [
             'name' => $this->user->name,
             'email' => $this->user->email,
+            'phone' => $this->user->phone ?? 'Not provided',
+            'location' => $this->user->location ?? 'Not provided',
         ];
     }
 }
