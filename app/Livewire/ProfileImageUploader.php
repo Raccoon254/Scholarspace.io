@@ -13,7 +13,7 @@ class ProfileImageUploader extends Component
 {
     use WithFileUploads;
 
-    #[Validate('image|max:1024')]
+    #[Validate('image|max:1024', message: 'The profile photo must not be greater than 1MB.')]
     public $profilePhoto;
     public $color = 'blue-500';
 
@@ -24,7 +24,7 @@ class ProfileImageUploader extends Component
 
     public function save(): void
     {
-
+        $this->validate(['profilePhoto' => 'image|max:1024']);
         if (auth()->user()->profile_photo) {
             $fullPath = Storage::path(auth()->user()->profile_photo);
             // Replace the path to the storage folder
