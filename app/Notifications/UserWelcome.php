@@ -2,23 +2,21 @@
 
 namespace App\Notifications;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewUserJoined extends Notification
+class UserWelcome extends Notification
 {
     use Queueable;
-    protected User $user;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(User $user)
+    public function __construct()
     {
-        $this->user = $user;
+        //
     }
 
     /**
@@ -37,13 +35,9 @@ class NewUserJoined extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line('A new user has joined scholarspace.')
-            ->line('Name: ' . $this->user->name)
-            ->line('Email: ' . $this->user->email)
-            ->line('Phone: ' . $this->user->phone ?? 'Not provided')
-            ->line('Location: ' . $this->user->location ?? 'Not provided')
-            ->action('View User', url(route('users.show', $this->user)))
-            ->line('Thank you for using our application!');
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -54,10 +48,7 @@ class NewUserJoined extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'name' => $this->user->name,
-            'email' => $this->user->email,
-            'phone' => $this->user->phone ?? 'Not provided',
-            'location' => $this->user->location ?? 'Not provided',
+            //
         ];
     }
 }
