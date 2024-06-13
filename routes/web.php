@@ -11,6 +11,7 @@ use App\Livewire\OrderPayment;
 use App\Livewire\Orders;
 use App\Livewire\OrderShow;
 use App\Livewire\Referrals;
+use App\Livewire\VerifyOrderPayment;
 use App\Livewire\VerifyPayments;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaticPageController;
@@ -37,6 +38,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/users', ManageUsers::class)->name('users.index');
 
     Route::get('/orders/create/new/', AutoOrderCreate::class)->name('orders.create.new');
+    Route::get('/payments/{paymentId}', VerifyOrderPayment::class)->name('payments.show');
 });
 
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');

@@ -26,7 +26,7 @@ class OrderPayment extends Component
         }
     }
 
-    public function updatedPaymentMethod()
+    public function updatedPaymentMethod(): void
     {
         $this->updatePaymentDetails();
     }
@@ -46,11 +46,11 @@ class OrderPayment extends Component
             ],
             'cash_app' => [
                 'logo' => asset('images/cash-app-logo.png'),
-                'instructions' => 'Please send your payment to our Cash App username: $ExampleUsername',
+                'instructions' => 'Please send your payment to our Cash App username: $stevovosti64',
             ],
             'zelle' => [
                 'logo' => asset('images/zelle.png'),
-                'instructions' => 'Please send your payment to our Zelle phone number: (123) 456-7890',
+                'instructions' => 'Please send your payment to our Zelle phone number: +254 790 743 009',
             ],
         ];
 
@@ -67,9 +67,10 @@ class OrderPayment extends Component
             'status' => 'pending',
         ]);
         // Show success message
+        // session()->flash('success', 'Payment initiated successfully. Please wait for confirmation.');
         // TODO: Send notification to the writer
         // Redirect to the dashboard
-        return redirect()->route('dashboard');
+        return redirect()->route('payment', ['paymentId' => $payment->id])->with('success', 'Payment initiated successfully. Please wait for confirmation.');
     }
 
     public function render(): View

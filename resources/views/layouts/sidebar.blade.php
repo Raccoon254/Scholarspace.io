@@ -1,8 +1,5 @@
 <div class="drawer md:w-60 absolute md:static z-50 lg:drawer-open">
     <input id="my-drawer-2" type="checkbox" class="drawer-toggle"/>
-    <div class="drawer-content flex flex-col items-center justify-center">
-        <!-- Page content here -->
-    </div>
     <div class="drawer-side flex z-50 flex-col justify-between h-full">
         <label for="my-drawer-2" aria-label="close sidebar" class="z-40 absolute drawer-overlay"></label>
         <ul class="menu bg-white px-4 md:pt-0 w-60 h-[100vh] text-black/90">
@@ -75,7 +72,7 @@
             </li>
         </ul>
 
-        <div class="flex bottom-0 w-60 items-center justify-center p-2 md:w-full">
+        <div class="flex bottom-0 w-60 items-center justify-center bg-white p-2 md:w-full">
             <form class="w-full" method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md w-full">

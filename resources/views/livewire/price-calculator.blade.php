@@ -112,10 +112,10 @@
             </tbody>
         </table>
         <p class=" bg-blue-500 rounded p-2 text-white text-sm">
-            <i class="fas fa-info-circle"></i> Please review your order details before proceeding. Once you click "Create Order", you will be redirected to the order creation page.
+            <i class="fas fa-info-circle"></i> Please review your order details before proceeding. Once you click "Complete Order", you will be redirected to the order creation page.
         </p>
         <button wire:click="placeOrder" class="w-full py-2 mt-4 bg-green-500 text-white font-semibold rounded-lg">
-            Create Order
+            Complete Order
         </button>
     </div>
 </dialog>
