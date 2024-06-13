@@ -35,7 +35,6 @@ class UserWelcome extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        // Welcome message for the user
         return (new MailMessage)
             ->subject('Welcome to Scholarspace')
             ->greeting('Hello ' . $this->user->name . '!')

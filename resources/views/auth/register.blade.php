@@ -9,19 +9,49 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-        <!-- Phone Number -->
-        <div class="mt-4">
-            <x-input-label for="phone" :value="__('Phone Number')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" />
-            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+        <div class="loc">
+            <div class="flex gap-4">
+                <!-- Phone Number -->
+                <div class="mt-4 w-1/2">
+                    <x-input-label for="phone" :value="__('Phone Number')"></x-input-label>
+                    <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" />
+                    <x-input-error :messages="$errors->get('phone')" class="mt-2"></x-input-error>
+                </div>
+
+                <!-- Location -->
+                <div class="mt-4 w-1/2">
+                    <x-input-label for="location" :value="__('Location')"></x-input-label>
+                    <x-text-input id="location" class="block mt-1 w-full" type="text" name="location" :value="old('location')" required autocomplete="location" />
+                    <x-input-error :messages="$errors->get('location')" class="mt-2"></x-input-error>
+                </div>
+            </div>
+            <div class="alert alert-info" style="display: none;"></div>
         </div>
 
-        <!-- Location -->
-        <div class="mt-4">
-            <x-input-label for="location" :value="__('Location')" />
-            <x-text-input id="location" class="block mt-1 w-full" type="text" name="location" :value="old('location')" required autocomplete="location" />
-            <x-input-error :messages="$errors->get('location')" class="mt-2" />
-        </div>
+        <script>
+            const phoneInputField = document.querySelector("#phone");
+            const phoneInput = window.intlTelInput(phoneInputField, {
+                utilsScript:
+                    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            });
+
+            const info = document.querySelector(".alert-info");
+
+            function process(event) {
+                event.preventDefault();
+
+                const phoneNumber = phoneInput.getNumber();
+
+                info.style.display = "";
+                info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+            }
+        </script>
 
         <!-- Email Address -->
         <div class="mt-4">
