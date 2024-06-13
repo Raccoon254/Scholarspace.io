@@ -24,7 +24,7 @@ class ProfileImageUploader extends Component
 
     public function save(): void
     {
-        sleep(1);
+
         if (auth()->user()->profile_photo) {
             $fullPath = Storage::path(auth()->user()->profile_photo);
             // Replace the path to the storage folder
