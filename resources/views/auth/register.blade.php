@@ -14,16 +14,16 @@
         <div>
             <div class="flex items-end">
                 <!-- Phone Number -->
-                <div class="mt-4 w-1/2 mr-2">
+                <div data-tip="Make sure we can contact you" class="mt-4 tooltip w-1/2 mr-2">
                     <x-input-label for="phone" :value="__('Phone Number')"></x-input-label>
-                    <x-text-input data-tip="Make sure we can contact you" id="phone" class="block tooltip mt-1 w-full" type="tel" wire:model="phone" required
+                    <x-text-input id="phone" class="block tooltip mt-1 w-full" type="tel" wire:model="phone" required
                                   autocomplete="phone"/>
                 </div>
 
                 <!-- Location -->
                 <div class="mt-4 w-1/2 ml-2">
                     <x-input-label for="location" :value="__('Location')"></x-input-label>
-                    <x-text-input id="location" class="block mt-1 w-full" type="text" wire:model.live="location" required
+                    <x-text-input id="location" disabled class="block mt-1 w-full" type="text" wire:model="location" required
                                   autocomplete="location"/>
                 </div>
             </div>
@@ -76,6 +76,24 @@
         let phoneInputField = document.querySelector("#phone");
         let phoneInput = window.intlTelInput(phoneInputField, {
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            initialCountry: "auto",
+            geoIpLookup: function (success, failure) {
+                fetch("https://ipinfo.io", {
+                    headers: {
+                        "Accept": "application/json",
+                    }
+                }).then((resp) => {
+                    if (resp.ok) {
+                        return resp.json();
+                    }
+                    throw new Error("Failed to fetch location");
+                }).then((data) => {
+                    success(data.country);
+                    alert(data.country)
+                }).catch(() => {
+                    failure("US");
+                });
+            },
         });
 
         // When we select a country, update the location field
