@@ -12,14 +12,13 @@ use Illuminate\Validation\Rules;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class Register extends Component
 {
-
     public $name;
     public $email;
     public $phone;
@@ -27,9 +26,24 @@ class Register extends Component
     public $password;
     public $password_confirmation;
 
+    public function mount(): void
+    {
+        $this->location = $this->getUserCountry();
+    }
+
+    public function getUserCountry(): string
+    {
+        try {
+            $response = Http::get('https://ipinfo.io/json');
+            $data = $response->json();
+            return $data['country'] ?? 'Unknown';
+        } catch (\Exception $e) {
+            return 'Unknown';
+        }
+    }
+
     public function register(): Application|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
-
         $user_data_array = [
             'name' => $this->name,
             'email' => $this->email,
@@ -37,8 +51,6 @@ class Register extends Component
             'location' => $this->location,
             'password' => Hash::make($this->password),
         ];
-
-        dd($user_data_array);
 
         $this->validate([
             'name' => ['required', 'string', 'max:255'],

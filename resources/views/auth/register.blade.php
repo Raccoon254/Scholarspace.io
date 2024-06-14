@@ -1,7 +1,6 @@
-<div>
+<x-guest-layout>
     <form wire:submit.prevent="register">
         @csrf
-
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')"/>
@@ -14,14 +13,14 @@
         <div>
             <div class="flex items-end">
                 <!-- Phone Number -->
-                <div data-tip="Make sure we can contact you" class="mt-4 tooltip w-1/2 mr-2">
-                    <x-input-label for="phone" :value="__('Phone Number')"></x-input-label>
+                <div data-tip="Make sure we can contact you" class="mt-4 flex flex-col justify-start tooltip w-1/2 mr-2">
+                    <x-input-label class="text-start mb-1" for="phone" :value="__('Phone Number')"></x-input-label>
                     <x-text-input id="phone" class="block tooltip mt-1 w-full" type="tel" wire:model="phone" required
                                   autocomplete="phone"/>
                 </div>
 
                 <!-- Location -->
-                <div class="mt-4 w-1/2 ml-2">
+                <div class="mt-4 ml-2">
                     <x-input-label for="location" :value="__('Location')"></x-input-label>
                     <x-text-input id="location" disabled class="block mt-1 w-full" type="text" wire:model="location" required
                                   autocomplete="location"/>
@@ -71,28 +70,15 @@
         </div>
     </form>
 
-    @script
     <script>
         let phoneInputField = document.querySelector("#phone");
         let phoneInput = window.intlTelInput(phoneInputField, {
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
             initialCountry: "auto",
             geoIpLookup: function (success, failure) {
-                fetch("https://ipinfo.io", {
-                    headers: {
-                        "Accept": "application/json",
-                    }
-                }).then((resp) => {
-                    if (resp.ok) {
-                        return resp.json();
-                    }
-                    throw new Error("Failed to fetch location");
-                }).then((data) => {
-                    success(data.country);
-                    alert(data.country)
-                }).catch(() => {
-                    failure("US");
-                });
+                data = {
+                    ip: "{{ request()->ip() }}"
+                };
             },
         });
 
@@ -101,8 +87,6 @@
             let countryData = phoneInput.getSelectedCountryData();
             document.querySelector("#location").value = countryData.name;
             // update wire location
-            @this.set('location', countryData.name);
         });
     </script>
-    @endscript
-</div>
+</x-guest-layout>
