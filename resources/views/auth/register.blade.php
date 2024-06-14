@@ -72,15 +72,42 @@
 
     <script>
         let phoneInputField = document.querySelector("#phone");
+        let update_location_success = false;
         let phoneInput = window.intlTelInput(phoneInputField, {
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
             initialCountry: "auto",
             geoIpLookup: function (success, failure) {
-                data = {
-                    ip: "{{ request()->ip() }}"
-                };
+                try {
+                    fetch("https://ipinfo.io/json?token=cbcffb988673b9", {
+                        headers: {
+                            "Accept": "application/json",
+                        },
+                        //if blocked by net::ERR_BLOCKED_BY_CLIENT return us
+                        mode: "cors",
+                    }).then((resp) => {
+                        if (resp.ok) {
+                            return resp.json();
+                        }
+                        return Promise.reject("Failed to fetch location from IP");
+                    }).then((data) => {
+                        let countryCode = data.country;
+                        success(countryCode);
+                        update_location_success = true;
+                    }).catch((err) => {
+                        console.error(err);
+                        failure("NG");
+                    });
+                } catch (error) {
+                    console.error(error);
+                    failure("NG");
+                }
             },
         });
+
+        if (!update_location_success) {
+            // Default to US if we can't get the location
+            phoneInput.setCountry("us");
+        }
 
         // When we select a country, update the location field
         phoneInputField.addEventListener("countrychange", function () {
