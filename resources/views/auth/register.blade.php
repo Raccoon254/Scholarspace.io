@@ -22,7 +22,7 @@
                 <!-- Location -->
                 <div class="mt-4 ml-2">
                     <x-input-label for="location" :value="__('Location')"></x-input-label>
-                    <x-text-input id="location" disabled class="block mt-1 w-full" type="text" wire:model="location" required
+                    <x-text-input id="location" disabled class="block opacity-30 mt-1 w-full" type="text" wire:model="location" required
                                   autocomplete="location"/>
                 </div>
             </div>
@@ -82,7 +82,6 @@
                         headers: {
                             "Accept": "application/json",
                         },
-                        //if blocked by net::ERR_BLOCKED_BY_CLIENT return us
                         mode: "cors",
                     }).then((resp) => {
                         if (resp.ok) {
@@ -92,6 +91,8 @@
                     }).then((data) => {
                         let countryCode = data.country;
                         success(countryCode);
+
+                        // Set success flag to true
                         update_location_success = true;
                     }).catch((err) => {
                         console.error(err);
@@ -113,7 +114,6 @@
         phoneInputField.addEventListener("countrychange", function () {
             let countryData = phoneInput.getSelectedCountryData();
             document.querySelector("#location").value = countryData.name;
-            // update wire location
         });
     </script>
 </x-guest-layout>

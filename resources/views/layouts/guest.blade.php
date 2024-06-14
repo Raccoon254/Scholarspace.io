@@ -18,7 +18,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+    @include('layouts.navigation.logged-out')
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-10 mb-6 sm:mb-10 bg-gray-100">
             <div class="center flex-col">
                 <a href="/">
                     <x-application-logo class="w-16 h-16 fill-current text-gray-500" />
@@ -32,6 +33,8 @@
                 @include('session.alerts')
                 {{ $slot }}
             </div>
+
+            @include('layouts.footer')
         </div>
     </body>
 </html>
