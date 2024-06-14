@@ -20,7 +20,7 @@
                 </div>
 
                 <!-- Location -->
-                <div class="mt-4 ml-2">
+                <div class="mt-4 w-1/2x ml-2">
                     <x-input-label for="location" :value="__('Location')"></x-input-label>
                     <x-text-input id="location" class="block phone opacity-30 mt-1 w-full" type="text" name="location" required
                                   autocomplete="location" value="{{ old('location') }}"/>

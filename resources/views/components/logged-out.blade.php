@@ -16,6 +16,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- Standard Meta Tags -->
+    <meta name="title" content="Scholarspace - Premium Essay Writing Services for College Students">
+    <meta name="description" content="Discover Scholarspace, your go-to platform for high-quality, professional essay writing services tailored for college students. Achieve academic excellence with our expert writers.">
+    <meta name="keywords" content="essay writing services, academic writing, college essays, professional writers, plagiarism-free papers, essay help">
+    <meta name="author" content="Scholarspace">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Scholarspace - Premium Essay Writing Services for College Students">
+    <meta property="og:description" content="Discover Scholarspace, your go-to platform for high-quality, professional essay writing services tailored for college students. Achieve academic excellence with our expert writers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.scholarspace.me">
+    <meta property="og:image" content="https://www.scholarspace.me/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Scholarspace">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Scholarspace - Premium Essay Writing Services for College Students">
+    <meta name="twitter:description" content="Discover Scholarspace, your go-to platform for high-quality, professional essay writing services tailored for college students. Achieve academic excellence with our expert writers.">
+    <meta name="twitter:image" content="https://www.scholarspace.me/assets/images/twitter-card.jpg">
+    <meta name="twitter:site" content="@Scholarspace">
+    <meta name="twitter:creator" content="@Scholarspace">
+
+    <!-- Additional Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="canonical" href="https://www.scholarspace.me">
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/favicon.png') }}">
+    <meta name="robots" content="index, follow">
+
 </head>
 <body class="font-sans text-black/80 min-h-screen flex justify-between flex-col bg-gray-50 antialiased">
 @include('layouts.navigation.logged-out')
