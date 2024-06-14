@@ -5,36 +5,36 @@
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')"/>
-            <x-text-input id="name" class="block mt-1 w-full" type="text" wire:model.live="name" required autofocus
+            <x-text-input id="name" class="block mt-1 w-full" type="text" wire:model="name" required autofocus
                           autocomplete="name"/>
             @error('name')
             <x-input-error :messages="$message" class="mt-2"/> @enderror
         </div>
 
-        <div class="flex items-center gap-4">
-            <!-- Phone Number -->
-            <div class="mt-4 w-1/2">
-                <x-input-label for="phone" :value="__('Phone Number')"></x-input-label>
-                <x-text-input id="phone" class="block mt-1 w-full" type="tel" wire:model.live="phone" required
-                              autocomplete="phone"/>
-                @error('phone')
-                <x-input-error :messages="$message" class="mt-2"></x-input-error> @enderror
-            </div>
+        <div>
+            <div class="flex items-end">
+                <!-- Phone Number -->
+                <div class="mt-4 w-1/2 mr-2">
+                    <x-input-label for="phone" :value="__('Phone Number')"></x-input-label>
+                    <x-text-input data-tip="Make sure we can contact you" id="phone" class="block tooltip mt-1 w-full" type="tel" wire:model="phone" required
+                                  autocomplete="phone"/>
+                </div>
 
-            <!-- Location -->
-            <div class="mt-4 w-1/2">
-                <x-input-label for="location" :value="__('Location')"></x-input-label>
-                <x-text-input id="location" class="block mt-1 w-full" type="text" wire:model.lazy="location" required
-                              autocomplete="location"/>
-                @error('location')
-                <x-input-error :messages="$message" class="mt-2"></x-input-error> @enderror
+                <!-- Location -->
+                <div class="mt-4 w-1/2 ml-2">
+                    <x-input-label for="location" :value="__('Location')"></x-input-label>
+                    <x-text-input id="location" class="block mt-1 w-full" type="text" wire:model.live="location" required
+                                  autocomplete="location"/>
+                </div>
             </div>
+            @error('phone')<x-input-error :messages="$message" class="mt-2"/> @enderror
+            @error('location') <x-input-error :messages="$message" class="mt-2"/> @enderror
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')"/>
-            <x-text-input id="email" class="block mt-1 w-full" type="email" wire:model.lazy="email" required
+            <x-text-input id="email" class="block mt-1 w-full" type="email" wire:model="email" required
                           autocomplete="username"/>
             @error('email')
             <x-input-error :messages="$message" class="mt-2"/> @enderror
@@ -43,7 +43,7 @@
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')"/>
-            <x-text-input id="password" class="block mt-1 w-full" type="password" wire:model.lazy="password" required
+            <x-text-input id="password" class="block mt-1 w-full" type="password" wire:model="password" required
                           autocomplete="new-password"/>
             @error('password')
             <x-input-error :messages="$message" class="mt-2"/> @enderror
@@ -53,7 +53,7 @@
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')"/>
             <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                          wire:model.lazy="password_confirmation" required autocomplete="new-password"/>
+                          wire:model="password_confirmation" required autocomplete="new-password"/>
             @error('password_confirmation')
             <x-input-error :messages="$message" class="mt-2"/> @enderror
         </div>
@@ -76,6 +76,14 @@
         let phoneInputField = document.querySelector("#phone");
         let phoneInput = window.intlTelInput(phoneInputField, {
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+
+        // When we select a country, update the location field
+        phoneInputField.addEventListener("countrychange", function () {
+            let countryData = phoneInput.getSelectedCountryData();
+            document.querySelector("#location").value = countryData.name;
+            // update wire location
+            @this.set('location', countryData.name);
         });
     </script>
     @endscript

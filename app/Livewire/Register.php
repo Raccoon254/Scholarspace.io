@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\User;
 use App\Notifications\NewUserJoined;
 use App\Notifications\UserWelcome;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -19,21 +20,26 @@ use Livewire\Component;
 class Register extends Component
 {
 
-    #[Validate('required', 'string', 'max:255', 'min:3')]
     public $name;
-    #[Validate('required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class)]
     public $email;
-    #[Validate('required', 'string', 'max:255', 'min:8', 'unique:' . User::class)]
     public $phone;
-    #[Validate('required', 'string', 'max:255', 'min:3')]
     public $location;
-    #[Validate('required', 'confirmed')]
     public $password;
-    #[Validate('required')]
     public $password_confirmation;
 
     public function register(): Application|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
+
+        $user_data_array = [
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'location' => $this->location,
+            'password' => Hash::make($this->password),
+        ];
+
+        dd($user_data_array);
+
         $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
