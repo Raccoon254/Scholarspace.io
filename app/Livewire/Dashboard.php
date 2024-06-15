@@ -7,6 +7,12 @@ use Livewire\Component;
 
 class Dashboard extends Component
 {
+    public $orders;
+    public function mount(): void
+    {
+        $this->orders = auth()->user()->orders;
+    }
+
     public function render(): View
     {
         return view('dashboard');

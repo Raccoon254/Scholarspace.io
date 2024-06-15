@@ -63,67 +63,12 @@
 
                 <div class="mt-6 md:px-2 w-full text-white">
                     <div class="text-xl flex justify-between items-center font-semibold">
-                        3 Previous Orders
+                        Previous Orders
                         <i class="fas btn btn-circle btn-sm bg-white text-blue-500 btn-ghost hover:text-white hover:ring ring-white fa-calendar-alt"></i>
                     </div>
 
                     <div class="orders">
-                        <div class="item mt-4">
-                            <span class="text-sm text-gray-200">
-                                12th Feb, 2024
-                            </span>
-                            <div
-                                class="flex justify-between bg-white bg-opacity-10 p-2 w-full rounded-lg items-center mt-2">
-                                <div class="flex items-center gap-4">
-                                    <div class="text-lg w-14 font-semibold text-blue-50">
-                                        09:00
-                                    </div>
-                                    <!-- Vertical Line -->
-                                    <div class="w-1 h-10 rounded-lg bg-blue-700 mx-2"></div>
-                                    <div class="">
-                                        <h4 class="text-xs text-gray-200 font-normal">Computer Science</h4>
-                                        <p class="text-lg">Java Programming</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="flex justify-between bg-white bg-opacity-10 p-2 w-full rounded-lg items-center mt-2">
-                                <div class="flex items-center gap-4">
-                                    <div class="text-lg w-14 font-semibold text-blue-50">
-                                        12:34
-                                    </div>
-                                    <!-- Vertical Line -->
-                                    <div class="w-1 h-10 rounded-lg bg-green-400 mx-2"></div>
-                                    <div class="">
-                                        <h4 class="text-xs text-gray-200 font-normal">History</h4>
-                                        <p class="text-lg">Ukraine History</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="day mt-4">
-                                <span class="text-sm text-gray-200">
-                                    34th Oct, 2023
-                                </span>
-
-                                <div
-                                    class="flex justify-between bg-white bg-opacity-10 p-2 w-full rounded-lg items-center mt-2">
-                                    <div class="flex items-center gap-4">
-                                        <div class="text-lg w-14 font-semibold text-blue-50">
-                                            23:00
-                                        </div>
-                                        <!-- Vertical Line -->
-                                        <div class="w-1 h-10 rounded-lg bg-red-500 mx-2"></div>
-                                        <div class="mr-2">
-                                            <h4 class="text-xs text-gray-200 font-normal">Philosophy</h4>
-                                            <p class="text-lg text-ellipsis whitespace-nowrap mr-2">Geo Evolution</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                        <div class="item overflow-scroll mt-4">
                             @foreach($orders as $order)
                                 <div class="day mt-4">
                                     <span class="text-sm text-gray-200">
@@ -137,10 +82,10 @@
                                                 {{ $order->created_at->format('H:i') }}
                                             </div>
                                             <!-- Vertical Line -->
-                                            <div class="w-1 h-10 rounded-lg bg-red-500 mx-2"></div>
+                                            <div class="w-1 h-10 rounded-lg {{ $order->getStatusClass() }} mx-2 "></div>
                                             <div class="mr-2">
-                                                <h4 class="text-xs text-gray-200 font-normal">{{ $order->subject }}</h4>
-                                                <p class="text-lg text-ellipsis whitespace-nowrap mr-2">{{ $order->title }}</p>
+                                                <h4 class="text-lg text-gray-10 font-semibold">{{ $order->title }}</h4>
+                                                <p class="text-xs text-ellipsis whitespace-nowrap mr-2">{{ Str::limit($order->description, 25) }}</p>
                                             </div>
                                         </div>
                                     </div>

@@ -6,15 +6,9 @@ use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use JetBrains\PhpStorm\NoReturn;
 
 class PagesController extends Controller
 {
-    public function dashboard(): View
-    {
-        $orders = Order::where('user_id', auth()->id())->get();
-        return view('dashboard', ['orders' => $orders]);
-    }
 
     public function orderCreate(): View
     {
