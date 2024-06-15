@@ -11,7 +11,10 @@ class Payment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_id', 'amount', 'payment_method', 'status',
+        'order_id',
+        'amount',
+        'payment_method', //[paypal, cash_app, zelle]
+        'status',
     ];
 
     public function order(): BelongsTo

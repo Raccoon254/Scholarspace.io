@@ -36,7 +36,10 @@
                 <!-- End We accept -->
 
                 <!-- Instructions -->
-                <h3 class="text-lg font-semibold mb-4">Payment Instructions</h3>
+                <h3 class="text-lg font-semibold mb-4">
+                    Payment Instructions
+                </h3>
+
                 <ol class="list-decimal list-inside mb-6">
                     <li>Select your preferred payment method from the dropdown menu below.</li>
                     <li>Follow the instructions provided for the selected payment method.</li>

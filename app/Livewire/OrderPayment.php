@@ -59,6 +59,11 @@ class OrderPayment extends Component
 
     public function pay()
     {
+        // If the payment method is 'Cash app'
+        if ($this->payment_method === 'cash_app') {
+            $this->payment_method = 'cash app';
+        }
+
         // Implement the payment logic here
         $payment = Payment::create([
             'order_id' => $this->order->id,
