@@ -8,7 +8,7 @@
 
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex gap-4 sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
-            <div class="bg-white p-6 relative md:w-2/3 rounded-lg shadow-sm">
+            <div class="bg-white p-2 md:p-6 relative md:w-2/3 rounded-lg shadow-sm">
 
                 <div class="payment-info">
                     <section class="mb-4 flex items-center gap-4">
@@ -20,10 +20,12 @@
                             </p>
                         </div>
                         <div class="bg-green-500 p-3 text-white w-1/2 rounded-md">
-                            <h4 class="text-lg font-semibold mb-2">Order Details:</h4>
-                            <p class="mb-2">Total Price</p>
-                            <div>
+                            <h4 class="text-lg font-semibold mb-2">Order Price</h4>
+                            <div class="text-2xl font-semibold">
                                 {{ $order->total_price }}
+                                <span class="text-xs">
+                                    USD
+                                </span>
                             </div>
                         </div>
                     </section>
@@ -33,26 +35,26 @@
                         <table class="table-auto w-full mb-4">
                             <tbody>
                             <tr class="border-b">
-                                <td class="py-2">Payment ID:</td>
-                                <td class="py-2">{{ $order->payment->id }}</td>
+                                <td class="py-3">Payment ID</td>
+                                <td class="py-3">{{ $order->payment->id }}</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2">Payment Date:</td>
-                                <td class="py-2">{{ $order->payment->created_at->format('M d, Y') }}</td>
+                                <td class="py-3">Payment Date</td>
+                                <td class="py-3">{{ $order->payment->created_at->format('M d, Y') }}</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2">Payment Time:</td>
-                                <td class="py-2">{{ $order->payment->created_at->format('h:i A') }}</td>
+                                <td class="py-3">Payment Time</td>
+                                <td class="py-3">{{ $order->payment->created_at->format('h:i A') }}</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2">Payment Status:</td>
-                                <td class="py-2"><span
+                                <td class="py-3">Payment Status</td>
+                                <td class="py-3"><span
                                         class="{{ $order->payment->getStatusClass() }} p-2 rounded-md text-white">{{ $order->payment->status }}</span></p>
                                 </td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2">Payment Method:</td>
-                                <td class="py-2">{{ $order->payment->payment_method }}</td>
+                                <td class="py-3">Payment Method</td>
+                                <td class="py-3">{{ $order->payment->payment_method }}</td>
                             </tr>
                             </tbody>
                         </table>

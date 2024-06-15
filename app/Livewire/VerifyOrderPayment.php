@@ -25,7 +25,7 @@ class VerifyOrderPayment extends Component
         if ($this->payment->status === 'completed') {
             session()->flash('success', 'Payment has been verified successfully');
         } else {
-            session()->flash('error', 'Payment verification in progress');
+            session()->flash('warning', 'Payment verification in progress');
         }
     }
 
