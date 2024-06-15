@@ -1,71 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://scholarspace.me</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
     <url>
         <loc>https://scholarspace.me/how-it-works</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
     <url>
         <loc>https://scholarspace.me/services</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
     <url>
         <loc>https://scholarspace.me/about</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
     <url>
         <loc>https://scholarspace.me/contact</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
     <url>
         <loc>https://scholarspace.me/login</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
     <url>
         <loc>https://scholarspace.me/register</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
     <url>
         <loc>https://scholarspace.me/info/price-calculator</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
     <url>
         <loc>https://scholarspace.me/tel:+254790743009</loc>
-    </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#087c67657b7c6d7e6d39303f486f65696164266b6765</loc>
-    </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#b4c0dbd9c7c0d1c2d1858c83f4d3d9d5ddd89ad7dbd9</loc>
-    </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#2c5843415f58495a491d141b6c4b414d4540024f4341</loc>
-    </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#dda9b2b0aea9b8abb8ece5ea9dbab0bcb4b1f3beb2b0</loc>
-    </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#24504b495750415241151c13644349454d480a474b49</loc>
-    </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#eb9f8486989f8e9d8edad3dcab8c868a8287c5888486</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
     <url>
         <loc>https://scholarspace.me/</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
     <url>
         <loc>https://scholarspace.me/forgot-password</loc>
+        <lastmod>2024-6-01</lastmod>
     </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#60140f0d131405160551585720070d01090c4e030f0d</loc>
-    </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#6d1902001e19081b085c555a2d0a000c0401430e0200</loc>
-    </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#8cf8e3e1fff8e9fae9bdb4bbccebe1ede5e0a2efe3e1</loc>
-    </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#7c0813110f08190a194d444b3c1b111d1510521f1311</loc>
-    </url>
-    <url>
-        <loc></loc>
-    </url>
-    <url>
-        <loc>https://scholarspace.me/cdn-cgi/l/email-protection#7e0a11130d0a1b081b4f46493e19131f1712501d1113</loc>
-    </url>
+</urlset>
