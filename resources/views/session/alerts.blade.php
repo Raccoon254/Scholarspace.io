@@ -6,7 +6,7 @@
 @endif
 
 @if(session('error'))
-    <div class="alert rounded-none mt-3 bg-red-500 alert-danger">
+    <div class="alert rounded-none border-none text-white mt-3 bg-red-500 alert-danger">
         {{ session('error') }}
     </div>
 @endif

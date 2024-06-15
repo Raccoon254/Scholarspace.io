@@ -11,6 +11,7 @@ class VerifyOrderPayment extends Component
 {
     public Payment $payment;
     public Order $order;
+    public $payment_methods = ['paypal', 'cash_app', 'zelle'];
     public function mount($paymentId): void
     {
         $this->payment = Payment::findOrFail($paymentId);
@@ -24,7 +25,7 @@ class VerifyOrderPayment extends Component
         if ($this->payment->status === 'completed') {
             session()->flash('success', 'Payment has been verified successfully');
         } else {
-            session()->flash('warning', 'Payment verification in progress');
+            session()->flash('error', 'Payment verification in progress');
         }
     }
 
