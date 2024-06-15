@@ -67,28 +67,35 @@
                     <div class="mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2 ">
                         @foreach($order->attachments as $attachment)
                             <div class="max-h-80 rounded-lg p-2 overflow-hidden">
-                                @if(in_array($attachment->type, ['image', 'image/png', 'video', 'png', 'jpg', 'jpeg', 'gif']))
+                                @if(in_array($attachment->type, ['image/jpeg', 'image/png', 'image/gif']))
                                     <section>
-                                        <div class="text-center font-semibold text-lg mb-2">
-                                            {{ $attachment->name }}
+                                        <div class="text-center text-nowrap font-semibold text-lg mb-2">
+                                            {{ Str::limit($attachment->name, 20)}}
                                         </div>
-                                        <div class="w-full mb-4">
-                                            @if($attachment->type === 'image' || in_array($attachment->type, ['png', 'image/png', 'jpg', 'jpeg', 'gif']))
+                                        <div class="w-full ring-1 ring-gray-200 rounded-lg mb-4">
+                                            @if($attachment->type === 'image' || in_array($attachment->type, ['image/png', 'image/png', 'image/jpg', 'image/jpeg', 'image/gif']))
                                                 <img src="{{ Storage::url($attachment->path) }}"
                                                      alt="{{ $attachment->name }}"
                                                      class="w-full h-52 bg-green-200 rounded-lg object-cover">
                                             @elseif($attachment->type === 'video')
-                                                <video src="{{ $attachment->path }}" controls
-                                                       class="max-w-full"></video>
+                                                <video class="w-full h-52 bg-green-200 rounded-lg object-cover" src="{{ $attachment->path }}" controls></video>
                                             @endif
                                         </div>
                                     </section>
                                 @else
+
                                     <section>
-                                        <a href="{{ $attachment->path }}" target="_blank">
+                                        <div class="text-center font-semibold text-lg mb-2">
                                             {{ $attachment->name }}
-                                            {{ $attachment->type }}
-                                        </a>
+                                        </div>
+                                        <div class="w-full mb-4 ring-1 ring-gray-200 rounded-lg">
+                                            <div class="bg-gray-100 center p-2 h-52 rounded-lg">
+                                                <a href="{{ Storage::url($attachment->path) }}"
+                                                   class="btn btn-circle btn-md btn-ghost ring ring-gray-600 ring-opacity-20">
+                                                    <i class="fas fa-download"></i>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </section>
                                 @endif
                             </div>
