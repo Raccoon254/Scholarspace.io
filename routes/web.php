@@ -53,6 +53,5 @@ Route::fallback([PagesController::class, 'notfound'])->where('catchall', '.*');
 Route::get('/not-found', [PagesController::class, 'notfound'])->name('not-found');
 Route::get('/info/price-calculator', [PagesController::class, 'info_price_calculator'])->name('info.price-calculator');
 Route::view('/info/order/create', 'info.order.create')->name('info.order.create');
-//info.order.payment
 Route::view('/info/order/payment', 'info.order.payment')->name('info.order.payment');
 require __DIR__.'/auth.php';

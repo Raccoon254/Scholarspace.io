@@ -70,7 +70,7 @@ class OrderPayment extends Component
         // session()->flash('success', 'Payment initiated successfully. Please wait for confirmation.');
         // TODO: Send notification to the writer
         // Redirect to the dashboard
-        return redirect()->route('payment', ['paymentId' => $payment->id])->with('success', 'Payment initiated successfully. Please wait for confirmation.');
+        return redirect()->route('payments.show', ['paymentId' => $payment->id])->with('success', 'Payment initiated successfully. Please wait for confirmation.');
     }
 
     public function render(): View

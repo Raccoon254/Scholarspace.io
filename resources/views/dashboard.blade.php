@@ -123,6 +123,30 @@
                                 </div>
 
                             </div>
+
+                            @foreach($orders as $order)
+                                <div class="day mt-4">
+                                    <span class="text-sm text-gray-200">
+                                        {{ $order->created_at->format('dS M, Y') }}
+                                    </span>
+
+                                    <div
+                                        class="flex justify-between bg-white bg-opacity-10 p-2 w-full rounded-lg items-center mt-2">
+                                        <div class="flex items-center gap-4">
+                                            <div class="text-lg w-14 font-semibold text-blue-50">
+                                                {{ $order->created_at->format('H:i') }}
+                                            </div>
+                                            <!-- Vertical Line -->
+                                            <div class="w-1 h-10 rounded-lg bg-red-500 mx-2"></div>
+                                            <div class="mr-2">
+                                                <h4 class="text-xs text-gray-200 font-normal">{{ $order->subject }}</h4>
+                                                <p class="text-lg text-ellipsis whitespace-nowrap mr-2">{{ $order->title }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            @endforeach
                         </div>
                     </div>
                 </div>

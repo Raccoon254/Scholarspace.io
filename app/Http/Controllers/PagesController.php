@@ -12,7 +12,8 @@ class PagesController extends Controller
 {
     public function dashboard(): View
     {
-        return view('dashboard');
+        $orders = Order::where('user_id', auth()->id())->get();
+        return view('dashboard', ['orders' => $orders]);
     }
 
     public function orderCreate(): View
