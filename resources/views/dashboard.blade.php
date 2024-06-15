@@ -69,28 +69,36 @@
 
                     <div class="orders">
                         <div class="item overflow-scroll mt-4">
-                            @foreach($orders as $order)
+                            @php
+                                $groupedOrders = $orders->groupBy(function($order) {
+                                    return $order->created_at->format('dS M, Y');
+                                });
+                            @endphp
+
+                            @foreach($groupedOrders as $date => $ordersOnDate)
                                 <div class="day mt-4">
                                     <span class="text-sm text-gray-200">
-                                        {{ $order->created_at->format('dS M, Y') }}
+                                        {{ $date }}
                                     </span>
 
-                                    <div
-                                        class="flex justify-between bg-white bg-opacity-10 p-2 w-full rounded-lg items-center mt-2">
-                                        <div class="flex items-center gap-4">
-                                            <div class="text-lg w-14 font-semibold text-blue-50">
-                                                {{ $order->created_at->format('H:i') }}
-                                            </div>
-                                            <!-- Vertical Line -->
-                                            <div class="w-1 h-10 rounded-lg {{ $order->getStatusClass() }} mx-2 "></div>
-                                            <div class="mr-2">
-                                                <h4 class="text-lg text-gray-10 font-semibold">{{ $order->title }}</h4>
-                                                <p class="text-xs text-ellipsis whitespace-nowrap mr-2">{{ Str::limit($order->description, 25) }}</p>
+                                    @foreach($ordersOnDate as $order)
+                                        <div
+                                            class="flex justify-between bg-white bg-opacity-10 p-2 w-full rounded-lg items-center mt-2">
+                                            <div class="flex items-center gap-4">
+                                                <div class="text-lg w-14 font-semibold text-blue-50">
+                                                    {{ $order->created_at->format('H:i') }}
+                                                </div>
+                                                <!-- Vertical Line -->
+                                                <div
+                                                    class="w-1 h-10 rounded-lg {{ $order->getStatusClass() }} mx-2 "></div>
+                                                <div class="mr-2">
+                                                    <h4 class="text-lg text-gray-10 font-semibold">{{ $order->title }}</h4>
+                                                    <p class="text-xs text-ellipsis whitespace-nowrap mr-2">{{ Str::limit($order->description, 25) }}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-
                             @endforeach
                         </div>
                     </div>
