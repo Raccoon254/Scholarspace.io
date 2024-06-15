@@ -29,7 +29,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/messages', Messages::class)->name('messages');
     Route::get('/orders', OrderShow::class)->name('orders.index');
-    Route::get('/referrals', Referrals::class)->name('referrals');
+    // TODO: Fix the referral function system
+    //Route::get('/referrals', Referrals::class)->name('referrals');
+
+    //Redirect referrals to coming soon page
+    Route::view('/referrals', 'static.coming-soon')->name('referrals');
 
     Route::get('/orders/create', OrderCreate::class)->name('orders.create');
     Route::get('/orders/pay/{orderId}', OrderPayment::class)->name('orders.pay');

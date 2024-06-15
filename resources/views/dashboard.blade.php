@@ -69,6 +69,7 @@
 
                     <div class="orders">
                         <div class="item overflow-scroll mt-4">
+
                             @php
                                 $groupedOrders = $orders->groupBy(function($order) {
                                     return $order->created_at->format('dS M, Y');
