@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use App\Models\Order;
 use Livewire\Features\SupportRedirects\Redirector;
@@ -18,7 +19,9 @@ class OrderCreate extends Component
     public $total_price;
     public $loggedInUser;
     public $isWords;
+    #[Validate('numeric|min:1')]
     public $words;
+    #[Validate('numeric|min:1')]
     public $pages;
 
     public array $attachments = [];
