@@ -65,6 +65,7 @@
                         <label for="words" class="block mb-2 font-semibold">Number of Words</label>
                         <input type="number" wire:model.live="words" id="words"
                                @disabled(!$isWords)
+                                   min="0"
                                @class(!$isWords ? 'bg-gray-100 w-full p-2 border border-gray-300 rounded-lg' : 'w-full p-2 border border-gray-300 rounded-lg')
                                placeholder="Number of words">
                         @error('words') <span class="text-red-500">{{ $message }}</span> @enderror
@@ -73,6 +74,7 @@
                         <label for="pages" class="block mb-2 font-semibold">Number of Pages</label>
                         <input type="number" wire:model.live="pages" id="pages"
                                @disabled($isWords)
+                                      min="0"
                                @class($isWords ? 'bg-gray-100 w-full p-2 border border-gray-300 rounded-lg' : 'w-full p-2 border border-gray-300 rounded-lg')
                                placeholder="Number of pages">
                         @error('pages') <span class="text-red-500">{{ $message }}</span> @enderror
