@@ -12,7 +12,9 @@
                 <div class="bg-white rounded-lg shadow-lg mb-4">
                     <div class="flex items-center gap-4 mb-4 md:mb-0">
                         <div class="p-2 md:p-4">
-                            <h3 class="text-lg font-semibold text-gray-800">What is an Order?</h3>
+                            <h3 class="text-xl font-semibold text-gray-800">
+                                Place an Order
+                            </h3>
                             <p class="text-gray-700 mt-1">
                                 An order is a request for our professional services, which can include essay writing,
                                 research papers, and more.
