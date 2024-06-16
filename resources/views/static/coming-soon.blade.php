@@ -15,14 +15,5 @@
         <p class="mb-4">If you want to be the first to know when these features are live, sign up for our newsletter:</p>
 
     </div>
-    <div class="center bg-blue-500 p-4 md:p-14">
-        <form class="w-full max-w-md flex flex-col gap-4 center bg-blue-500 items-center" action="" method="POST">
-            @csrf
-            <x-text-input type="email" name="email" placeholder="Your email address" required />
-            <button class="py-2 text-blue-500 font-semibold w-full bg-white px-4 rounded-md ring" type="submit">
-                Subscribe
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </form>
-    </div>
+    <livewire:newsletter/>
 </x-logged-out>
