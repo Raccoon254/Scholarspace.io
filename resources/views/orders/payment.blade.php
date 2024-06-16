@@ -23,7 +23,8 @@
                             //call getPaymentDetails method from OrderPayment class
                             $logo = (new App\Livewire\OrderPayment)->getPaymentDetails($method)['logo'];
                         @endphp
-                        <div class="w-28 md:w-32 ring-1 ring-inset cursor-pointer bg-gray-50 bg-opacity-35 relative rounded-lg ring-blue-100 p-2 h-auto hover:bg-opacity-80 hover:scale-105 transition-all">
+                        <div
+                            class="w-28 md:w-32 ring-1 ring-inset cursor-pointer bg-gray-50 bg-opacity-35 relative rounded-lg ring-blue-100 p-2 h-auto hover:bg-opacity-80 hover:scale-105 transition-all">
                             <!-- About icon -->
                             <a href="#"
                                class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
@@ -63,7 +64,8 @@
                         <div class="mb-4 p-4 bg-green-500 rounded-lg shadow-sm">
                             <div class="flex justify-between mb-2">
                                 <div class="flex items-center">
-                                    <img src="{{ $payment_details['logo'] }}" alt="{{ $payment_method }} Logo" class="w-28 md:w-32 h-auto mr-4">
+                                    <img src="{{ $payment_details['logo'] }}" alt="{{ $payment_method }} Logo"
+                                         class="w-28 md:w-32 h-auto mr-4">
                                     <div class="hidden sm:block">
                                         <h4 class="text-lg font-semibold text-gray-800">{{ ucfirst($payment_method) }}</h4>
                                     </div>
@@ -99,19 +101,26 @@
                         </div>
 
                         <div class="text-sm text-gray-500 my-4">
-                            <i class="fas fa-lock"></i> All payments are processed securely by our payment partners. We do not store any payment information on our servers.
+                            <i class="fas fa-lock"></i> All payments are processed securely by our payment partners. We
+                            do not store any payment information on our servers.
                         </div>
                     @endif
                     @if($isPaid)
                         <div class="mb-4">
-                            <div class="bg-green-100 border border-green-200 text-green-700 px-4 py-3 rounded relative"
+                            <div class="bg-green-100 border border-green-200 text-green-700 px-4 py-3 rounded-lg relative"
                                  role="alert">
                                 <strong class="font-semibold">Payment Successful!</strong>
                                 <span class="block sm:inline">Your payment has been is being processed.</span>
                             </div>
                         </div>
+                        <a href="{{ route('payments.show', $order->payment->id) }}"
+                           class="w-full py-3 px-4 bg-blue-500 text-white font-semibold rounded-lg">View Payment
+                            Details
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     @else
-                        <button type="submit" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg">Proceed to
+                        <button type="submit" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg">
+                            Proceed to
                             Verification
                             <i class="fas fa-arrow-right"></i>
                         </button>
@@ -124,10 +133,12 @@
 
                     <h3 class="text-lg font-semibold mb-4">Order Details</h3>
                     <div class="mb-4">
-                        <p class="text-sm text-gray-700">Order ID: <span class="font-semibold">{{ $order->id }}</span></p>
+                        <p class="text-sm text-gray-700">Order ID: <span class="font-semibold">{{ $order->id }}</span>
+                        </p>
                     </div>
                     <div class="mb-4">
-                        <p class="text-sm text-gray-700">Title: <span class="font-semibold">{{ $order->title }}</span></p>
+                        <p class="text-sm text-gray-700">Title: <span class="font-semibold">{{ $order->title }}</span>
+                        </p>
                     </div>
                     <div class="mb-4">
                         <p class="text-sm text-gray-700">Description: <span
