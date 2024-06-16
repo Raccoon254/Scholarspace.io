@@ -8,7 +8,7 @@
 
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 lg:mx-4 gap-4 flex-col h-full md:flex-row">
-            <div class="bg-white p-6 md:w-2/3 relative h-full rounded-lg shadow-sm">
+            <div class="bg-white p-2 md:p-6 md:w-2/3 relative h-full rounded-lg shadow-sm">
                 <!-- About icon -->
                 <a href="{{ route('info.order.payment') }}"
                    class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
@@ -23,13 +23,13 @@
                             //call getPaymentDetails method from OrderPayment class
                             $logo = (new App\Livewire\OrderPayment)->getPaymentDetails($method)['logo'];
                         @endphp
-                        <div class="w-32 ring-1 ring-inset cursor-pointer bg-gray-50 bg-opacity-35 relative rounded-lg ring-blue-100 p-2 h-auto hover:bg-opacity-80 hover:scale-105 transition-all">
+                        <div class="w-28 md:w-32 ring-1 ring-inset cursor-pointer bg-gray-50 bg-opacity-35 relative rounded-lg ring-blue-100 p-2 h-auto hover:bg-opacity-80 hover:scale-105 transition-all">
                             <!-- About icon -->
                             <a href="#"
                                class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
                                 <i class="fas h-2 w-2 text-xs center fa-info-circle"></i>
                             </a>
-                            <img src="{{ $logo }}" alt="{{ $method }} Logo" class="h-16 object-cover w-auto">
+                            <img src="{{ $logo }}" alt="{{ $method }} Logo" class="h-12 md:h-16 object-cover w-auto">
                         </div>
                     @endforeach
                 </div>
@@ -61,16 +61,27 @@
                     </div>
                     @if ($payment_method)
                         <div class="mb-4 p-4 bg-green-500 rounded-lg shadow-sm">
-                            <div class="flex items-center mb-2">
-                                <img src="{{ $payment_details['logo'] }}" alt="{{ $payment_method }} Logo" class="w-32 h-auto mr-4">
+                            <div class="flex justify-between mb-2">
+                                <div class="flex items-center">
+                                    <img src="{{ $payment_details['logo'] }}" alt="{{ $payment_method }} Logo" class="w-28 md:w-32 h-auto mr-4">
+                                    <div class="hidden sm:block">
+                                        <h4 class="text-lg font-semibold text-gray-800">{{ ucfirst($payment_method) }}</h4>
+                                    </div>
+                                </div>
+
                                 <div>
-                                    <h4 class="text-lg font-semibold text-gray-800">{{ ucfirst($payment_method) }}</h4>
+                                    <!-- Payment link ['link'] -->
+                                    <a href="{{ $payment_details['link'] }}" target="_blank"
+                                       class="btn btn-md btn-ghost ring ring-blue-500 ring-opacity-80">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Pay with {{ ucfirst($payment_method) }}</span>
+                                    </a>
                                 </div>
                             </div>
                             <div class="border-t flex gap-4 border-gray-200 mt-4 pt-4">
                                 <!-- Amount to pay -->
                                 <div class="text-sm w-1/4 center flex-col bg-white p-2 rounded-md text-gray-700 mb-1">
-                                    <div class="font-normal text-xs">Amount to pay:</div>
+                                    <div class="font-normal text-start w-full text-xs">Total :</div>
                                     <div>
                                         <span class="text-green-600 text-lg font-bold">{{ $order->total_price }}</span>
                                         <span class="text-gray-500 font-semibold text-xs">
