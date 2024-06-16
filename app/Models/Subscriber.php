@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subscriber extends Model
 {
+    // Newsletter subscribers
     use HasFactory;
 
     protected $fillable = [
