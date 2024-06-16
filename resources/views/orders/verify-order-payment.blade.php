@@ -86,7 +86,7 @@
 
                                     <section>
                                         <div class="text-center font-semibold text-lg mb-2">
-                                            {{ $attachment->name }}
+                                            {{ Str::limit($attachment->name, 20)}}
                                         </div>
                                         <div class="w-full mb-4 ring-1 ring-gray-200 rounded-lg">
                                             <div class="bg-gray-100 center p-2 h-52 rounded-lg">
