@@ -53,10 +53,10 @@
                        </div>
                    </div>
                     <button
-                        class="px-3 py-2 right-16 bg-gray-100 border-none rounded-lg text-primary ring-1 ring-blue-500 w-full"
+                        class="px-3 py-2 right-16 flex center gap-1 bg-gray-100 border-none rounded-lg text-primary ring-1 ring-blue-500 w-full"
                         onclick="document.getElementById('fileInput').click();">
                         <i class="fas fa-paperclip"></i>
-                        Add Attachments
+                        <span class="hidden sm:block">Add </span>Attachments
                     </button>
                 </div>
 
