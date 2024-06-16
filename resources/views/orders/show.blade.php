@@ -8,9 +8,34 @@
 
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
-            <div class="flex flex-col h-[85vh] text-black/70 gap-4">
+            <div class="flex flex-col text-black/70 gap-4">
+                <div class="bg-white rounded-lg shadow-lg mb-4">
+                    <div class="flex items-center gap-4 mb-4 md:mb-0">
+                        <div class="p-2 md:p-4">
+                            <h3 class="text-lg font-semibold text-gray-800">What is an Order?</h3>
+                            <p class="text-gray-700 mt-1">
+                                An order is a request for our professional services, which can include essay writing,
+                                research papers, and more.
+                                By placing an order, you ensure that your academic needs are met by our expert team.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-2 md:px-4 mb-4">
+                        <a href="{{ route('orders.create') }}" class="btn btn-primary text-white">
+                            Place an Order
+                            <i class="fas ring-1 p-2 btn-circle btn-xs center ring-white ring-opacity-35 fa-pen-nib ml-1"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-800 rounded-b-lg p-2 md:p-6 bg-green-500">
+                        When you place an order, you provide us with detailed instructions about your requirements,
+                        deadlines, and any additional materials.
+                        Our team will match you with the best writer for your subject area to ensure high-quality,
+                        plagiarism-free work.
+                    </p>
+                </div>
+
                 @if(!$orders->isEmpty())
-                    <div class="flex bg-white p-4 rounded-lg justify-between items-center gap-4">
+                    <div class="hidden md:flex bg-white p-4 rounded-lg justify-between items-center gap-4">
                         <div class="flex gap-4">
                             <div class="relative">
                                 <input type="text" wire:model.live.debounce="search"
@@ -39,7 +64,7 @@
                     </div>
                 @endif
 
-                <div class="bg-white h-full overflow-y-auto p-6 rounded-lg shadow-sm">
+                <div class="hidden md:block bg-white h-full overflow-y-auto p-6 rounded-lg shadow-sm">
                     @if($orders->isEmpty())
                         <div class="text-black/90 h-full center flex-col">
                             <i class="fas fa-box-open text-4xl mb-2"></i>
@@ -110,6 +135,17 @@
                             {{ $orders->links() }}
                         </div>
                     @endif
+                </div>
+
+                <!-- Explain we have to use a bigger device -->
+                <div class="md:hidden bg-white p-4 rounded-lg shadow-sm">
+                    <div class="text-black
+                        flex flex-col items-center justify-center gap-4">
+                        <i class="fas fa-exclamation-triangle text-4xl text-yellow-500"></i>
+                        <p class="text-center">
+                            Please use a bigger device to view orders.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
