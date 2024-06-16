@@ -16,14 +16,14 @@
                 </a>
 
                 <!-- We accept -->
-                <h3 class="text-xl font-semibold mb-8">We Accept</h3>
+                <h3 class="text-xl font-semibold mb-4">We Accept</h3>
                 <div class="flex space-x-3 mb-8">
                     @foreach($payment_methods as $method)
                         @php
                             //call getPaymentDetails method from OrderPayment class
                             $logo = (new App\Livewire\OrderPayment)->getPaymentDetails($method)['logo'];
                         @endphp
-                        <div class="w-32 ring-1 ring-inset bg-gray-50 relative rounded-lg ring-blue-200 p-2 h-auto">
+                        <div class="w-32 ring-1 ring-inset cursor-pointer bg-gray-50 bg-opacity-35 relative rounded-lg ring-blue-100 p-2 h-auto hover:bg-opacity-80 hover:scale-105 transition-all">
                             <!-- About icon -->
                             <a href="#"
                                class="absolute top-0 right-0 bg-blue-500 text-white p-2 rounded-bl-lg rounded-tr-lg hover:bg-blue-600">
@@ -69,19 +69,26 @@
                             </div>
                             <div class="border-t flex gap-4 border-gray-200 mt-4 pt-4">
                                 <!-- Amount to pay -->
-                                <div class="text-sm w-1/4 bg-white p-2 rounded-md text-gray-700 mb-1">
+                                <div class="text-sm w-1/4 center flex-col bg-white p-2 rounded-md text-gray-700 mb-1">
                                     <div class="font-normal text-xs">Amount to pay:</div>
-                                    <span class="text-green-600 text-lg font-bold">{{ $order->total_price }}</span>
-                                    <span class="text-gray-500 font-semibold text-xs">
+                                    <div>
+                                        <span class="text-green-600 text-lg font-bold">{{ $order->total_price }}</span>
+                                        <span class="text-gray-500 font-semibold text-xs">
                                         USD
                                     </span>
+                                    </div>
                                 </div>
                                 <!-- Instructions -->
                                 <div class="text-sm text-gray-700">
                                     <p class="font-semibold">Instructions:</p>
                                     {{ $payment_details['instructions'] }}
+                                    <span class="block text-lg font-bold">{{ $payment_details['address'] }}</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="text-sm text-gray-500 my-4">
+                            <i class="fas fa-lock"></i> All payments are processed securely by our payment partners. We do not store any payment information on our servers.
                         </div>
                     @endif
                     @if($isPaid)
