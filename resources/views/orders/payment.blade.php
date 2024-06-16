@@ -52,7 +52,7 @@
                 <form wire:submit.prevent="pay">
                     <div class="mb-4">
                         <select wire:model.live="payment_method" class="w-full p-2 border border-gray-300 rounded-lg">
-                            <option value="">Select Payment Method</option>
+                            <option disabled value="">Select Payment Method</option>
                             @foreach($payment_methods as $method)
                                 <option value="{{ $method }}">{{ ucfirst($method) }}</option>
                             @endforeach
@@ -60,10 +60,28 @@
                         @error('payment_method') <span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                     @if ($payment_method)
-                        <div class="mb-4">
-                            <img src="{{ $payment_details['logo'] }}" alt="{{ $payment_method }} Logo"
-                                 class="w-32 h-auto mb-2">
-                            <p class="text-sm text-gray-700">{{ $payment_details['instructions'] }}</p>
+                        <div class="mb-4 p-4 bg-green-500 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <img src="{{ $payment_details['logo'] }}" alt="{{ $payment_method }} Logo" class="w-32 h-auto mr-4">
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800">{{ ucfirst($payment_method) }}</h4>
+                                </div>
+                            </div>
+                            <div class="border-t flex gap-4 border-gray-200 mt-4 pt-4">
+                                <!-- Amount to pay -->
+                                <div class="text-sm w-1/4 bg-white p-2 rounded-md text-gray-700 mb-1">
+                                    <div class="font-normal text-xs">Amount to pay:</div>
+                                    <span class="text-green-600 text-lg font-bold">{{ $order->total_price }}</span>
+                                    <span class="text-gray-500 font-semibold text-xs">
+                                        USD
+                                    </span>
+                                </div>
+                                <!-- Instructions -->
+                                <div class="text-sm text-gray-700">
+                                    <p class="font-semibold">Instructions:</p>
+                                    {{ $payment_details['instructions'] }}
+                                </div>
+                            </div>
                         </div>
                     @endif
                     @if($isPaid)

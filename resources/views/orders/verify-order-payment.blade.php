@@ -104,6 +104,22 @@
                 @else
                     <p>No attachments for this order</p>
                 @endif
+
+                <div class="pb-6 mb-3 border-b border-gray-200">
+                    <!-- Links back to the all orders and dashboard -->
+                    <div class="flex gap-4 mt-4">
+                        <a href="{{ route('orders.index') }}"
+                           class="btn btn-md btn-ghost ring ring-gray-600 ring-opacity-20">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Back to Orders</span>
+                        </a>
+                        <a href="{{ route('dashboard') }}"
+                           class="btn btn-md btn-ghost ring ring-gray-600 ring-opacity-20">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </div>
+                </div>
                 <h3 class="text-xl font-semibold mb-4">Powered by</h3>
                 <div class="flex space-x-3 opacity-50 mb-8">
                     @foreach($payment_methods as $method)

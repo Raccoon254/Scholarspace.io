@@ -43,14 +43,20 @@ class OrderPayment extends Component
                 'logo' => asset('images/paypal.png'),
                 'instructions' => 'Please send your payment to our PayPal address:
                 stevovosti64@gmail.com',
+                'link' => 'https://www.paypal.com/paypalme/raccoon254',
+                'address' => 'stevovosti64@gmail.com',
             ],
             'cash_app' => [
                 'logo' => asset('images/cash-app-logo.png'),
-                'instructions' => 'Please send your payment to our Cash App username: $stevovosti64',
+                'instructions' => 'Please send your payment to our Cash App username: stevovosti64',
+                'link' => 'https://cash.app/stevo',
+                'address' => 'stevo',
             ],
             'zelle' => [
                 'logo' => asset('images/zelle.png'),
                 'instructions' => 'Please send your payment to our Zelle phone number: +254 790 743 009',
+                'link' => 'https://www.zellepay.com/',
+                'address' => '+254 790 743 009',
             ],
         ];
 
