@@ -61,7 +61,25 @@
                 <!-- Line Break -->
                 <hr class="mt-10 border-t-2 rounded-lg border-gray-100">
 
-                <div class="mt-6 md:px-2 w-full text-white">
+                <div class="mt-6 md:mt-8 md:px-2 center w-full text-white">
+                    <!-- If there are no orders show an icons and message and button to create an order -->
+                    @if($orders->isEmpty())
+                        <div class="center w-full h-full flex-col">
+                            <div class="text-lg w-full flex justify-between items-center font-semibold">
+                                Orders will appear here
+                                <i class="fas btn btn-circle btn-sm bg-white text-blue-500 btn-ghost hover:text-white hover:ring ring-white fa-calendar-alt"></i>
+                            </div>
+                            <div class="center flex-col mt-4 mb-5">
+                                <i class="fas fa-box-open text-4xl text-gray-200"></i>
+                                <span class="text-sm mt-2">You haven't placed any orders yet.</span>
+                                <a href="{{ route('orders.create') }}"
+                                   class="btn btn-md btn-ghost ring ring-gray-50 mt-6">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Place an order</span>
+                                </a>
+                            </div>
+                        </div>
+                    @else
                     <div class="text-xl flex justify-between items-center font-semibold">
                         Previous Orders
                         <i class="fas btn btn-circle btn-sm bg-white text-blue-500 btn-ghost hover:text-white hover:ring ring-white fa-calendar-alt"></i>
@@ -103,6 +121,8 @@
                             @endforeach
                         </div>
                     </div>
+
+                    @endif
                 </div>
             </div>
         </div>
