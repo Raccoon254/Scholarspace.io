@@ -11,12 +11,19 @@ class Newsletter extends Component
     public $email;
 
     protected $rules = [
-        'email' => 'required|email|unique:subscribers,email',
+        'email' => 'required|email',
     ];
 
     public function subscribe(): void
     {
         $this->validate();
+
+        //if the email already exists in the database, return an error message
+        if (Subscriber::where('email', $this->email)->exists()) {
+            session()->flash('message', 'You have already subscribed to the newsletter!');
+
+            return;
+        }
 
         Subscriber::create(['email' => $this->email]);
 
