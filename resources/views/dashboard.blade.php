@@ -61,7 +61,7 @@
                 <!-- Line Break -->
                 <hr class="mt-10 border-t-2 rounded-lg border-gray-100">
 
-                <div class="mt-6 md:mt-8 md:px-2 center w-full text-white">
+                <div class="mt-6 md:mt-8 md:px-2 center flex-col w-full text-white">
                     <!-- If there are no orders show an icons and message and button to create an order -->
                     @if($orders->isEmpty())
                         <div class="center w-full h-full flex-col">
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                     @else
-                    <div class="text-xl flex justify-between items-center font-semibold">
+                    <div class="text-xl flex w-full justify-between items-center font-semibold">
                         Previous Orders
                         <i class="fas btn btn-circle btn-sm bg-white text-blue-500 btn-ghost hover:text-white hover:ring ring-white fa-calendar-alt"></i>
                     </div>
