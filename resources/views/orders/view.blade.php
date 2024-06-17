@@ -12,17 +12,32 @@
                     <div class="rounded-lg relative p-4 w-full bg-white">
                         <h2 class="text-2xl font-semibold mb-6">Order Details</h2>
 
-                        <div class="mb-4">
-                            <h3 class="text-lg font-semibold">Order Information</h3>
-                            <p><strong>Title:</strong> {{ $order->title }}</p>
-                            <p><strong>Description:</strong> {{ $order->description }}</p>
-                            <p><strong>Status:</strong> <span
-                                    class="{{ $order->getStatusClass() }}">{{ ucfirst($order->status) }}</span></p>
-                            <p><strong>Total Price:</strong> ${{ number_format($order->total_price, 2) }}</p>
+                        <div class="bg-white p-6 grid grid-cols-2 rounded-lg shadow-sm mb-6">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-info-circle text-blue-500 text-xl mr-2"></i>
+                                <h3 class="text-lg font-semibold">Order Information</h3>
+                            </div>
+                            <div class="mb-4">
+                                <i class="fas fa-tag text-gray-500 mr-2"></i>
+                                <span class="font-bold">Title:</span> {{ $order->title }}
+                            </div>
+                            <div class="mb-4">
+                                <i class="fas fa-align-left text-gray-500 mr-2"></i>
+                                <span class="font-bold">Description:</span> {{ $order->description }}
+                            </div>
+                            <div class="mb-4">
+                                <i class="fas fa-tasks text-gray-500 mr-2"></i>
+                                <span class="font-bold">Status:</span>
+                                <span class="{{ $order->getStatusClass() }} px-2 py-1 rounded">{{ ucfirst($order->status) }}</span>
+                            </div>
+                            <div class="mb-4">
+                                <i class="fas fa-dollar-sign text-gray-500 mr-2"></i>
+                                <span class="font-bold">Total Price:</span> ${{ number_format($order->total_price, 2) }}
+                            </div>
                         </div>
 
-                        <div class="mb-4">
-                            <h3 class="text-lg font-semibold">Attachments</h3>
+                        <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+                            <h3 class="text-lg md:text-xl mb-4 font-semibold">Attachments</h3>
                             @if ($order->attachments->isNotEmpty())
                                 <ul>
                                     <div class="flex w-full flex-wrap gap-3">
@@ -77,30 +92,63 @@
                             @endif
                         </div>
 
-                        <div class="mb-4">
-                            <h3 class="text-lg font-semibold">Payment Information</h3>
+                        <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-credit-card text-blue-500 text-xl mr-2"></i>
+                                <h3 class="text-lg font-semibold">Payment Information</h3>
+                            </div>
                             @if ($order->isPaid())
-                                <p><strong>Amount Paid:</strong> ${{ number_format($order->payment->amount, 2) }}</p>
-                                <p><strong>Payment Method:</strong> {{ ucfirst($order->payment->payment_method) }}</p>
-                                <p><strong>Payment Status:</strong> <span
-                                        class="{{ $order->payment->getStatusClass() }}">{{ ucfirst($order->payment->status) }}</span>
-                                </p>
+                                <div class="mb-2">
+                                    <i class="fas fa-dollar-sign text-gray-500 mr-2"></i>
+                                    <span class="font-bold">Amount Paid:</span> ${{ number_format($order->payment->amount, 2) }}
+                                </div>
+                                <div class="mb-2">
+                                    <i class="fas fa-money-check-alt text-gray-500 mr-2"></i>
+                                    <span class="font-bold">Payment Method:</span> {{ ucfirst($order->payment->payment_method) }}
+                                </div>
+                                <div class="mb-2">
+                                    <i class="fas fa-info-circle text-gray-500 mr-2"></i>
+                                    <span class="font-bold">Payment Status:</span>
+                                    <span class="{{ $order->payment->getStatusClass() }} px-2 py-1 rounded">{{ ucfirst($order->payment->status) }}</span>
+                                </div>
                             @else
-                                <p>Payment not yet made.</p>
+                                <div class="mb-2">
+                                    <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>
+                                    <span class="font-bold">Payment not yet made.</span>
+                                </div>
                             @endif
                         </div>
 
-                        <div class="mb-4">
-                            <h3 class="text-lg font-semibold">Delivery Information</h3>
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-truck text-green-500 text-xl mr-2"></i>
+                                <h3 class="text-lg font-semibold">Delivery Information</h3>
+                            </div>
                             @if ($order->delivery->isNotEmpty())
-                                <ul>
+                                <ul class="list-disc pl-6">
                                     @foreach ($order->delivery as $delivery)
-                                        <li>{{ $delivery->details }}</li>
+                                        <li class="mb-2">{{ $delivery->details }}</li>
                                     @endforeach
                                 </ul>
                             @else
-                                <p>Not yet delivered.</p>
+                                <div class="mb-2">
+                                    <i class="fas fa-times-circle text-red-500 mr-2"></i>
+                                    <span class="font-bold">Not yet delivered.</span>
+                                </div>
                             @endif
+                        </div>
+
+                        <div class="links mt-2 gap-4 flex items-center justify-end">
+                            <a href="{{ route('orders.edit', $order) }}"
+                               class="btn btn-md btn-ghost ring ring-gray-200 mt-6">
+                                <i class="fas fa-edit"></i>
+                                <span>Edit Order</span>
+                            </a>
+                            <a href="{{ route('orders.index') }}"
+                               class="btn btn-md btn-ghost ring ring-blue-500 mt-6">
+                                <i class="fas fa-arrow-left"></i>
+                                <span>Back to Orders</span>
+                            </a>
                         </div>
                     </div>
                 </div>

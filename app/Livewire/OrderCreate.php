@@ -111,7 +111,7 @@ class OrderCreate extends Component
 
         // Confirm that the attachment was removed
         if (count($this->attachments) === $initialCount) {
-            dd('Attachment not found');
+            session()->flash('error', 'Attachment not found.');
         }
 
         //Convert the collection back to an array

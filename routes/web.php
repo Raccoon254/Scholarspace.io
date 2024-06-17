@@ -7,6 +7,7 @@ use App\Livewire\ManageUsers;
 use App\Livewire\OrderCreate;
 use App\Livewire\Dashboard;
 use App\Livewire\Messages;
+use App\Livewire\OrderEdit;
 use App\Livewire\OrderPayment;
 use App\Livewire\Orders;
 use App\Livewire\OrderShow;
@@ -30,6 +31,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/messages', Messages::class)->name('messages');
     Route::get('/orders', OrderShow::class)->name('orders.index');
     Route::get('/orders/{order}', [PagesController::class, 'show_order'])->name('orders.show');
+    // TODO: Fix the order edit function
+    //Route::get('/orders/{order}/edit', OrderEdit::class)->name('orders.edit');
+    Route::view('/orders/{order}/edit', 'static.coming-soon')->name('orders.edit');
+
     // TODO: Fix the referral function system
     //Route::get('/referrals', Referrals::class)->name('referrals');
 
