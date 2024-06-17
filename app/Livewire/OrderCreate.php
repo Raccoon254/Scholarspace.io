@@ -86,6 +86,9 @@ class OrderCreate extends Component
             }
         }
 
+        // Send notification to the user
+        // Send notification to all writers
+
         $this->reset(['title', 'description', 'total_price']);
 
         return redirect()->route('orders.pay', ['orderId' => $order->id])->with('success', 'Order created successfully.');
