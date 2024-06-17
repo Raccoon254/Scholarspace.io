@@ -29,6 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/messages', Messages::class)->name('messages');
     Route::get('/orders', OrderShow::class)->name('orders.index');
+    Route::get('/orders/{order}', [PagesController::class, 'show_order'])->name('orders.show');
     // TODO: Fix the referral function system
     //Route::get('/referrals', Referrals::class)->name('referrals');
 

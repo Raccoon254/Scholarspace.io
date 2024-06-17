@@ -160,14 +160,8 @@ class PagesController extends Controller
         return redirect()->back()->with('success', 'Thank you for your message!');
     }
 
-    public function subscribe(Request $request)
+    public function show_order(Order $order): View
     {
-        // Validate the form data
-        $request->validate([
-            'email' => 'required|email|unique:subscribers',
-        ]);
-
-        // Subscribe the user to the newsletter
-        dd('Subscribed');
+        return view('orders.view', ['order' => $order]);
     }
 }
