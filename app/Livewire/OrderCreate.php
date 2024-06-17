@@ -2,7 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
+use App\Notifications\OrderCreatedForUser;
+use App\Notifications\OrderCreatedForWriter;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -87,7 +91,11 @@ class OrderCreate extends Component
         }
 
         // Send notification to the user
+        $order->user->notify(new OrderCreatedForUser($order));
+
         // Send notification to all writers
+        $writers = User::where('role', 'writer')->get();
+        Notification::send($writers, new OrderCreatedForWriter($order));
 
         $this->reset(['title', 'description', 'total_price']);
 
@@ -105,8 +113,8 @@ class OrderCreate extends Component
         if (count($this->attachments) === $initialCount) {
             dd('Attachment not found');
         }
-        //Convert the collection back to an array
 
+        //Convert the collection back to an array
         $this->attachments = array_values($this->attachments);
     }
 
