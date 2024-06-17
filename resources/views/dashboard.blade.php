@@ -85,8 +85,8 @@
                         <i class="fas btn btn-circle btn-sm bg-white text-blue-500 btn-ghost hover:text-white hover:ring ring-white fa-calendar-alt"></i>
                     </div>
 
-                    <div class="orders">
-                        <div class="item overflow-scroll mt-4">
+                    <div class="orders w-full">
+                        <div class="item w-full overflow-scroll mt-4">
 
                             @php
                                 $groupedOrders = $orders->groupBy(function($order) {
@@ -95,7 +95,7 @@
                             @endphp
 
                             @foreach($groupedOrders as $date => $ordersOnDate)
-                                <div class="day mt-4">
+                                <div class="day w-full mt-4">
                                     <span class="text-sm text-gray-200">
                                         {{ $date }}
                                     </span>
