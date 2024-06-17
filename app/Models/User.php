@@ -64,7 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getAvatarAttribute(): string
     {
-        return 'https://api.dicebear.com/8.x/avataaars/svg?seed=' . $this->name;
+        return 'https://api.dicebear.com/8.x/identicon/svg?seed=' . $this->name .'rowColor=fff';
     }
 
     public function getProfilePhotoAttribute(): string
