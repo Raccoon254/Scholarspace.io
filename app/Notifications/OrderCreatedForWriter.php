@@ -6,17 +6,19 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\Order;
 
 class OrderCreatedForWriter extends Notification
 {
     use Queueable;
+    public Order $order;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(Order $order)
     {
-        //
+        $this->order = $order;
     }
 
     /**
@@ -35,9 +37,15 @@ class OrderCreatedForWriter extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->greeting('Hello ' . $notifiable->name . ',')
+            ->line('A new order has been created by ' . $this->order->user->name)
+            ->line('Order Details:')
+            ->line('Title: ' . $this->order->title)
+            ->line('Description: ' . $this->order->description)
+            ->line('Total Price: ' . $this->order->total_price)
+            ->line('Status: ' . $this->order->status)
+            ->action('View Order', url('/orders/' . $this->order->id))
+            ->line('Please review the order and proceed accordingly.');
     }
 
     /**
@@ -48,7 +56,11 @@ class OrderCreatedForWriter extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'order_id' => $this->order->id,
+            'title' => $this->order->title,
+            'description' => $this->order->description,
+            'total_price' => $this->order->total_price,
+            'status' => $this->order->status,
         ];
     }
 }
