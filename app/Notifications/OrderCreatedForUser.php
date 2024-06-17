@@ -36,6 +36,7 @@ class OrderCreatedForUser extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
+            ->subject('Order Created')
             ->greeting('Hello ' . $notifiable->name . ',')
             ->line('Your order has been successfully created.')
             ->line('Order Details:')

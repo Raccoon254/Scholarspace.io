@@ -37,6 +37,7 @@ class OrderCreatedForWriter extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
+            ->subject('You have a new order')
             ->greeting('Hello ' . $notifiable->name . ',')
             ->line('A new order has been created by ' . $this->order->user->name)
             ->line('Order Details:')
