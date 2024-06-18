@@ -17,7 +17,7 @@
 
                 <!-- We accept -->
                 <h3 class="text-xl font-semibold mb-4">We Accept</h3>
-                <div class="flex space-x-3 mb-8">
+                <div class="flex space-x-3 mb-4">
                     @foreach($payment_methods as $method)
                         @php
                             //call getPaymentDetails method from OrderPayment class

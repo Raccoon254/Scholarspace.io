@@ -49,7 +49,7 @@ input:-webkit-autofill {
 }
 
 .received-message{
-    @apply rounded-t-2xl rounded-br-2xl bg-white overflow-hidden text-gray-800 p-1 px-4;
+    @apply rounded-t-2xl rounded-br-2xl bg-green-500 overflow-hidden text-gray-800 p-1 px-4;
 }
 
 .received-message-attachment{

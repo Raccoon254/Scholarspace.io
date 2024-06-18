@@ -10,8 +10,8 @@
         <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
             <div class="flex flex-col text-black/70 gap-4">
                 <!-- Place order section -->
-                <div class="bg-green-500 border border-green-500 rounded-lg shadow-lg mb-4">
-                    <div class="bg-white rounded-lg">
+                <div class="bg-green-500 border border-green-500 rounded-lg">
+                    <div class="bg-white md:pb-3 rounded-lg">
                         <div class="flex items-center gap-4 mb-4 md:mb-0">
                             <div class="p-2 md:p-4">
                                 <h3 class="text-xl font-semibold text-gray-800">
@@ -24,14 +24,14 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="p-2 md:px-4 mb-4">
+                        <div class="p-2 md:px-4">
                             <a href="{{ route('orders.create') }}" class="btn btn-primary text-white">
                                 Place an Order
                                 <i class="fas ring-1 p-2 btn-circle btn-xs center ring-white ring-opacity-35 fa-pen-nib ml-1"></i>
                             </a>
                         </div>
                     </div>
-                    <p class="text-gray-800 rounded-b-lg p-2 md:p-6 bg-green-500">
+                    <p class="text-gray-800 text-xs rounded-b-lg p-2 md:p-4 bg-green-500">
                         When you place an order, you provide us with detailed instructions about your requirements,
                         deadlines, and any additional materials.
                         Our team will match you with the best writer for your subject area to ensure high-quality,
@@ -46,10 +46,10 @@
                             <div class="relative">
                                 <input type="text" wire:model.live.debounce="search"
                                        class="p-2 pl-8 border border-gray-300 rounded-md"
-                                       placeholder="Search Orders">
+                                       placeholder="Type to search ...">
                                 <i class="fas fa-search absolute top-[13px] left-3 text-gray-700"></i>
                             </div>
-                            <div class="border border-gray-300 rounded-md center gap-3 p-2">
+                            <div class="border border-gray-300 rounded-md {{ $show_filters }} center gap-3 p-2">
                                 <i class="fas fa-calendar left-3 text-gray-700"></i>
                                 01 Jan - 04 Jan
                             </div>
@@ -87,16 +87,20 @@
                                 </div>
                         </div>
                     @else
-
-                        <div class="border-gray-100 flex gap-4 justify-end items-center mb-4 {{ $show_filters }}">
-                            @foreach(['title' => 'Orders', 'description' => 'Description', 'total_price' => 'Total Price', 'status' => 'Status'] as $field => $label)
-                                <span onselectstart="return false"
-                                      class="text-black/80 cursor-pointer"
-                                      wire:click="sortBy('{{ $field }}')">
-                                        {{ $label }}
-                                        <i class="fas {{ $this->getSortIcon($field) }}"></i>
-                                    </span>
-                            @endforeach
+                        <div class="{{ $show_filters }}">
+                            <div class="border-gray-100 flex gap-4 justify-end items-center mb-6">
+                                @foreach(['title' => 'Name', 'description' => 'Description', 'total_price' => 'Total Price', 'status' => 'Status'] as $field => $label)
+                                    <span onselectstart="return false"
+                                          class="text-black/80 cursor-pointer"
+                                          wire:click="sortBy('{{ $field }}')">
+                                            {{ $label }}
+                                            <i class="fas {{ $this->getSortIcon($field) }}"></i>
+                                        </span>
+                                @endforeach
+                            </div>
+                            <span class="info text-xs italic">
+                                Showing {{ $orders->firstItem() }} to {{ $orders->lastItem() }} out of {{ $orders->total() }} orders
+                            </span>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
