@@ -10,13 +10,6 @@
             <div class="w-full md:w-2/3 md:pr-2 flex-col">
                 <div class="rounded-lg relative p-4 w-full bg-white">
                     <h3 class="text-lg font-medium text-gray-900 mb-4">Edit Order</h3>
-
-                    @if (session()->has('message'))
-                        <div class="bg-green-500 text-white p-4 mb-4 rounded">
-                            {{ session('message') }}
-                        </div>
-                    @endif
-
                     <form wire:submit.prevent="save">
                         <div class="mb-4">
                             <label for="status" class="block text-sm font-medium text-gray-700">Order Status</label>
