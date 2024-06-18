@@ -32,8 +32,10 @@ class OrderEdit extends Component
     public function save(): RedirectResponse | Redirect | Redirector
     {
         $this->validate();
+        $initial_order_status = $this->order->status;
+        $initial_payment_status = $this->order->payment->status ?? 'pending';
 
-        if ($this->order->status === $this->status && $this->order->payment->status === $this->paymentStatus) {
+        if ($initial_order_status === $this->status && $initial_payment_status === $this->paymentStatus) {
             return redirect()->route('orders.show', $this->order)->with('warning', 'Order updated successfully.');
         }
 
@@ -50,6 +52,11 @@ class OrderEdit extends Component
                 $this->order->save();
             }
         }
+
+        // We need to send a notification to the user when the order status is changed
+        // We need to notify the writers when the order status is changed with all the order details
+
+
 
         return redirect()->route('orders.show', $this->order)->with('warning', 'Order updated successfully.');
     }

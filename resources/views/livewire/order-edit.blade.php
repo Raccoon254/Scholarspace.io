@@ -10,6 +10,26 @@
             <div class="w-full md:w-2/3 md:pr-2 flex-col">
                 <div class="rounded-lg relative p-4 w-full bg-white">
                     <h3 class="text-lg font-medium text-gray-900 mb-4">Edit Order</h3>
+                    <!-- Order details, title and description -->
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <h4 class="text-lg font-medium text-gray-900">Order Details</h4>
+                            <p class="text-sm text-gray-500">Order ID: {{ $order->id }}</p>
+                            <p class="text-sm text-gray-500">Order Date: {{ $order->created_at->format('d M Y') }}</p>
+                        </div>
+                        <div>
+                            <a href="{{ route('orders.show', $order) }}"
+                               class="text-blue-500 hover:text-blue-700">View Order</a>
+                            <div class="text-xs">
+                                <span class="text-gray-500">Total: </span>
+                                <span class="text-gray-900 font-medium">${{ $order->total_price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-4">
+                        <h4 class="text-lg font-medium text-gray-900">Description</h4>
+                        {{ Str::limit($order->description, 100) }}
+                    </div>
                     <form wire:submit.prevent="save">
                         <div class="mb-4">
                             <label for="status" class="block text-sm font-medium text-gray-700">Order Status</label>
@@ -36,7 +56,7 @@
 
                         <div class="flex items-center justify-end mt-4">
                             <button type="submit"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                    class="custom-btn">
                                 Save Changes
                             </button>
                         </div>
