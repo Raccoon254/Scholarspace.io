@@ -9,6 +9,7 @@
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
             <div class="flex flex-col text-black/70 gap-4">
+                <!-- Place order section -->
                 <div class="bg-white rounded-lg shadow-lg mb-4">
                     <div class="flex items-center gap-4 mb-4 md:mb-0">
                         <div class="p-2 md:p-4">
@@ -35,6 +36,7 @@
                         plagiarism-free work.
                     </p>
                 </div>
+                <!-- End place order section -->
 
                 @if(!$orders->isEmpty())
                     <div class="hidden md:flex bg-white p-4 rounded-lg justify-between items-center gap-4">
@@ -66,7 +68,7 @@
                     </div>
                 @endif
 
-                <div class="hidden md:block bg-white h-full overflow-y-auto p-6 rounded-lg shadow-sm">
+                <div class="bg-white h-full overflow-y-auto p-6 rounded-lg shadow-sm">
                     @if($orders->isEmpty())
                         <div class="text-black/90 h-full center flex-col">
                             <i class="fas fa-box-open text-4xl mb-2"></i>
@@ -77,36 +79,33 @@
                                         <i class="fas fa-sync-alt"></i>
                                         Reset Search
                                     </button>
-                                @else
+                                    @else
                                         You haven't placed any orders yet.
                                         @if($role === 'client')
                                             <a href="{{ route('orders.create') }}" class="custom-btn">
-                                                        Place an order
-                                                    </a>
+                                                Place an order
+                                            </a>
                                         @endif
                                     @endif
                                 </div>
                         </div>
                     @else
-                        <table class="table my-4 ring-1 ring-gray-50 rounded-md overflow-clip">
-                            <thead>
-                            <tr class="border-gray-100">
-                                @foreach(['title' => 'Orders', 'description' => 'Description', 'total_price' => 'Total Price', 'status' => 'Status'] as $field => $label)
-                                    <th onselectstart="return false"
-                                        class="text-black/80 text-[14px] cursor-pointer"
-                                        wire:click="sortBy('{{ $field }}')">
+
+                        <div class="border-gray-100 flex gap-4 items-center mb-4 {{ $show_filters }}">
+                            @foreach(['title' => 'Orders', 'description' => 'Description', 'total_price' => 'Total Price', 'status' => 'Status'] as $field => $label)
+                                <span onselectstart="return false"
+                                      class="text-black/80 cursor-pointer"
+                                      wire:click="sortBy('{{ $field }}')">
                                         {{ $label }}
                                         <i class="fas {{ $this->getSortIcon($field) }}"></i>
-                                    </th>
-                                @endforeach
-                                <th class="text-black/80 text-[14px]">Payment</th>
-                            </tr>
-                            </thead>
-                        </table>
+                                    </span>
+                            @endforeach
+                        </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             @foreach($orders as $order)
-                                <div class="bg-white flex flex-col border border-blue-500 overflow-hidden justify-between rounded-lg hover:scale-105 cursor-pointer transition-all duration-100 shadow-sm">
+                                <div
+                                    class="bg-white flex flex-col border border-blue-500 overflow-hidden justify-between rounded-lg hover:scale-105 cursor-pointer transition-all duration-100 shadow-sm">
                                     <div class="flex flex-col justify-between h-full">
                                         <div class="m-4">
                                             <h3 class="text-lg font-semibold text-gray-800">{{ $order->title }}</h3>
@@ -120,15 +119,18 @@
                                                         $ {{ $order->total_price }}
                                                     </div>
                                                 </div>
-                                                <div class="w-1/2 text-xs center p-2 rounded-md ring-1 ring-green-500 ring-opacity-40 ring-inset">
+                                                <div
+                                                    class="w-1/2 text-xs center p-2 rounded-md ring-1 ring-green-500 ring-opacity-40 ring-inset">
                                                     This order is
                                                     {{ $order->status }}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex mt-4 border text-white border-blue-500 px-4 py-2 bg-blue-500 w-full justify-between items-center">
-                                            <span class="inline-block px-2 py-2 rounded-md {{ $order->isPaid() ? $order->payment->getStatusClass() : 'bg-red-500' }} text-white">
+                                    <div
+                                        class="flex mt-4 border text-white text-sm border-blue-500 px-4 py-2 bg-blue-500 w-full justify-between items-center">
+                                            <span
+                                                class="inline-block px-2 py-1 rounded-md {{ $order->isPaid() ? $order->payment->getStatusClass() : 'bg-red-500' }} text-white">
                                                 {{ $order->isPaid() ? $order->payment->status : 'Not Paid' }}
                                             </span>
                                         @if($order->isPaid())
@@ -136,7 +138,7 @@
                                                 {{ $order->payment->getStatusDescription() }}
                                             </span>
                                         @else
-                                            <a href="{{ route('orders.pay', $order->id) }}" class="ml-2 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            <a href="{{ route('orders.pay', $order->id) }}" class="ml-2 btn btn-sm">
                                                 Pay
                                             </a>
                                         @endif
@@ -158,7 +160,7 @@
                         flex flex-col items-center justify-center gap-4">
                         <i class="fas fa-exclamation-triangle text-4xl text-yellow-500"></i>
                         <p class="text-center">
-                            Please use a bigger device to view orders.
+                            Please use a bigger device to view orders better
                         </p>
                     </div>
                 </div>

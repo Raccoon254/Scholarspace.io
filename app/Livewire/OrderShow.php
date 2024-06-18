@@ -15,6 +15,7 @@ class OrderShow extends Component
     public bool $sortAsc = true;
     public string $role;
     public string $search = '';
+    public string $show_filters = 'hidden';
 
     public function mount(): void
     {
