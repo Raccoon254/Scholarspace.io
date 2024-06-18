@@ -63,6 +63,11 @@ class OrderShow extends Component
         $this->show_place_order_section = !$this->show_place_order_section;
     }
 
+    public function showOrder($orderId): void
+    {
+        redirect()->route('orders.show', $orderId);
+    }
+
     public function render(): View
     {
         if ($this->role === 'writer') {
