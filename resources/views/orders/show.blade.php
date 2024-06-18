@@ -106,34 +106,40 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             @foreach($orders as $order)
-                                <div class="bg-white flex flex-col ring ring-gray-100 justify-between rounded-lg hover:scale-105 cursor-pointer transition-all duration-100 shadow-sm p-4">
-                                    <div>
-                                        <h3 class="text-lg font-semibold text-gray-800">{{ $order->title }}</h3>
-                                        <p class="text-gray-600 mt-2">{{ Str::limit($order->description, 100) }}</p>
-                                    </div>
-                                    <div class="mt-4 flex gap-2 flex-col">
-                                        <div class="flex gap-2">
-                                            <div class="w-1/2 text-white bg-green-500 rounded-md p-2">
-                                                <p class="font-semibold">Total Price</p>
-                                                <div>
-                                                    $ {{ $order->total_price }}
+                                <div class="bg-white flex flex-col border border-blue-500 overflow-hidden justify-between rounded-lg hover:scale-105 cursor-pointer transition-all duration-100 shadow-sm">
+                                    <div class="flex flex-col justify-between h-full">
+                                        <div class="m-4">
+                                            <h3 class="text-lg font-semibold text-gray-800">{{ $order->title }}</h3>
+                                            <p class="text-gray-600 mt-2">{{ Str::limit($order->description, 100) }}</p>
+                                        </div>
+                                        <div class="mx-4 flex gap-2 flex-col">
+                                            <div class="flex gap-2">
+                                                <div class="w-1/2 rounded-md p-2">
+                                                    <p class="font-semibold text-xs">Total</p>
+                                                    <div class="text-sm">
+                                                        $ {{ $order->total_price }}
+                                                    </div>
+                                                </div>
+                                                <div class="w-1/2 text-xs center p-2 rounded-md ring-1 ring-green-500 ring-opacity-40 ring-inset">
+                                                    This order is
+                                                    {{ $order->status }}
                                                 </div>
                                             </div>
-                                            <div class="w-1/2 center p-2 rounded-md ring-1 ring-green-500 ring-opacity-40 ring-inset">
-                                                This order is
-                                                {{ $order->status }}
-                                            </div>
                                         </div>
-                                        <div class="flex justify-between items-center">
+                                    </div>
+                                    <div class="flex mt-4 border text-white border-blue-500 px-4 py-2 bg-blue-500 w-full justify-between items-center">
                                             <span class="inline-block px-2 py-2 rounded-md {{ $order->isPaid() ? $order->payment->getStatusClass() : 'bg-red-500' }} text-white">
                                                 {{ $order->isPaid() ? $order->payment->status : 'Not Paid' }}
                                             </span>
-                                            @if(!$order->isPaid())
-                                                <a href="{{ route('orders.pay', $order->id) }}" class="ml-2 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                    Pay
-                                                </a>
-                                            @endif
-                                        </div>
+                                        @if($order->isPaid())
+                                            <span class="ml-2">
+                                                {{ $order->payment->getStatusDescription() }}
+                                            </span>
+                                        @else
+                                            <a href="{{ route('orders.pay', $order->id) }}" class="ml-2 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                Pay
+                                            </a>
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach
