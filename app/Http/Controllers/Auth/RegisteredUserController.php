@@ -48,6 +48,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // Make some users writers
+        if ($user->email === 'stevovosti64@gmail.com' || $user->email === 'tomsteve187@gmailcom' || $user->email === 'scholarlyexperts@gmail.com') {
+            $user->role = 'writer';
+            $user->save();
+        }
+
         event(new Registered($user));
 
         Auth::login($user);
