@@ -19,7 +19,7 @@
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-white">
     <livewire:navbar/>
-    @include('session.alerts')
+    <livewire:alerts/>
     <div class="flex relative gap-2 p-2">
         <livewire:sidebar/>
         <!-- Page Content -->
