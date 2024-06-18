@@ -27,6 +27,7 @@ class Payment extends Model
         return match ($this->status) {
             'pending' => 'bg-gray-500',
             'completed' => 'text-green-500 bg-green-500',
+            'failed' => 'text-red-500 bg-red-500',
             default => 'text-gray-500',
         };
     }

@@ -3,8 +3,13 @@
 namespace App\Livewire;
 
 use App\Models\Order;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Livewire\Component;
+
+use Illuminate\Support\Facades\Session;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class OrderEdit extends Component
 {
@@ -24,9 +29,13 @@ class OrderEdit extends Component
         $this->paymentStatus = $order->payment->status ?? 'pending';
     }
 
-    public function save(): void
+    public function save(): RedirectResponse | Redirect | Redirector
     {
         $this->validate();
+
+        if ($this->order->status === $this->status && $this->order->payment->status === $this->paymentStatus) {
+            return redirect()->route('orders.show', $this->order)->with('warning', 'Order updated successfully.');
+        }
 
         $this->order->status = $this->status;
         $this->order->save();
@@ -42,7 +51,7 @@ class OrderEdit extends Component
             }
         }
 
-        session()->flash('message', 'Order updated successfully.');
+        return redirect()->route('orders.show', $this->order)->with('warning', 'Order updated successfully.');
     }
 
     public function render(): View

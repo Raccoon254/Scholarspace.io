@@ -109,7 +109,7 @@
                                 <div class="mb-2">
                                     <i class="fas fa-info-circle text-gray-500 mr-2"></i>
                                     <span class="font-bold">Payment Status:</span>
-                                    <span class="{{ $order->payment->getStatusClass() }} px-2 py-1 rounded">{{ ucfirst($order->payment->status) }}</span>
+                                    <span class="{{ $order->payment->getStatusClass() }} text-white px-2 py-1 rounded">{{ ucfirst($order->payment->status) }}</span>
                                 </div>
                             @else
                                 <div class="mb-2">
