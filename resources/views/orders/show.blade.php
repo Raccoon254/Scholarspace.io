@@ -102,35 +102,41 @@
                                 <th class="text-black/80 text-[14px]">Payment</th>
                             </tr>
                             </thead>
-                            <tbody>
+                        </table>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             @foreach($orders as $order)
-                                <tr class="border-b border-gray-100">
-                                    <td class="">{{ $order->title }}</td>
-                                    <td class="">{{ $order->description }}</td>
-                                    <td class="">$ {{ $order->total_price }}</td>
-                                    <td class="">
-                                            <span
-                                                class="rounded-md grid place-items-center px-2 py-1 {{ $order->getStatusClass() }} text-white">
+                                <div class="bg-white flex flex-col justify-between rounded-lg shadow-sm p-4">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-800">{{ $order->title }}</h3>
+                                        <p class="text-gray-600 mt-2">{{ Str::limit($order->description, 100) }}</p>
+                                    </div>
+                                    <div class="mt-4 flex gap-2 flex-col">
+                                        <div class="flex gap-2">
+                                            <div class="w-1/2 bg-green-500 rounded-md p-2">
+                                                <p class="text-gray-800 font-semibold">Total Price</p>
+                                                <div>
+                                                    $ {{ $order->total_price }}
+                                                </div>
+                                            </div>
+                                            <span class="inline-block w-1/2 center px-2 py-1 rounded-md {{ $order->getStatusClass() }} text-white">
                                                 {{ $order->status }}
                                             </span>
-                                    </td>
-                                    <td class="flex">
-                                            <span
-                                                class="rounded-md place-items-center px-2 py-1 {{ $order->isPaid() ? $order->payment->getStatusClass() : 'bg-red-500' }} text-white">
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="inline-block px-2 py-2 rounded-md {{ $order->isPaid() ? $order->payment->getStatusClass() : 'bg-red-500' }} text-white">
                                                 {{ $order->isPaid() ? $order->payment->status : 'Not Paid' }}
                                             </span>
-                                        <!-- Show payment button if order is not paid -->
-                                        @if(!$order->isPaid())
-                                            <button wire:click="payOrder({{ $order->id }})"
-                                                    class="p-2 mx-4 px-4 bg-blue-500 text-white font-semibold rounded-md">
-                                                Pay
-                                            </button>
-                                        @endif
-                                    </td>
-                                </tr>
+                                            @if(!$order->isPaid())
+                                                <a href="{{ route('orders.pay', $order->id) }}" class="ml-2 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                    Pay
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
-                            </tbody>
-                        </table>
+                        </div>
 
                         <!-- Pagination -->
                         <div class="mt-4">

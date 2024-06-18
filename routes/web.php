@@ -31,6 +31,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/messages', Messages::class)->name('messages');
     Route::get('/orders', OrderShow::class)->name('orders.index');
     Route::get('/orders/{order}', [PagesController::class, 'show_order'])->name('orders.show');
+    Route::get('/orders/create/new', OrderCreate::class)->name('orders.create');
+    Route::get('/orders/pay/{orderId}', OrderPayment::class)->name('orders.pay');
     // TODO: Fix the order edit function
     //Route::get('/orders/{order}/edit', OrderEdit::class)->name('orders.edit');
     Route::view('/orders/{order}/edit', 'static.coming-soon')->name('orders.edit');
@@ -41,14 +43,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //Redirect referrals to coming soon page
     Route::view('/referrals', 'static.coming-soon')->name('referrals');
 
-    Route::get('/orders/create', OrderCreate::class)->name('orders.create');
-    Route::get('/orders/pay/{orderId}', OrderPayment::class)->name('orders.pay');
-
     Route::get('/payments', VerifyPayments::class)->name('payments.index');
     Route::get('/users', ManageUsers::class)->name('users.index');
     Route::get('/users/{user}', [ManageUsers::class, 'show'])->name('users.show');
 
-    Route::get('/orders/create/new/', AutoOrderCreate::class)->name('orders.create.new');
     Route::get('/payments/{paymentId}', VerifyOrderPayment::class)->name('payments.show');
 });
 
