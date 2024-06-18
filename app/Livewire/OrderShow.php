@@ -50,6 +50,11 @@ class OrderShow extends Component
         return 'fa-sort';
     }
 
+    public function resetFilters(): void
+    {
+        $this->search = '';
+    }
+
     public function render(): View
     {
         if ($this->role === 'writer') {

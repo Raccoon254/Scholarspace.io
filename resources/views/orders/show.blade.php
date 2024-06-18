@@ -71,7 +71,7 @@
                         <div class="text-black/90 h-full center flex-col">
                             <i class="fas fa-box-open text-4xl mb-2"></i>
                             @if($search)
-                                <span>
+                                <div class="flex flex-col gap-3">
                                     No orders found for "{{ $search }}"
                                     <button class="custom-btn" wire:click="resetFilters">
                                         <i class="fas fa-sync-alt"></i>
@@ -85,7 +85,7 @@
                                                     </a>
                                         @endif
                                     @endif
-                                </span>
+                                </div>
                         </div>
                     @else
                         <table class="table my-4 ring-1 ring-gray-50 rounded-md overflow-clip">
