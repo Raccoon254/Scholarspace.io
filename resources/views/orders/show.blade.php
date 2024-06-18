@@ -10,33 +10,54 @@
         <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
             <div class="flex flex-col text-black/70 gap-4">
                 <!-- Place order section -->
-                <div class="bg-green-500 border border-green-500 rounded-lg">
-                    <div class="bg-white md:pb-3 rounded-lg">
-                        <div class="flex items-center gap-4 mb-4 md:mb-0">
-                            <div class="p-2 md:p-4">
-                                <h3 class="text-xl font-semibold text-gray-800">
+                <div class="top relative">
+                    <div wire:loading.class="opacity-20" class="bg-green-500  {{ $show_place_order_section ? 'hidden' : ''}} relative border border-green-500 rounded-lg">
+                        <div class="bg-white md:pb-3 rounded-lg">
+                            <div class="btn btn-ghost border-2 rounded-md border-red-400 absolute right-2 top-2 btn-sm {{ $show_place_order_section ? 'hidden' : ''}}"
+                                 wire:click="togglePlaceOrderSection">
+                                Hide Section
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div class="flex items-center gap-4 mb-4 md:mb-0">
+                                <div class="p-2 md:p-4">
+                                    <h3 class="text-xl font-semibold text-gray-800">
+                                        Place an Order
+                                    </h3>
+                                    <p class="text-gray-700 mt-1">
+                                        An order is a request for our professional services, which can include essay writing,
+                                        research papers, and more.
+                                        By placing an order, you ensure that your academic needs are met by our expert team.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-2 md:px-4">
+                                <a href="{{ route('orders.create') }}" class="btn btn-primary text-white">
                                     Place an Order
-                                </h3>
-                                <p class="text-gray-700 mt-1">
-                                    An order is a request for our professional services, which can include essay writing,
-                                    research papers, and more.
-                                    By placing an order, you ensure that your academic needs are met by our expert team.
-                                </p>
+                                    <i class="fas ring-1 p-2 btn-circle btn-xs center ring-white ring-opacity-35 fa-pen-nib ml-1"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="p-2 md:px-4">
-                            <a href="{{ route('orders.create') }}" class="btn btn-primary text-white">
-                                Place an Order
-                                <i class="fas ring-1 p-2 btn-circle btn-xs center ring-white ring-opacity-35 fa-pen-nib ml-1"></i>
-                            </a>
+                        <p class="text-gray-800 text-xs rounded-b-lg p-2 md:p-4 bg-green-500">
+                            When you place an order, you provide us with detailed instructions about your requirements,
+                            deadlines, and any additional materials.
+                            Our team will match you with the best writer for your subject area to ensure high-quality,
+                            plagiarism-free work.
+                        </p>
+                    </div>
+                    <!-- Toggle place order section -->
+                    <div class="flex justify-end {{ $show_place_order_section ? '' : 'hidden' }}">
+                        <div class="btn btn-ghost border-2 rounded-md border-green-500 btn-sm"
+                             wire:click="togglePlaceOrderSection">
+                            Show Section
+                            <i class="fas fa-plus"></i>
                         </div>
                     </div>
-                    <p class="text-gray-800 text-xs rounded-b-lg p-2 md:p-4 bg-green-500">
-                        When you place an order, you provide us with detailed instructions about your requirements,
-                        deadlines, and any additional materials.
-                        Our team will match you with the best writer for your subject area to ensure high-quality,
-                        plagiarism-free work.
-                    </p>
+                    <!-- Loading spinner -->
+                    <div class="center absolute top-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <div wire:loading class="loading loading-spinner">
+
+                        </div>
+                    </div>
                 </div>
                 <!-- End place order section -->
 
@@ -59,7 +80,7 @@
                             <button wire:click="resetFilters"
                                     class="p-2 px-4 bg-gray-200 text-gray-700 font-semibold rounded-lg">
                                 <i class="fas fa-filter"></i>
-                                Filter
+                                {{ $show_filters === 'hidden' ? 'Show Filters' : 'Hide Filters' }}
                             </button>
                         </div>
                     </div>
@@ -88,7 +109,7 @@
                         </div>
                     @else
                         <div class="{{ $show_filters }}">
-                            <div class="border-gray-100 flex gap-4 justify-end items-center mb-6">
+                            <div class="border-gray-100 flex gap-4 justify-end items-center mb-1">
                                 @foreach(['title' => 'Name', 'description' => 'Description', 'total_price' => 'Total Price', 'status' => 'Status'] as $field => $label)
                                     <span onselectstart="return false"
                                           class="text-black/80 cursor-pointer"
@@ -98,9 +119,9 @@
                                         </span>
                                 @endforeach
                             </div>
-                            <span class="info text-xs italic">
-                                Showing {{ $orders->firstItem() }} to {{ $orders->lastItem() }} out of {{ $orders->total() }} orders
-                            </span>
+                            <div class="info flex justify-end text-xs mb-5 text-gray-400 italic">
+                                Select a field to sort by alphabetically or numerically.
+                            </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

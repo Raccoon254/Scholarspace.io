@@ -34,8 +34,8 @@ class Payment extends Model
     public function getStatusDescription(): string
     {
         return match ($this->status) {
-            'pending' => 'Payment is pending.',
-            'completed' => 'Payment has been completed.',
+            'pending' => 'Payment pending verification.',
+            'completed' => 'Payment has been verified.',
             'failed' => 'Payment has failed.',
             default => 'Payment status is unknown.',
         };

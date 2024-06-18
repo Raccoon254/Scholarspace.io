@@ -16,6 +16,7 @@ class OrderShow extends Component
     public string $role;
     public string $search = '';
     public string $show_filters = 'block';
+   public bool $show_place_order_section = false;
 
     public function mount(): void
     {
@@ -55,6 +56,11 @@ class OrderShow extends Component
     {
         $this->search = '';
         $this->show_filters == 'hidden' ? $this->show_filters = 'block' : $this->show_filters = 'hidden';
+    }
+
+    public function togglePlaceOrderSection(): void
+    {
+        $this->show_place_order_section = !$this->show_place_order_section;
     }
 
     public function render(): View
