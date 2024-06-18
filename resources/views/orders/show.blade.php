@@ -10,24 +10,26 @@
         <div class="flex sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
             <div class="flex flex-col text-black/70 gap-4">
                 <!-- Place order section -->
-                <div class="bg-white rounded-lg shadow-lg mb-4">
-                    <div class="flex items-center gap-4 mb-4 md:mb-0">
-                        <div class="p-2 md:p-4">
-                            <h3 class="text-xl font-semibold text-gray-800">
-                                Place an Order
-                            </h3>
-                            <p class="text-gray-700 mt-1">
-                                An order is a request for our professional services, which can include essay writing,
-                                research papers, and more.
-                                By placing an order, you ensure that your academic needs are met by our expert team.
-                            </p>
+                <div class="bg-green-500 border border-green-500 rounded-lg shadow-lg mb-4">
+                    <div class="bg-white rounded-lg">
+                        <div class="flex items-center gap-4 mb-4 md:mb-0">
+                            <div class="p-2 md:p-4">
+                                <h3 class="text-xl font-semibold text-gray-800">
+                                    Place an Order
+                                </h3>
+                                <p class="text-gray-700 mt-1">
+                                    An order is a request for our professional services, which can include essay writing,
+                                    research papers, and more.
+                                    By placing an order, you ensure that your academic needs are met by our expert team.
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-2 md:px-4 mb-4">
-                        <a href="{{ route('orders.create') }}" class="btn btn-primary text-white">
-                            Place an Order
-                            <i class="fas ring-1 p-2 btn-circle btn-xs center ring-white ring-opacity-35 fa-pen-nib ml-1"></i>
-                        </a>
+                        <div class="p-2 md:px-4 mb-4">
+                            <a href="{{ route('orders.create') }}" class="btn btn-primary text-white">
+                                Place an Order
+                                <i class="fas ring-1 p-2 btn-circle btn-xs center ring-white ring-opacity-35 fa-pen-nib ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                     <p class="text-gray-800 rounded-b-lg p-2 md:p-6 bg-green-500">
                         When you place an order, you provide us with detailed instructions about your requirements,
@@ -47,11 +49,6 @@
                                        placeholder="Search Orders">
                                 <i class="fas fa-search absolute top-[13px] left-3 text-gray-700"></i>
                             </div>
-                            <button wire:click="resetFilters"
-                                    class="p-2 px-4 bg-gray-200 text-gray-700 font-semibold rounded-lg">
-                                <i class="fas fa-filter"></i>
-                                Filter
-                            </button>
                             <div class="border border-gray-300 rounded-md center gap-3 p-2">
                                 <i class="fas fa-calendar left-3 text-gray-700"></i>
                                 01 Jan - 04 Jan
@@ -59,16 +56,16 @@
                         </div>
 
                         <div class="flex gap-4">
-                            <button wire:click="exportOrders"
-                                    class="p-2 px-4 bg-blue-500 text-white font-semibold rounded-md">
-                                <i class="fas mr-2 fa-file-download"></i>
-                                Download as CSV
+                            <button wire:click="resetFilters"
+                                    class="p-2 px-4 bg-gray-200 text-gray-700 font-semibold rounded-lg">
+                                <i class="fas fa-filter"></i>
+                                Filter
                             </button>
                         </div>
                     </div>
                 @endif
 
-                <div class="bg-white h-full overflow-y-auto p-6 rounded-lg shadow-sm">
+                <div class="md:bg-white h-full overflow-y-auto p-0 md:p-6 rounded-lg shadow-sm">
                     @if($orders->isEmpty())
                         <div class="text-black/90 h-full center flex-col">
                             <i class="fas fa-box-open text-4xl mb-2"></i>
@@ -91,7 +88,7 @@
                         </div>
                     @else
 
-                        <div class="border-gray-100 flex gap-4 items-center mb-4 {{ $show_filters }}">
+                        <div class="border-gray-100 flex gap-4 justify-end items-center mb-4 {{ $show_filters }}">
                             @foreach(['title' => 'Orders', 'description' => 'Description', 'total_price' => 'Total Price', 'status' => 'Status'] as $field => $label)
                                 <span onselectstart="return false"
                                       class="text-black/80 cursor-pointer"
@@ -105,8 +102,8 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             @foreach($orders as $order)
                                 <div
-                                    class="bg-white flex flex-col border border-blue-500 overflow-hidden justify-between rounded-lg hover:scale-105 cursor-pointer transition-all duration-100 shadow-sm">
-                                    <div class="flex flex-col justify-between h-full">
+                                    class="bg-blue-500 flex flex-col border border-blue-500 overflow-hidden justify-between rounded-lg hover:scale-105 cursor-pointer transition-all duration-100 shadow-sm">
+                                    <div class="flex bg-white rounded-b-lg pb-4 flex-col justify-between h-full">
                                         <div class="m-4">
                                             <h3 class="text-lg font-semibold text-gray-800">{{ $order->title }}</h3>
                                             <p class="text-gray-600 mt-2">{{ Str::limit($order->description, 100) }}</p>
@@ -128,7 +125,7 @@
                                         </div>
                                     </div>
                                     <div
-                                        class="flex mt-4 border text-white text-sm border-blue-500 px-4 py-2 bg-blue-500 w-full justify-between items-center">
+                                        class="flex border text-white text-sm border-blue-500 px-4 py-2 bg-blue-500 w-full justify-between items-center">
                                             <span
                                                 class="inline-block px-2 py-1 rounded-md {{ $order->isPaid() ? $order->payment->getStatusClass() : 'bg-red-500' }} text-white">
                                                 {{ $order->isPaid() ? $order->payment->status : 'Not Paid' }}

@@ -15,7 +15,7 @@ class OrderShow extends Component
     public bool $sortAsc = true;
     public string $role;
     public string $search = '';
-    public string $show_filters = 'hidden';
+    public string $show_filters = 'block';
 
     public function mount(): void
     {
@@ -54,6 +54,7 @@ class OrderShow extends Component
     public function resetFilters(): void
     {
         $this->search = '';
+        $this->show_filters == 'hidden' ? $this->show_filters = 'block' : $this->show_filters = 'hidden';
     }
 
     public function render(): View
