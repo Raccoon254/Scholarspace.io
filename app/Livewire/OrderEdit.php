@@ -3,6 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Order;
+use App\Models\User;
+use App\Notifications\OrderStatusChanged;
+use App\Notifications\WriterOrderStatusChanged;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -53,10 +56,14 @@ class OrderEdit extends Component
             }
         }
 
-        // We need to send a notification to the user when the order status is changed
-        // We need to notify the writers when the order status is changed with all the order details
-
-
+        // Send notifications
+        $this->order->user->notify(new OrderStatusChanged($this->order));
+        // Assuming you have a method to get all writers related to this order
+        $writers = User::where('role', 'writer');
+        $order_owner = $this->order->user;
+        foreach ($writers as $writer) {
+            $writer->notify(new WriterOrderStatusChanged($this->order,$order_owner, $writer));
+        }
 
         return redirect()->route('orders.show', $this->order)->with('warning', 'Order updated successfully.');
     }
