@@ -33,7 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/orders/{order}', [PagesController::class, 'show_order'])->name('orders.show');
     Route::get('/orders/create/new', OrderCreate::class)->name('orders.create');
     Route::get('/orders/pay/{orderId}', OrderPayment::class)->name('orders.pay');
-    Route::view('/orders/{order}/edit', 'static.coming-soon')->name('orders.edit');
+    Route::get('/orders/{order}/edit', OrderEdit::class)->name('orders.edit');
 
     // TODO: Fix the referral function system
     //Route::get('/referrals', Referrals::class)->name('referrals');
