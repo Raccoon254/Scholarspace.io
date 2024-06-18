@@ -30,4 +30,14 @@ class Payment extends Model
             default => 'text-gray-500',
         };
     }
+
+    public function getStatusDescription(): string
+    {
+        return match ($this->status) {
+            'pending' => 'Payment is pending.',
+            'completed' => 'Payment has been completed.',
+            'failed' => 'Payment has failed.',
+            default => 'Payment status is unknown.',
+        };
+    }
 }

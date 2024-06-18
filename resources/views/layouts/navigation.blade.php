@@ -1,4 +1,4 @@
-<div class="navbar bg-white">
+<div class="navbar bg-white sticky">
     <div class="navbar-start">
         <div class="center">
             <div class="md:w-60">
