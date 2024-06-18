@@ -34,6 +34,12 @@ class OrderEdit extends Component
         if ($this->order->payment) {
             $this->order->payment->status = $this->paymentStatus;
             $this->order->payment->save();
+
+            // If the status is failed then change the order status to 'pending'
+            if ($this->paymentStatus === 'failed') {
+                $this->order->status = 'pending';
+                $this->order->save();
+            }
         }
 
         session()->flash('message', 'Order updated successfully.');
