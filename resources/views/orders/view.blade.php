@@ -140,6 +140,11 @@
 
                         <div class="links mt-2 gap-4 flex items-center justify-end">
                             @can('manage')
+                                <a href="{{ route('orders.deliver', $order) }}"
+                                   class="btn btn-md btn-ghost ring ring-green-500 mt-6">
+                                    <i class="fas fa-truck"></i>
+                                    <span>Deliver Order</span>
+                                </a>
                                 <a href="{{ route('orders.edit', $order) }}"
                                    class="btn btn-md btn-ghost ring ring-gray-200 mt-6">
                                     <i class="fas fa-edit"></i>
