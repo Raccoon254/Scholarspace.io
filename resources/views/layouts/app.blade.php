@@ -28,6 +28,7 @@
         </main>
     </div>
 </div>
+@include('layouts.footer')
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>

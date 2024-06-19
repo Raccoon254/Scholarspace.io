@@ -7,6 +7,7 @@ use App\Livewire\ManageUsers;
 use App\Livewire\OrderCreate;
 use App\Livewire\Dashboard;
 use App\Livewire\Messages;
+use App\Livewire\OrderDelivery;
 use App\Livewire\OrderEdit;
 use App\Livewire\OrderPayment;
 use App\Livewire\Orders;
@@ -31,6 +32,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/messages', Messages::class)->name('messages');
     Route::get('/orders', OrderShow::class)->name('orders.index');
     Route::get('/orders/{order}', [PagesController::class, 'show_order'])->name('orders.show');
+    Route::get('/orders/{order}/deliver', OrderDelivery::class)->name('orders.deliver');
     Route::get('/orders/create/new', OrderCreate::class)->name('orders.create');
     Route::get('/orders/pay/{orderId}', OrderPayment::class)->name('orders.pay');
     Route::get('/orders/{order}/edit', OrderEdit::class)->name('orders.edit');
