@@ -127,56 +127,67 @@
                             @if ($order->delivery->isNotEmpty())
                                 <ul class="list-disc pl-6">
                                     @foreach ($order->delivery as $delivery)
-                                        <li class="mb-2">{{ Str::ucfirst($delivery->status) }}: {{ Str::limit($delivery->description, 50) }}</li>
+                                        <div class="mb-2 font-semibold text-xl">{{ Str::ucfirst($delivery->status) }}</div>
+                                        <section>
+                                            {{ Str::limit($delivery->description, 100)}}
+                                        </section>
                                         @if ($delivery->attachments->isNotEmpty())
-                                            <ul>
-                                                <div class="flex w-full flex-wrap gap-3">
-                                                    @foreach($delivery->attachments as $attachment)
-                                                        <div class="min-w-[128px]">
-                                                            <div
-                                                                class="attachmentContainer container-{{ $attachment->id }} bg-gray-200
+                                            <details class="bg-gray-100 mb-4 rounded-md p-4">
+                                                <summary class="mb-2">
+                                                    <i class="fas fa-paperclip text-gray-500 mr-2"></i>
+                                                    <span class="font-normal">View Attachments</span>
+                                                </summary>
+                                                <section>
+                                                    <ul>
+                                                    <div class="flex w-full flex-wrap gap-3">
+                                                        @foreach($delivery->attachments as $attachment)
+                                                            <div class="min-w-[128px]">
+                                                                <div
+                                                                    class="attachmentContainer container-{{ $attachment->id }} bg-gray-200
                                                     hover:scale-105 transition-transform duration-300
                                                     rounded-xl ring-1 ring-blue-100 ring-opacity-40 cursor-pointer overflow-hidden relative" data-type="{{ $attachment->type }}" data-path="{{ Storage::url($attachment->path) }}" >
-                                                                @if (in_array($attachment->type, ['image/jpeg', 'image/png', 'image/gif']))
-                                                                    <img
-                                                                        src="{{ Storage::url($attachment->path) }}"
-                                                                        alt="Attachment"
-                                                                        class="w-[128px] h-32 object-cover">
-                                                                @elseif ($attachment->type == 'application/pdf')
-                                                                    <div
-                                                                        class="flex items-center justify-center h-32 bg-red-200">
-                                                                        <i class="fas fa-file-pdf text-4xl text-red-500"></i>
-                                                                    </div>
-                                                                @elseif ($attachment->type == 'application/zip' || $attachment->type == 'application/x-rar-compressed')
-                                                                    <div
-                                                                        class="flex items-center justify-center h-32 bg-green-200">
-                                                                        <i class="fas fa-file-archive text-4xl text-green-500"></i>
-                                                                    </div>
-                                                                @elseif (str_starts_with($attachment->type, 'video/'))
-                                                                    <div
-                                                                        class="flex items-center justify-center h-32 bg-blue-200">
-                                                                        <i class="fas fa-file-video text-4xl text-blue-500"></i>
-                                                                    </div>
-                                                                @elseif (str_starts_with($attachment->type, 'audio/'))
-                                                                    <div
-                                                                        class="flex items-center justify-center h-32 bg-yellow-200">
-                                                                        <i class="fas fa-file-audio text-4xl text-yellow-500"></i>
-                                                                    </div>
-                                                                @else
-                                                                    <div
-                                                                        class="flex items-center justify-center h-32 bg-gray-300">
-                                                                        <i class="fas fa-file text-4xl text-gray-500"></i>
-                                                                    </div>
-                                                                @endif
-                                                                <a href="{{ Storage::url($attachment->path) }}"
-                                                                   class="absolute top-0 btn btn-xs btn-circle btn-ghost bg-blue-500 right-0 mt-1 mr-1 text-white hover:ring-1 ring-blue-500 text-xs px-2 py-1">
-                                                                    <i class="fas fa-download"></i>
-                                                                </a>
+                                                                    @if (in_array($attachment->type, ['image/jpeg', 'image/png', 'image/gif']))
+                                                                        <img
+                                                                            src="{{ Storage::url($attachment->path) }}"
+                                                                            alt="Attachment"
+                                                                            class="w-[128px] h-32 object-cover">
+                                                                    @elseif ($attachment->type == 'application/pdf')
+                                                                        <div
+                                                                            class="flex items-center justify-center h-32 bg-red-200">
+                                                                            <i class="fas fa-file-pdf text-4xl text-red-500"></i>
+                                                                        </div>
+                                                                    @elseif ($attachment->type == 'application/zip' || $attachment->type == 'application/x-rar-compressed')
+                                                                        <div
+                                                                            class="flex items-center justify-center h-32 bg-green-200">
+                                                                            <i class="fas fa-file-archive text-4xl text-green-500"></i>
+                                                                        </div>
+                                                                    @elseif (str_starts_with($attachment->type, 'video/'))
+                                                                        <div
+                                                                            class="flex items-center justify-center h-32 bg-blue-200">
+                                                                            <i class="fas fa-file-video text-4xl text-blue-500"></i>
+                                                                        </div>
+                                                                    @elseif (str_starts_with($attachment->type, 'audio/'))
+                                                                        <div
+                                                                            class="flex items-center justify-center h-32 bg-yellow-200">
+                                                                            <i class="fas fa-file-audio text-4xl text-yellow-500"></i>
+                                                                        </div>
+                                                                    @else
+                                                                        <div
+                                                                            class="flex items-center justify-center h-32 bg-gray-300">
+                                                                            <i class="fas fa-file text-4xl text-gray-500"></i>
+                                                                        </div>
+                                                                    @endif
+                                                                    <a href="{{ Storage::url($attachment->path) }}"
+                                                                       class="absolute top-0 btn btn-xs btn-circle btn-ghost bg-blue-500 right-0 mt-1 mr-1 text-white hover:ring-1 ring-blue-500 text-xs px-2 py-1">
+                                                                        <i class="fas fa-download"></i>
+                                                                    </a>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                            </ul>
+                                                        @endforeach
+                                                    </div>
+                                                </ul>
+                                                </section>
+                                            </details>
                                         @else
                                             <p>No attachments available.</p>
                                         @endif
