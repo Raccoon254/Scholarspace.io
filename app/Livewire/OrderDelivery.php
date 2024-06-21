@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Order;
 use App\Models\Delivery;
 use App\Models\DeliveryAttachment;
+use App\Notifications\OrderDelivered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -51,6 +52,9 @@ class OrderDelivery extends Component
                 'file_type' => $attachment->getClientMimeType(),
             ]);
         }
+
+        // Notify the user that their order has been delivered
+        $this->order->user->notify(new OrderDelivered($this->order));
 
         session()->flash('success', 'Delivery created successfully.');
 
