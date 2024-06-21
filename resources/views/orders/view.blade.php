@@ -119,13 +119,13 @@
                             @endif
                         </div>
 
-                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <div class="bg-white p-4 md:p-6 rounded-lg shadow-sm">
                             <div class="flex items-center mb-4">
                                 <i class="fas fa-truck text-green-500 text-xl mr-2"></i>
                                 <h3 class="text-lg font-semibold">Delivery Information</h3>
                             </div>
                             @if ($order->delivery->isNotEmpty())
-                                <ul class="list-disc pl-6">
+                                <ul class="list-disc md:pl-6">
                                     @foreach ($order->delivery as $delivery)
                                         <div class="mb-2 font-semibold text-xl">{{ Str::ucfirst($delivery->status) }}</div>
                                         <section>
@@ -201,21 +201,21 @@
                             @endif
                         </div>
 
-                        <div class="links mt-2 gap-4 flex items-center justify-end">
+                        <div class="w-full mt-4 md:mt-6 gap-4 flex flex-wrap items-center md:justify-end">
                             @can('manage')
                                 <a href="{{ route('orders.deliver', $order) }}"
-                                   class="btn btn-md btn-ghost ring ring-green-500 mt-6">
+                                   class="btn btn-md btn-ghost ring ring-green-500">
                                     <i class="fas fa-truck"></i>
                                     <span>Deliver Order</span>
                                 </a>
                                 <a href="{{ route('orders.edit', $order) }}"
-                                   class="btn btn-md btn-ghost ring ring-gray-200 mt-6">
+                                   class="btn btn-md btn-ghost ring ring-gray-200">
                                     <i class="fas fa-edit"></i>
                                     <span>Edit Order</span>
                                 </a>
                             @endcan
                             <a href="{{ route('orders.index') }}"
-                               class="btn btn-md btn-ghost ring ring-blue-500 mt-6">
+                               class="btn btn-md btn-ghost ring ring-blue-500">
                                 <i class="fas fa-arrow-left"></i>
                                 <span>Back to Orders</span>
                             </a>
