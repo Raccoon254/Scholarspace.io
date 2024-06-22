@@ -12,30 +12,31 @@
                     <div class="rounded-lg relative p-4 w-full bg-white">
                         <h2 class="text-2xl font-semibold mb-6">Order Details</h2>
 
-                        <div class="bg-white p-6 grid grid-cols-2 rounded-lg shadow-sm mb-6">
-                            <div class="flex items-center mb-4">
-                                <i class="fas fa-info-circle text-blue-500 text-xl mr-2"></i>
-                                <h3 class="text-lg font-semibold">Order Information</h3>
-                            </div>
-                            <div class="mb-4">
-                                <i class="fas fa-tag text-gray-500 mr-2"></i>
-                                <span class="font-bold">Title:</span> {{ $order->title }}
-                            </div>
-                            <div class="mb-4">
-                                <i class="fas fa-align-left text-gray-500 mr-2"></i>
-                                <span class="font-bold">Description:</span> {{ $order->description }}
-                            </div>
-                            <div class="mb-4">
-                                <i class="fas fa-tasks text-gray-500 mr-2"></i>
-                                <span class="font-bold">Status:</span>
-                                <span class="{{ $order->getStatusClass() }} px-2 py-1 rounded">{{ ucfirst($order->status) }}</span>
-                            </div>
-                            <div class="mb-4">
-                                <i class="fas fa-dollar-sign text-gray-500 mr-2"></i>
-                                <span class="font-bold">Total Price:</span> ${{ number_format($order->total_price, 2) }}
-                            </div>
-                        </div>
-
+                        <div class="bg-white p-6 rounded-lg shadow-sm mb-6 space-y-4">
+    <div class="flex items-center space-x-2 mb-4">
+        <i class="fas fa-info-circle text-blue-500 text-xl"></i>
+        <h3 class="text-lg font-semibold">Order Information</h3>
+    </div>
+    <div class="space-y-2">
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-tag text-gray-500"></i>
+            <span class="font-bold">Title:</span> {{ $order->title }}
+        </div>
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-align-left text-gray-500"></i>
+            <span class="font-bold">Description:</span> {{ $order->description }}
+        </div>
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-tasks text-gray-500"></i>
+            <span class="font-bold">Status:</span>
+            <span class="{{ $order->getStatusClass() }} px-2 py-1 rounded">{{ ucfirst($order->status) }}</span>
+        </div>
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-dollar-sign text-gray-500"></i>
+            <span class="font-bold">Total Price:</span> ${{ number_format($order->total_price, 2) }}
+        </div>
+    </div>
+</div>
                         <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
                             <h3 class="text-lg md:text-xl mb-4 font-semibold">Attachments</h3>
                             @if ($order->attachments->isNotEmpty())
