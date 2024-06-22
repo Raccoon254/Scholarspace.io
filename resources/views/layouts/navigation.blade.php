@@ -9,8 +9,8 @@
                               d="M4 6h16M4 12h8m-8 6h16"/>
                     </svg>
                 </label>
-                <div class="hidden md:flex items-center justify-center px-4 gap-2">
-                    <x-application-logo class="h-5"/>
+                <div class="hidden md:flex items-center px-4 gap-2">
+                    <x-application-logo class="h-10"/>
                     <span class="text-lg text-black/80 font-bold">
                         Scholarspace
                     </span>
@@ -25,8 +25,8 @@
         </div>
     </div>
     <div class="navbar-center">
-        <div class="md:hidden flex gap-2 center">
-{{--            <x-application-logo class="h-5"/>--}}
+        <div class="md:hidden flex gap-2 center mr-4">
+            <x-application-logo class="h-6"/>
             <span class="text-lg text-black/80 font-bold">
                 Scholarspace
             </span>
@@ -62,7 +62,6 @@
                     </a>
                 </li>
             </ul>
-
         </div>
     </div>
 </div>
