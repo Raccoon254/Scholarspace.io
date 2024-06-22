@@ -61,7 +61,6 @@
                         <span>Orders</span>
                     </a>
                 </li>
-                <!-- Logout -->
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

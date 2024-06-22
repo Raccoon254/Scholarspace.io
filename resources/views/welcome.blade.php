@@ -7,7 +7,7 @@
             <div class="flex px-1 sm:px-4 lg:px-8 flex-col md:flex-row items-center justify-between">
                 <div class="text-center sm:w-2/3 relative md:text-left">
                     <img src="{{ asset('images/svg2.png') }}" alt="Hero"
-                         class="w-64 hidden md:block -top-16 opacity-50 right-0 absolute rounded-lg">
+                         class="w-64 hidden -top-16 opacity-50 right-0 absolute rounded-lg">
                     <div class="top-0 left-0 w-full h-full flex flex-col justify-center">
                         <section class="mb-4 text-left">
                             <header class="mb-4">
