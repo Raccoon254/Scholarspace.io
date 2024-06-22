@@ -61,6 +61,16 @@
                         <span>Orders</span>
                     </a>
                 </li>
+                <!-- Logout -->
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="flex items-center gap-2">
+                            <i class="fas fa-sign-out-alt text-gray-500"></i>
+                            <span>Logout</span>
+                        </button>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
