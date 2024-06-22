@@ -18,9 +18,11 @@
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-white">
-    <livewire:navbar/>
+    <div class="z-custom relative w-full bg-white px-4 flex justify-between items-center gap-4">
+        <livewire:navbar/>
+    </div>
     <livewire:alerts/>
-    <div class="flex relative gap-2 p-2">
+    <div class="flex relative z-40 gap-2 p-2">
         <livewire:sidebar/>
         <!-- Page Content -->
         <main class="w-full bg-gray-100 text-black/80 overflow-clip rounded-[16px]">

@@ -75,3 +75,7 @@ input:-webkit-autofill {
 .custom-danger-btn{
     @apply bg-red-500 text-white px-4 py-2 rounded-md transition-all duration-300 ease-in-out hover:bg-red-600;
 }
+
+.z-custom{
+    z-index: 100000000000 !important;
+}

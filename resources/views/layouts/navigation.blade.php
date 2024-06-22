@@ -48,7 +48,7 @@
             <img tabindex="0" role="button" class="h-8 w-8 ring-1 ring-white rounded-full"
                  src="{{ auth()->user()->profile_photo }}" alt="{{ auth()->user()->name }}"/>
 
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-lg ring ring-blue-500 ring-opacity-40 w-52">
+            <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-white rounded-lg ring ring-blue-500 ring-opacity-40 w-52">
                 <li>
                     <a href="{{ route('profile.edit') }}" class="flex gap-2">
                         <i class="fas fa-user text-gray-500"></i>
