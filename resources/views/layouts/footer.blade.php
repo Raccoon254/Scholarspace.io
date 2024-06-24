@@ -27,14 +27,18 @@
                     <i class="fas fa-phone"></i>
                     +254 790 743 009
                 </a>
-                <p class="text-sm flex gap-4 items-center mb-1 text-gray-300"> <i class="fas fa-envelope"></i>
-                    <a href="mailto:{{ env('OWNER_EMAIL') }}" class="hover:text-blue-500">hello@scholarspace.io</a>
+                <p class="text-sm flex gap-4 items-center mb-1 text-gray-300"><i class="fas fa-envelope"></i>
+                    <a href="mailto:{{ env('OWNER_EMAIL') }}?subject=Hello Scholarspace&body=I need help with my assignment"
+                       class="text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out underline">
+                        hello@scholarspace.io
+                    </a>
                 </p>
                 <p class="text-sm flex gap-4 items-center mb-1 text-gray-300">
                     <i class="fas fa-clock"></i>
                     Available 24/7
                 </p>
-                <a class="btn btn-sm ring mt-4" href="https://wa.me/254790743009?text=Hello%20Scholarspace\n I%20need%20help%20with%20my%20assignment">
+                <a class="btn btn-sm ring mt-4"
+                   href="https://wa.me/254790743009?text=Hello%20Scholarspace\n I%20need%20help%20with%20my%20assignment">
                     <i class="fab fa-whatsapp"></i>
                     Chat with us
                 </a>
@@ -45,7 +49,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HREX4BCHME"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'G-HREX4BCHME');
