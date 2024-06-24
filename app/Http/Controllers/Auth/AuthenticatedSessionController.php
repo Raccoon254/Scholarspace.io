@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Jenssegers\Agent\Agent;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -28,6 +29,24 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = Auth::user();
+
+        // Get device and browser information using Agent
+        $agent = new Agent();
+        $device = $agent->device();
+        $browser = $agent->browser();
+        $browserVersion = $agent->version($browser);
+
+        $user->activity()->create([
+            'activity' => 'login',
+            'description' => 'User ' . $user->name . ' logged in',
+            'device' => $device,
+            'browser' => $browser . ' ' . $browserVersion,
+            'ip' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+        ]);
+
+
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
@@ -36,6 +55,21 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        $user = Auth::user();
+        $agent = new Agent();
+        $device = $agent->device();
+        $browser = $agent->browser();
+        $browserVersion = $agent->version($browser);
+
+        $user->activity()->create([
+            'activity' => 'logout',
+            'description' => 'User ' . $user->name . ' logged out',
+            'device' => $device,
+            'browser' => $browser . ' ' . $browserVersion,
+            'ip' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+        ]);
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

@@ -60,7 +60,7 @@
                                 <p class="text-gray-500 text-xs">Joined {{ $user->created_at->diffForHumans() }}</p>
                             </div>
                             <div>
-                                <p class="text-gray-500 text-xs">Last seen ... </p>
+                                <p class="text-gray-500 text-xs">Last seen ...</p>
                             </div>
                         </div>
 
