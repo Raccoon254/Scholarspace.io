@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "^11.0",
         "laravel/horizon": "^5.24",
         "laravel/tinker": "^2.9",
