@@ -21,7 +21,6 @@ class UserEdit extends Component
 
     protected $rules = [
         'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255|unique:users,email',
         'phone' => 'nullable|string|max:15',
         'location' => 'nullable|string|max:255',
         'profile_photo' => 'nullable|image|max:1024', // Limit size to 1MB
@@ -50,9 +49,7 @@ class UserEdit extends Component
             'role' => $this->role,
         ]);
 
-        session()->flash('message', 'User profile updated successfully.');
-
-        return redirect()->route('users.show', $this->user->id);
+        return back()->with('message', 'User updated successfully');
     }
 
     public function render(): View
