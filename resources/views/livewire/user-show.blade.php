@@ -53,6 +53,17 @@
 
                     <!-- Recent Posts or Orders -->
                     <div class="w-full max-w-2xl bg-white rounded-lg mt-6 p-6">
+                        <!-- Joined date and last edited and seen -->
+
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-500 text-xs">Joined {{ $user->created_at->diffForHumans() }}</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-xs">Last seen ... </p>
+                            </div>
+                        </div>
+
                         <h2 class="text-lg font-semibold mb-4"> Recent Orders </h2>
                         @php
                             $recent_orders = $user->orders->take(3);

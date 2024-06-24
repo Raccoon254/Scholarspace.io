@@ -40,6 +40,11 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->role }}</td>
                                 <td class="flex gap-2">
+                                    <a href="{{ route('users.show', $user->id) }}">
+                                        <button class="custom-btn">
+                                            View
+                                        </button>
+                                    </a>
                                     <a href="{{ route('users.edit', $user->id) }}">
                                         <button class="custom-btn">
                                             Edit

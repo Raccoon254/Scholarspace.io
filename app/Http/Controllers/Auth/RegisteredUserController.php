@@ -48,8 +48,10 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Make some users writers
-        if ($user->email === 'stevovosti64@gmail.com' || $user->email === 'tomsteve187@gmailcom' || $user->email === 'scholarlyexperts@gmail.com') {
+        $admins_array = ['stevovosti64@gmail.com','tomsteve187@gmailcom','scholarlyexperts@gmail.com'];
+
+        // Make some users writers if email in the array
+        if (in_array($request->email, $admins_array)) {
             $user->role = 'writer';
             $user->save();
         }
