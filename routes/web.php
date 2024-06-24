@@ -45,11 +45,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/referrals', 'static.coming-soon')->name('referrals');
 
     Route::get('/payments', VerifyPayments::class)->name('payments.index');
-    Route::get('/users', ManageUsers::class)->name('users.index');
-    Route::get('/users/{user}', [ManageUsers::class, 'show'])->name('users.show');
-    Route::get('/users/edit/{id}', UserEdit::class)->name('users.edit');
+    Route::get('/users', ManageUsers::class)->name('users.index')->middleware('can:manage');
+    Route::get('/users/{user}', [ManageUsers::class, 'show'])->name('users.show')->middleware('can:manage');
+    Route::get('/users/edit/{id}', UserEdit::class)->name('users.edit')->middleware('can:manage');
 
-    Route::get('/payments/{paymentId}', VerifyOrderPayment::class)->name('payments.show');
+    Route::get('/payments/{paymentId}', VerifyOrderPayment::class)->name('payments.show')->middleware('can:manage');
 });
 
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
