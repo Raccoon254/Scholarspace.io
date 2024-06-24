@@ -14,7 +14,7 @@
                     </h1>
                     <div class="flex justify-end relative">
                         <input type="text" wire:model.live="search" class="w-full max-w-sm p-2 border border-gray-300 rounded-lg"
-                               placeholder="Search Payments">
+                               placeholder="Type to search...">
                         <i class="fas fa-search absolute top-3 right-3 text-gray-400"></i>
                     </div>
                     <table class="table my-4 ring-1 ring-blue-200 overflow-clip">
@@ -40,7 +40,11 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->role }}</td>
                                 <td class="flex gap-2">
-                                    <button class="custom-btn">Edit</button>
+                                    <a href="{{ route('users.edit', $user->id) }}">
+                                        <button class="custom-btn">
+                                            Edit
+                                        </button>
+                                    </a>
                                     <button class="custom-danger-btn">
                                         Delete
                                     </button>

@@ -13,6 +13,7 @@ use App\Livewire\OrderPayment;
 use App\Livewire\Orders;
 use App\Livewire\OrderShow;
 use App\Livewire\Referrals;
+use App\Livewire\UserEdit;
 use App\Livewire\VerifyOrderPayment;
 use App\Livewire\VerifyPayments;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/payments', VerifyPayments::class)->name('payments.index');
     Route::get('/users', ManageUsers::class)->name('users.index');
     Route::get('/users/{user}', [ManageUsers::class, 'show'])->name('users.show');
+    Route::get('/users/edit/{id}', UserEdit::class)->name('users.edit');
 
     Route::get('/payments/{paymentId}', VerifyOrderPayment::class)->name('payments.show');
 });
