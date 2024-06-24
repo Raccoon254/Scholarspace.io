@@ -21,12 +21,8 @@
                 <h3 class="text-xl font-bold mb-4">Contact Us</h3>
                 <p class="text-sm flex gap-4 items-center mb-1 text-gray-300">
                     <i class="fas fa-map-marker"></i>
-                    85001 Phoenix [City], Arizona [State], USA
+                    85001 Phoenix, Arizona, USA
                 </p>
-                <a class="text-sm flex gap-4 items-center mb-1 text-gray-300" href="tel:+254790743009">
-                    <i class="fas fa-phone"></i>
-                    +254 790 743 009
-                </a>
                 <p class="text-sm flex gap-4 items-center mb-1 text-gray-300"><i class="fas fa-envelope"></i>
                     <a href="mailto:{{ env('OWNER_EMAIL') }}?subject=Hello Scholarspace&body=I need help with my assignment"
                        class="text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out underline">
