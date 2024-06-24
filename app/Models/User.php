@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -66,6 +67,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function activity(): HasMany
     {
         return $this->hasMany(UserActivity::class);
+    }
+
+    public function lastSeen(): Model | null
+    {
+        return $this->activity()->latest()->first();
     }
 
     public function getAvatarAttribute(): string

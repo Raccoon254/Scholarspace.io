@@ -60,7 +60,13 @@
                                 <p class="text-gray-500 text-xs">Joined {{ $user->created_at->diffForHumans() }}</p>
                             </div>
                             <div>
-                                <p class="text-gray-500 text-xs">Last seen ...</p>
+                                <p class="text-gray-500 text-xs">Last seen
+                                    @if($user->lastSeen())
+                                        {{ $user->lastSeen()->created_at->diffForHumans() }}
+                                    @else
+                                        Never
+                                    @endif
+                                </p>
                             </div>
                         </div>
 
@@ -69,7 +75,7 @@
                             $recent_orders = $user->orders->take(3);
                         @endphp
 
-                        @foreach ($recent_orders as $order)
+                        @forelse ($recent_orders as $order)
                             <div class="bg-gray-50 p-4 rounded-lg mb-4">
                                 <div class="flex items-center justify-between">
                                     <div>
@@ -85,7 +91,11 @@
                                 </div>
                                 <p class="mt-2 text-gray-700">{{ $order->description }}</p>
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                                <p class="text-gray-700">No recent orders</p>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>
