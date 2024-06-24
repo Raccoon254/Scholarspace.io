@@ -63,6 +63,7 @@ class PriceCalculator extends Component
             'word_count' => 'required|numeric|min:1',
             'deadline' => 'required|date|after:today'
         ]);
+
         $this->calculatePrice();
         $this->showModal = true;
         $this->dispatch('toggleModal', true);

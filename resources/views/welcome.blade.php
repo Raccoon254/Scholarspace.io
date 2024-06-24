@@ -3,11 +3,9 @@
         Home - Premium Essay Writing Services for College Students
     </x-slot>
     <div class="bg-gray-50">
-        <div class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="py-12 px-4 sm:px-6 lg:px-8">
             <div class="flex px-1 sm:px-4 lg:px-8 flex-col md:flex-row items-center justify-between">
                 <div class="text-center sm:w-2/3 relative md:text-left">
-                    <img src="{{ asset('images/svg2.png') }}" alt="Hero"
-                         class="w-64 hidden -top-16 opacity-50 right-0 absolute rounded-lg">
                     <div class="top-0 left-0 w-full h-full flex flex-col justify-center">
                         <section class="mb-4 text-left">
                             <header class="mb-4">
@@ -42,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-8 p-4 md:mt-0">
+                <div class="mt-8 md:mt-0">
                     <livewire:PriceCalculator/>
                 </div>
             </div>

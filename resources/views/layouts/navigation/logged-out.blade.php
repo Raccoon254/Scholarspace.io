@@ -1,5 +1,5 @@
-<nav class="bg-gray-100">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<nav class="bg-gray-100 w-full overflow-x-hidden">
+    <div class="px-4 sm:px-6 lg:px-8 py-4">
         <div class="flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <x-application-logo class="h-8"/>
