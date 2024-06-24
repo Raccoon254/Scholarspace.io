@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-8 md:mt-0">
+                <div class="mt-8 p-4 md:mt-0">
                     <livewire:PriceCalculator/>
                 </div>
             </div>
