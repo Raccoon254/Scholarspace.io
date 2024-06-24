@@ -9,6 +9,9 @@
     <div class="max-w-7xl relative h-full mx-auto">
         <div class="flex gap-4 sm:mx-3 lg:mx-4 flex-col h-full md:flex-row">
             <div class="bg-white p-6 relative md:w-2/3 rounded-lg shadow-sm">
+
+                <h1 class="text-2xl font-semibold mb-4 text-gray-800">Edit User</h1>
+
                 @if (session()->has('message'))
                     <div class="bg-green-100 mb-4 border border-green-400 text-green-700 px-4 py-3 rounded relative"
                          role="alert">
