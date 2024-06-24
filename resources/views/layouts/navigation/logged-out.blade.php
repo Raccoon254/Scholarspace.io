@@ -2,7 +2,7 @@
     <div class="px-4 sm:px-6 lg:px-8 py-4">
         <div class="flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <x-application-logo class="h-8"/>
+                <x-application-logo class="h-8 max-w-8"/>
                 <h3 class="text-lg md:text-2xl text-black/80 font-bold">
                     Scholarspace
                 </h3>
