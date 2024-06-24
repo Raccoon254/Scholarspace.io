@@ -28,7 +28,7 @@
                     +254 790 743 009
                 </a>
                 <p class="text-sm flex gap-4 items-center mb-1 text-gray-300"> <i class="fas fa-envelope"></i>
-                    <a href="mailto:tomsteve187@gmail.com" class="hover:text-blue-500">hello@scholarspace.io</a>
+                    <a href="mailto:{{ env('OWNER_EMAIL') }}" class="hover:text-blue-500">hello@scholarspace.io</a>
                 </p>
                 <p class="text-sm flex gap-4 items-center mb-1 text-gray-300">
                     <i class="fas fa-clock"></i>
