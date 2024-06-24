@@ -46,7 +46,6 @@ class AuthenticatedSessionController extends Controller
             'user_agent' => $request->userAgent(),
         ]);
 
-
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
