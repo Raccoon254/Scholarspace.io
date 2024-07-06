@@ -3,11 +3,16 @@
         Home - Premium Essay Writing Services for College Students
     </x-slot>
     @guest
-        <div class="video-ad w-full">
-            <video class="w-full" autoplay loop muted>
-                <source src="{{ asset('video/ad.mp4') }}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        <div class="video-ad center p-5 md:pt-12 w-full">
+            <div class="max-w-3xl relative rounded-2xl ring ring-gray-300 border overflow-clip">
+                <video class="w-full" autoplay loop muted>
+                    <source src="{{ asset('video/ad.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
+                    <i class="fas fa-times text-red-500"></i>
+                </button>
+            </div>
         </div>
     @endguest
     <div class="bg-gray-50">
