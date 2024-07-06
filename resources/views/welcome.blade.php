@@ -2,19 +2,9 @@
     <x-slot name="title">
         Home - Premium Essay Writing Services for College Students
     </x-slot>
-    @guest
-        <div class="video-ad center p-5 md:pt-12 w-full">
-            <div class="max-w-3xl relative rounded-2xl ring ring-gray-300 border overflow-clip">
-                <video class="w-full" autoplay loop muted>
-                    <source src="{{ asset('video/ad.mp4') }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <button class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
-                    <i class="fas fa-times text-red-500"></i>
-                </button>
-            </div>
-        </div>
-    @endguest
+
+    <livewire:video-ad/>
+
     <div class="bg-gray-50">
         <div class="py-12 px-4 sm:px-6 lg:px-8">
             <div class="flex px-1 sm:px-4 lg:px-8 flex-col md:flex-row items-center justify-between">
