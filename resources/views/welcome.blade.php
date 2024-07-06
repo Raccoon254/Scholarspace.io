@@ -2,6 +2,14 @@
     <x-slot name="title">
         Home - Premium Essay Writing Services for College Students
     </x-slot>
+    @guest
+        <div class="video-ad w-full">
+            <video class="w-full" autoplay loop muted>
+                <source src="{{ asset('video/ad.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    @endguest
     <div class="bg-gray-50">
         <div class="py-12 px-4 sm:px-6 lg:px-8">
             <div class="flex px-1 sm:px-4 lg:px-8 flex-col md:flex-row items-center justify-between">
