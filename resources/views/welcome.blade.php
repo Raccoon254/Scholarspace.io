@@ -3,7 +3,7 @@
         Home - Premium Essay Writing Services for College Students
     </x-slot>
 
-    <livewire:video-ad/>
+{{--    <livewire:video-ad/>--}}
 
     <div class="bg-gray-50">
         <div class="py-12 px-4 sm:px-6 lg:px-8">
