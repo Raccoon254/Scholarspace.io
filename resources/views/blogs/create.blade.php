@@ -53,23 +53,23 @@
         addToContent("\n### H3 ");
     });
     document.getElementById('addParagraph').addEventListener('click', function() {
-        addToContent("\n\n");
+        addToContent("\n");
     });
     document.getElementById('addBold').addEventListener('click', function() {
-        addToContent("\n **bold text** ");
+        addToContent("\n**bold text** ");
     });
     document.getElementById('addList').addEventListener('click', function() {
-        addToContent("\n\n- list item");
+        addToContent("\n- list item");
     });
     document.getElementById('addLink').addEventListener('click', function() {
-        addToContent("\n [link text](url) ");
+        addToContent("\n[link text](url) ");
     });
     document.getElementById('addImage').addEventListener('click', function() {
-        addToContent(" ![alt text](image_url) ");
+        addToContent("\n![alt text](image_url) ");
     });
 
     function addToContent(text) {
-        var contentElement = document.getElementById('content');
+        let contentElement = document.getElementById('content');
         contentElement.value += text;
         contentElement.dispatchEvent(new Event('input')); // To trigger Livewire update
     }

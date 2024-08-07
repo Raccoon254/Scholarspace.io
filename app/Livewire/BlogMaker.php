@@ -28,43 +28,14 @@ class BlogMaker extends Component
 
     public function updatedContent(): void
     {
-        $this->markdownContent = $this->content;
+        $this->parseTextToMarkdown($this->content);
     }
 
-    public function addHeading($level): void
+    function parseTextToMarkdown($content): void
     {
-        $this->content .= "\n#{$level} ";
-        $this->updatedContent();
-    }
-
-    public function addParagraph(): void
-    {
-        $this->content .= "\n\n";
-        $this->updatedContent();
-    }
-
-    public function addBold(): void
-    {
-        $this->content .= " **bold text** ";
-        $this->updatedContent();
-    }
-
-    public function addList(): void
-    {
-        $this->content .= "\n- list item";
-        $this->updatedContent();
-    }
-
-    public function addLink(): void
-    {
-        $this->content .= " [link text](url) ";
-        $this->updatedContent();
-    }
-
-    public function addImage(): void
-    {
-        $this->content .= " ![alt text](image_url) ";
-        $this->updatedContent();
+        //parse markdown
+        $parsed_content = app('markdown')->parse($this->content);
+        $this->markdownContent = $parsed_content;
     }
 
     public function uploadImage()
