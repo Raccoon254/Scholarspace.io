@@ -79,3 +79,7 @@ input:-webkit-autofill {
 .z-custom{
     z-index: 100000000000 !important;
 }
+
+.control-btn{
+    @apply btn rounded-none m-0 btn-sm bg-blue-200 border-none btn-ghost text-black
+}
