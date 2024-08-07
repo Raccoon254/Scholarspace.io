@@ -66,4 +66,6 @@ Route::get('/info/price-calculator', [PagesController::class, 'info_price_calcul
 Route::view('/info/order/create', 'info.order.create')->name('info.order.create');
 Route::view('/info/order/payment', 'info.order.payment')->name('info.order.payment');
 Route::post('/newsletter/subscribe', [PagesController::class, 'subscribe'])->name('newsletter.subscribe');
+
+Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
 require __DIR__.'/auth.php';
