@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Blogs extends Model
+class Blog extends Model
 {
     use HasFactory;
 
@@ -30,6 +30,6 @@ class Blogs extends Model
 
     public function images(): HasMany
     {
-        return $this->hasMany(Images::class);
+        return $this->hasMany(Image::class);
     }
 }

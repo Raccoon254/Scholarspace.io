@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Images extends Model
+class Image extends Model
 {
     use HasFactory;
 
@@ -17,6 +17,6 @@ class Images extends Model
 
     public function blog(): BelongsTo
     {
-        return $this->belongsTo(Blogs::class);
+        return $this->belongsTo(Blog::class);
     }
 }

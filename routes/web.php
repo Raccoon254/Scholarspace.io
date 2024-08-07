@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Livewire\AutoOrderCreate;
 use App\Livewire\BlogMaker;
+use App\Livewire\AutoOrderCreate;
 use App\Livewire\EditProfile;
 use App\Livewire\ManageUsers;
 use App\Livewire\OrderCreate;
@@ -52,6 +52,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/users/edit/{id}', UserEdit::class)->name('users.edit')->middleware('can:manage');
 
     Route::get('/payments/{paymentId}', VerifyOrderPayment::class)->name('payments.show')->middleware('can:manage');
+
+    Route::get('/blog/create', BlogMaker::class)->name('blog.create');
 });
 
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
@@ -71,5 +73,4 @@ Route::post('/newsletter/subscribe', [PagesController::class, 'subscribe'])->nam
 Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
 Route::get('/blog/{blog}', [PagesController::class, 'blog_show'])->name('blog.show');
 
-Route::get('/blog/create', BlogMaker::class)->name('blog.create');
 require __DIR__.'/auth.php';

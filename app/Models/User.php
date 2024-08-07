@@ -76,7 +76,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function blogs(): HasMany
     {
-        return $this->hasMany(Blogs::class);
+        return $this->hasMany(Blog::class);
     }
 
     public function getAvatarAttribute(): string
