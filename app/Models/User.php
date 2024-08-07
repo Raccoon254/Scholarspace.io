@@ -74,6 +74,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->activity()->latest()->first();
     }
 
+    public function blogs(): HasMany
+    {
+        return $this->hasMany(Blogs::class);
+    }
+
     public function getAvatarAttribute(): string
     {
         return 'https://api.dicebear.com/8.x/identicon/svg?seed=' . $this->name;

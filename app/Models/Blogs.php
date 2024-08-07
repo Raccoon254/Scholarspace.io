@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Blogs extends Model
 {
@@ -25,5 +26,10 @@ class Blogs extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(Images::class);
     }
 }
