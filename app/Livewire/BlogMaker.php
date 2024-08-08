@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Services\MarkdownParser;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -31,16 +32,21 @@ class BlogMaker extends Component
         $this->parseTextToMarkdown($this->content);
     }
 
-    function parseTextToMarkdown($content): void
+    public function parseTextToMarkdown($content): void
     {
-        //parse markdown
-        $parsed_content = app('markdown')->parse($this->content);
-        $this->markdownContent = $parsed_content;
+        $parser = new MarkdownParser();
+        $this->markdownContent = $parser->parse($content);
     }
+
 
     public function uploadImage()
     {
         // Implement image upload logic here
+        Image::create([
+           //TODO: Get the blog ID,
+            'blog_id' => 1,
+            'path' => $this->tempImage->store('images', 'public'),
+        ]);
     }
 
     public function saveBlog(): RedirectResponse

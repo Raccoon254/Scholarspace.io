@@ -25,6 +25,9 @@
             <button id="addImage" class="control-btn">
                 <i class="fas fa-image"></i>
             </button>
+            <div class="hidden">
+                <input type="file" accept="image/*" id="image" wire:model="image">
+            </div>
         </div>
         <textarea
             id="content"
@@ -34,43 +37,72 @@
     </div>
 
     <!-- Preview -->
-    <div>
+    <div class="w-1/2">
         <h3>Preview:</h3>
-        {{ $content }}
-        <br>
-        {{ $markdownContent }}
+        <div id="preview" class="markdown-content hidden text-black">
+            {{ $markdownContent }}
+        </div>
+        {{--        AS inner html
+        --}}
+        <div id="render" class="markdown-content-render text-black" wire:ignore>
+        </div>
     </div>
 </div>
 
 <script>
-    document.getElementById('addHeading1').addEventListener('click', function() {
+    document.getElementById('addHeading1').addEventListener('click', function () {
         addToContent("\n# H1 ");
     });
-    document.getElementById('addHeading2').addEventListener('click', function() {
+    document.getElementById('addHeading2').addEventListener('click', function () {
         addToContent("\n## H2 ");
     });
-    document.getElementById('addHeading3').addEventListener('click', function() {
+    document.getElementById('addHeading3').addEventListener('click', function () {
         addToContent("\n### H3 ");
     });
-    document.getElementById('addParagraph').addEventListener('click', function() {
+    document.getElementById('addParagraph').addEventListener('click', function () {
         addToContent("\n");
     });
-    document.getElementById('addBold').addEventListener('click', function() {
+    document.getElementById('addBold').addEventListener('click', function () {
         addToContent("\n**bold text** ");
     });
-    document.getElementById('addList').addEventListener('click', function() {
+    document.getElementById('addList').addEventListener('click', function () {
         addToContent("\n- list item");
     });
-    document.getElementById('addLink').addEventListener('click', function() {
+    document.getElementById('addLink').addEventListener('click', function () {
         addToContent("\n[link text](url) ");
     });
-    document.getElementById('addImage').addEventListener('click', function() {
-        addToContent("\n![alt text](image_url) ");
+    document.getElementById('addImage').addEventListener('click', function () {
+        document.getElementById('image').click();
+        setTimeout(() => {
+                addToContent("\n![alt text](image_url) ");
+            }, 100)
     });
 
     function addToContent(text) {
         let contentElement = document.getElementById('content');
+
+        //if we have nothing remove the new line
+        if (contentElement.value === '') {
+            text = text.trim();
+        }
+
+        //if we have a previous list and we are adding a new item
+        if (text.includes('-') && contentElement.value.endsWith('-')) {
+            text = text.trim();
+        }
+
         contentElement.value += text;
         contentElement.dispatchEvent(new Event('input')); // To trigger Livewire update
     }
+
+    // on content change
+    document.getElementById('content').addEventListener('input', function () {
+        setTimeout(
+            function () {
+                let content = document.getElementById('preview').innerText
+                let render = document.getElementById('render');
+                render.innerHTML = content;
+            }, 20
+        )
+    });
 </script>
