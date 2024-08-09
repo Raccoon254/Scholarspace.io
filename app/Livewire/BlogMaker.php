@@ -40,6 +40,12 @@ class BlogMaker extends Component
             'content' => $this->content,
         ]);
 
+        //check for unclosed tags
+        $this->contentHtml = strip_tags($this->content);
+        if (Str::contains($this->contentHtml, '<')) {
+            return redirect()->route('blog.create')->with('error', 'Please close all tags');
+        }
+
         $blogData = [
             'title' => $this->title,
             'content' => $this->content,
