@@ -15,8 +15,8 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-white">
@@ -26,7 +26,7 @@
     <livewire:alerts/>
     <div class="flex relative z-40 gap-2 p-2">
         <!-- Page Content -->
-        <main class="w-full bg-gray-100 text-black/80 overflow-clip rounded-[16px]">
+        <main class="w-full bg-gray-100 p-4 text-black/80 overflow-clip rounded-[16px]">
             {{ $slot }}
         </main>
     </div>
