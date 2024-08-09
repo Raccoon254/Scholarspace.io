@@ -49,6 +49,7 @@ class BlogMaker extends Component
 
         try {
             $blog = Blog::create($blogData);
+            session()->forget('blog');
         } catch (\Exception $e) {
             if (Str::contains($e->getMessage(), 'blogs_slug_unique')) {
                 return redirect()->route('blog.create')->with('error', 'Blog with this title already exists');
