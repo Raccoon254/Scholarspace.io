@@ -1,10 +1,10 @@
-<div>
-    <div>
-        <input wire:model="title" type="text" placeholder="Enter title">
-        @error('title') <span>{{ $message }}</span> @enderror
+<div class="rounded-lg p-4 flex flex-col gap-4" data-theme="light">
+    <div class="flex flex-col">
+        <input wire:model="title" class="input input-ghost in" type="text" placeholder="Enter title">
+        @error('title') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
     </div>
 
-    <div>
+    <div class="flex flex-col">
         <div id="editor"></div>
         @error('content') <span>{{ $message }}</span> @enderror
     </div>
@@ -13,6 +13,7 @@
 
     @script
     <script>
+
         const textArea = document.querySelector('#content');
         const saveButton = document.querySelector('#save_button');
 
@@ -41,6 +42,11 @@
             modules: {
                 toolbar: toolbarOptions
             }
+        });
+
+        //when the livewire component is mounted
+        document.addEventListener('livewire:load', function () {
+            quill.root.innerHTML = @this.content;
         });
 
         saveButton.addEventListener('click', () => {
