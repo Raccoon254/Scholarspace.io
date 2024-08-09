@@ -5,9 +5,11 @@ namespace App\Livewire;
 use Illuminate\View\View;
 use Livewire\Component;
 use App\Models\Blog;
+use Livewire\WithPagination;
 
 class BlogRenderer extends Component
 {
+    use WithPagination;
     public $blogs;
 
     public function mount(): void
@@ -18,6 +20,6 @@ class BlogRenderer extends Component
 
     public function render(): View
     {
-        return view('livewire.blog-renderer');
+        return view('livewire.blog-renderer')->layout('blogs.guest');
     }
 }

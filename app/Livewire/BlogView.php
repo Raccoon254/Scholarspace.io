@@ -17,6 +17,6 @@ class BlogView extends Component
 
     public function render(): View
     {
-        return view('blogs.show')->layout('layouts.guest');
+        return view('blogs.show')->layout('blogs.guest');
     }
 }
