@@ -23,10 +23,6 @@ class BlogMaker extends Component
             $blog = session()->get('blog');
             $this->title = $blog['title'];
             $this->content = $blog['content'];
-            //alert
-            Session::flash('message', 'This is a message!');
-            session()->flash('status', 'Task was successful!');
-            session()->now('message', 'Task was successful!');
         }
 
     }

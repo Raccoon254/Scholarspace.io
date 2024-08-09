@@ -1,6 +1,6 @@
 <div class="rounded-lg p-4 flex flex-col gap-4" data-theme="light">
     <div class="flex flex-col">
-        <input wire:model="title" class="input input-ghost in" type="text" placeholder="Enter title">
+        <input wire:model="title" class="input input-ghost max-w-md bordered border-gray-300" type="text" placeholder="Enter title">
         @error('title') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
     </div>
 
@@ -9,7 +9,11 @@
         @error('content') <span>{{ $message }}</span> @enderror
     </div>
 
-    <button id="save_button" class="btn">Save Blog</button>
+    <div class="flex-col justify-end w-full items-end">
+        <button id="save_button" class="btn ring-1 ring-offset-2 border">
+            Save Blog <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
 
     @script
     <script>
@@ -42,8 +46,7 @@
             }
         });
 
-        //when the livewire component is mounted
-        document.addEventListener('livewire:load', function () {
+        document.addEventListener('livewire:initialized', () => {
             quill.root.innerHTML = @this.content;
         });
 
