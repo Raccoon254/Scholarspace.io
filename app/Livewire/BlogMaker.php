@@ -3,13 +3,12 @@
 namespace App\Livewire;
 
 use Livewire\Attributes\On;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 use App\Models\Blog;
 use Illuminate\Support\Str;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class BlogMaker extends Component
 {
@@ -25,7 +24,9 @@ class BlogMaker extends Component
             $this->title = $blog['title'];
             $this->content = $blog['content'];
             //alert
-            session()->flash('message', 'Blog data restored from session');
+            Session::flash('message', 'This is a message!');
+            session()->flash('status', 'Task was successful!');
+            session()->now('message', 'Task was successful!');
         }
 
     }
@@ -45,7 +46,7 @@ class BlogMaker extends Component
 
         $blogData = [
             'title' => $this->title,
-            'content' => $this->content, // Storing HTML content directly
+            'content' => $this->content,
             'slug' => Str::slug($this->title),
             'user_id' => Auth::id(),
         ];

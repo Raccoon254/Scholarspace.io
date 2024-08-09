@@ -83,3 +83,7 @@ input:-webkit-autofill {
 .control-btn{
     @apply btn rounded-none m-0 btn-sm bg-blue-200 border-none btn-ghost text-black
 }
+
+.ql-editor{
+    height: 50vh !important;
+}
