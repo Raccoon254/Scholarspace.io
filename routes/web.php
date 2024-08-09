@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Livewire\BlogMaker;
 use App\Livewire\AutoOrderCreate;
 use App\Livewire\BlogRenderer;
+use App\Livewire\BlogView;
 use App\Livewire\EditProfile;
 use App\Livewire\ManageUsers;
 use App\Livewire\OrderCreate;
@@ -73,9 +74,7 @@ Route::view('/info/order/payment', 'info.order.payment')->name('info.order.payme
 Route::post('/newsletter/subscribe', [PagesController::class, 'subscribe'])->name('newsletter.subscribe');
 
 Route::get('/blog', BlogRenderer::class)->name('blog');
-Route::get('/blogs/{blog:slug}', function (Blog $blog) {
-    return view('blogs.show', compact('blog'));
-})->name('blog.show');
+Route::get('/blogs/{slug}', BlogView::class)->name('blog.show');
 
 
 require __DIR__.'/auth.php';

@@ -9,7 +9,7 @@
                 <div class="mt-4 text-gray-700 leading-relaxed">
                     {!! Str::limit($blog->content, 300) !!}
                 </div>
-                <a href="{{ route('blog.show', $blog->slug) }}" class="text-blue-500 mt-4 inline-block">Read More</a>
+                <a href="{{ route('blog.show', $blog) }}" class="text-blue-500 mt-4 inline-block">Read More</a>
             </div>
         </div>
     @empty
