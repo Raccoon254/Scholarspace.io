@@ -54,6 +54,9 @@ class BlogMaker extends Component
             if (Str::contains($e->getMessage(), 'blogs_slug_unique')) {
                 return redirect()->route('blog.create')->with('error', 'Blog with this title already exists');
             }
+            if (Str::contains($e->getMessage(), '1406')) {
+                return redirect()->route('blog.create')->with('error', 'Content too long, please reduce the content');
+            }
             return redirect()->route('blog.create' )->with('error', 'Failed to create blog' . $e->getMessage());
         }
 
