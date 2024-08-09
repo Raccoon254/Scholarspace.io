@@ -10,7 +10,7 @@
                         </a>
                     </div>
                     <h2 class="text-2xl capitalize font-bold text-gray-800">{{ $blog->title }}</h2>
-                    <p class="text-gray-600 text-sm mt-2">by {{ $blog->user->name }} on {{ $blog->created_at->format('F j, Y') }}</p>
+                    <p class="text-gray-400 text-xs mt-2">by {{ $blog->user->name }} on {{ $blog->created_at->format('F j, Y') }}</p>
                     <div class="mt-4 text-gray-700 leading-relaxed">
                         {!! Str::limit($blog->content, 300) !!}
                     </div>
