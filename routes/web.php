@@ -18,6 +18,7 @@ use App\Livewire\UserEdit;
 use App\Livewire\UserShow;
 use App\Livewire\VerifyOrderPayment;
 use App\Livewire\VerifyPayments;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\PagesController;
@@ -71,6 +72,9 @@ Route::view('/info/order/payment', 'info.order.payment')->name('info.order.payme
 Route::post('/newsletter/subscribe', [PagesController::class, 'subscribe'])->name('newsletter.subscribe');
 
 Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
-Route::get('/blog/{blog}', [PagesController::class, 'blog_show'])->name('blog.show');
+Route::get('/blogs/{blog:slug}', function (Blog $blog) {
+    return view('blogs.show', compact('blog'));
+})->name('blog.show');
+
 
 require __DIR__.'/auth.php';

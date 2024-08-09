@@ -57,7 +57,7 @@ class BlogMaker extends Component
             return redirect()->route('blog.create' )->with('error', 'Failed to create blog' . $e->getMessage());
         }
 
-        return redirect()->route('blogs.show', $blog->slug);
+        return redirect()->route('blog.show', $blog->slug);
     }
 
     public function render(): View

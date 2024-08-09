@@ -23,7 +23,7 @@
 
         const toolbarOptions = [
             ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-            ['blockquote', 'code-block'],
+            ['blockquote', 'image', 'link'],
 
             [{ 'header': 1 }, { 'header': 2 }, { 'header': 3 }],  // custom button values
             [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
