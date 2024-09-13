@@ -7,7 +7,7 @@
 
     <div class="bg-gray-50">
         <div class="py-12 px-4 sm:px-6 lg:px-8">
-            <div class="flex px-1 sm:px-4 lg:px-8 flex-col md:flex-row items-center justify-between">
+            <div class="flex px-1 sm:px-4 lg:px-8 my-4 flex-col md:flex-row items-center justify-between">
                 <div class="text-center sm:w-2/3 relative md:text-left">
                     <div class="top-0 left-0 w-full h-full flex flex-col justify-center">
                         <section class="mb-4 text-left">
@@ -93,7 +93,7 @@
             </div>
         </div>
 
-        <div class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto py-12 my-8 px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-black/90 mb-4">Trusted by Students</h2>
                 <p class="text-lg text-black/50">Hear what our satisfied clients have to say about Scholarspace.</p>
